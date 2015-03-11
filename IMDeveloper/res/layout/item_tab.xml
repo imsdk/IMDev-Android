@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp" >
+
+    <LinearLayout
+        android:id="@+id/normal_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/normal_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:id="@+id/normal_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/menu_text_normal"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/selected_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/selected_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:id="@+id/selected_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/menu_text_selected"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</RelativeLayout>

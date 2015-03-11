@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:su="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+
+    
+    
+    <com.imsdk.imdeveloper.view.citypicker.ScrollerNumberPicker
+        android:id="@+id/province"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_weight="1"
+        su:itemNumber="5"
+        su:lineColor="#ffe74139"
+        su:maskHight="32dp"
+        su:noEmpty="true"
+        su:normalTextColor="#777"
+        su:normalTextSize="14sp"
+        su:selecredTextColor="#ff000000"
+        su:selecredTextSize="18sp"
+        su:unitHight="50dp" />
+
+    <com.imsdk.imdeveloper.view.citypicker.ScrollerNumberPicker
+        android:id="@+id/city"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_weight="1"
+        su:itemNumber="5"
+        su:lineColor="#ffe74139"
+        
+        su:maskHight="32dp"
+        su:noEmpty="true"
+        su:normalTextColor="#777"
+        su:normalTextSize="14sp"
+        su:selecredTextColor="#ff111111"
+        su:selecredTextSize="18sp"
+        su:unitHight="50dp" />
+
+
+
+</LinearLayout>

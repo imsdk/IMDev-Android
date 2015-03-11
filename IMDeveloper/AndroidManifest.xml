@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imsdk.imdeveloper"
+    android:versionCode="15"
+    android:versionName="1.2.5" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <!-- 允许程序打开网络套接字权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 保持屏幕常亮所需权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- 读取手机联系人信息所需权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 向SD卡写入文件所需权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 读取SD卡状态所需权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 读取或更改系统设置 所需权限 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- 手机震动所需权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- 创建和删除文件所需权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 查询网络状态的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 调用系统窗口所需权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- 用户定位所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- 相机的权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许程序修改全局音频设置 比如说：存储位置 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- 录制语音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name="com.imsdk.imdeveloper.app.IMApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.imsdk.imdeveloper.MainActivity"
+            android:screenOrientation="portrait"
+            android:logo="@drawable/logo"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.imsdk.imdeveloper.WelcomeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.imsdk.imdeveloper.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.ProfileFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.IM_ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.imsdk.imdeveloper.IM_GroupChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.imsdk.imdeveloper.PasswordModifyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.imsdk.imdeveloper.UserInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.imsdk.imdeveloper.SignatureModifyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name="com.imsdk.imdeveloper.ChoosePhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.SearchAndMakeFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.SearchAndMakeGroupActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

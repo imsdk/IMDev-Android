@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/holo_blue" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="5.0dip"
+            android:gravity="center_vertical"
+            android:text="个性签名"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/app_name"
+            android:onClick="true"
+            android:padding="12.0dip"
+            android:src="@drawable/room_returnbotton" />
+        
+          <TextView
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="5.0dip"
+            android:gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:text="完成"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="217dp" >
+
+        <EditText
+            android:id="@+id/addmood_content"
+            android:layout_width="fill_parent"
+            android:layout_height="217dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_white"
+            android:gravity="top"
+            android:maxLength="30"
+            android:padding="8dip"
+            android:textColor="#666666"
+            android:textSize="18sp" >
+
+            <requestFocus />
+        </EditText>
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:src="@drawable/bianjiziliao_delete" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/iv_delete"
+            android:layout_alignBottom="@id/iv_delete"
+            >
+
+            <TextView
+                android:id="@+id/addmood_count"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="/25"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

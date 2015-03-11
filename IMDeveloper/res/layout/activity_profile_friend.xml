@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_cart_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eee" >
+
+    <RelativeLayout
+        android:id="@+id/add_friends_top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@color/holo_blue"
+        android:layout_alignParentTop="true">
+
+        <Button
+            android:id="@+id/add_friends_reback_btn"
+              android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:text="@string/tab_nearby"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/user_profile_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="详细资料"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_friends_top_layout"
+        android:fadingEdge="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <RelativeLayout 
+                android:id="@+id/layout_personal_headview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/preference_first_item"
+                android:clickable="true"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:id="@+id/personal_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:text="头像"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <com.imsdk.imdeveloper.view.RoundedCornerImageView
+                    android:id="@+id/personal_head_imageview"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/h0"/>
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/layout_personal_nickname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/preference_item"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/personal_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="昵称"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/personal_nickname_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="子龙"
+                    android:ellipsize="end"
+                    android:padding="8dp"
+                    android:gravity="right"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_personal_sex"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/preference_item"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/personal_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="性别"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/personal_sex_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="男"
+                    android:ellipsize="end"
+                    android:padding="8dp"
+                    android:gravity="right"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/layout_personal_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/preference_item"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/personal_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="地区"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/personal_location_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                     android:layout_alignParentRight="true"
+                    android:padding="8dp"
+                    android:gravity="right"
+                       android:text="未填写"
+                    android:textSize="16sp"/>
+                
+            </RelativeLayout>
+
+            
+
+            <RelativeLayout
+                android:id="@+id/layout_personal_signature"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/preference_last_item"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/personal_signature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="个性签名"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+                
+                <TextView
+                    android:id="@+id/personal_signature_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                    android:ellipsize="end"
+                    android:padding="8dp"
+                    android:gravity="right"
+                    android:textSize="16sp"/>            
+            </RelativeLayout>
+            
+            <Button
+                android:id="@+id/make_it_black"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/btn_zhuce"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="拉入黑名单"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/remove_it_black"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/btn_zhuce"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="移除黑名单"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            
+            <Button
+                android:id="@+id/make_a_friend"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/btn_denglu"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="加为好友"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/go_chatroom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/btn_denglu"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="发送消息"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/remove_a_friend"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="14dp"
+                 android:background="@drawable/btn_zhuce"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="移除好友"
+                  android:textColor="#000000"
+                android:textSize="18sp" />
+            
+            
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
