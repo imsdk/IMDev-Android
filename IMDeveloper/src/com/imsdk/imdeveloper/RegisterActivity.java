@@ -18,14 +18,9 @@ import com.imsdk.imdeveloper.app.IMConfiguration;
 import com.imsdk.imdeveloper.util.T;
 import com.imsdk.imdeveloper.view.TipsToast;
 
-/**
- * 
- * @author Administrator
- * 
- */
 public class RegisterActivity extends Activity implements OnClickListener {
 	private final static int TIMEOUT = 5;
-	
+
 	private EditText mUser; // 帐号编辑框
 	private EditText mPasswordEditText; // 密码编辑框
 	private EditText mRePasswordEditText;
@@ -33,7 +28,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private Button mRegisterBtn;
 	private Button mBackBtn;
 
-	private String mUserName;
+	private String mUserID;
 	private String mPassword;
 	private String mRepassword;
 	private static TipsToast mTipsToast;
@@ -71,12 +66,12 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	}
 
 	public void reigster() {
-		mUserName = mUser.getText().toString();
+		mUserID = mUser.getText().toString();
 		mPassword = mPasswordEditText.getText().toString();
 		mRepassword = mRePasswordEditText.getText().toString();
 
-		if ("".equals(mUserName) || "".equals(mPassword) || "".equals(mRepassword))// 判断
-																				// 帐号和密码
+		if ("".equals(mUserID) || "".equals(mPassword) || "".equals(mRepassword))// 判断
+																					// 帐号和密码
 		{
 			showTips(R.drawable.tips_warning, "帐号或密码不能为空，\n请输入后再登录！");
 		} else if (!mPassword.equals(mRepassword)) {
@@ -89,8 +84,16 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	}
 
 	public void registerThread() {
+		// 不设自动登录
 		boolean result = IMMyself.init(getApplicationContext(),
-				mUserName, IMConfiguration.sAppKey);
+				IMConfiguration.sAppKey, null);
+
+		if (!result) {
+			showTips(R.drawable.tips_warning, IMSDK.getLastError());
+			return;
+		}
+
+		result = IMMyself.setCustomUserID(mUserID);
 
 		if (!result) {
 			showTips(R.drawable.tips_warning, IMSDK.getLastError());
@@ -103,15 +106,15 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			showTips(R.drawable.tips_warning, IMSDK.getLastError());
 			return;
 		}
-		
-	
 
 		IMMyself.register(TIMEOUT, new OnActionListener() {
 			@Override
 			public void onSuccess() {
 				T.show(RegisterActivity.this, "注册成功");
+				
 				Intent intent = new Intent();
-				intent.putExtra("username", mUserName);
+				
+				intent.putExtra("username", mUserID);
 				intent.putExtra("password", mPassword);
 				setResult(Activity.RESULT_OK, intent);
 				finish();
@@ -122,10 +125,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				if (error.equals("Timeout")) {
 					error = "注册超时";
 				}
-				T.show(RegisterActivity.this, "注册失败:"+error);
+				T.show(RegisterActivity.this, "注册失败:" + error);
 			}
 		});
-		
 
 	}
 
@@ -143,8 +145,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				mTipsToast.cancel();
 			}
 		} else {
-			mTipsToast = TipsToast.makeText(getApplication().getBaseContext(),
-					tips, TipsToast.LENGTH_LONG);
+			mTipsToast = TipsToast.makeText(getApplication().getBaseContext(), tips,
+					TipsToast.LENGTH_LONG);
 		}
 		mTipsToast.show();
 		mTipsToast.setIcon(iconResId);

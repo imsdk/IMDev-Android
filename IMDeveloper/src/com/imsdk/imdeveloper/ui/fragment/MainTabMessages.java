@@ -40,16 +40,12 @@ import com.imsdk.imdeveloper.util.DateUtil;
 import com.imsdk.imdeveloper.view.BadgeView;
 import com.imsdk.imdeveloper.view.TipsToast;
 
-
 public class MainTabMessages extends Fragment {
-
-	
 
 	/**
 	 * 存储userId-新来消息的个数
 	 */
 	public Map<String, Integer> mUserMessages = new HashMap<String, Integer>();
-
 
 	private ListView mMessages;
 	private View mEmptyView;
@@ -62,7 +58,6 @@ public class MainTabMessages extends Fragment {
 	 */
 	private MessageListAdapter mAdapter;
 
-
 	private LayoutInflater mInflater;
 
 	@Override
@@ -74,25 +69,30 @@ public class MainTabMessages extends Fragment {
 		mAdapter = new MessageListAdapter();
 
 		MessagePushCenter.registerUserInfoObserve(new UserInfoObserve() {
-			
+
 			@Override
 			public void notifyUserInfoModified(User user) {
 				for (int i = 0; i < mDatas.size(); i++) {
-					if (user.getUserId()
-							.equals(mDatas.get(i).getUserID())) {
-						
+					if (user.getUserId().equals(mDatas.get(i).getUserID())) {
+
 						View view = getViewByPosition(i, mMessages);
 						if (view == null) {
 							return;
 						}
-						
-						if (user.getName()!=null&&!"".equals(user.getName())&&!user.getName().equals(mDatas.get(i).getUserName())) {
-							TextView mContactName = (TextView) view.findViewById(R.id.contact_name);
+
+						if (user.getName() != null && !"".equals(user.getName())
+								&& !user.getName().equals(mDatas.get(i).getUserName())) {
+							TextView mContactName = (TextView) view
+									.findViewById(R.id.contact_name);
 							mContactName.setText(user.getName());
 							mDatas.get(i).setUserName(user.getName());
 						}
-						if (user.getHeadUri()!=null&&!"".equals(user.getHeadUri())&&!user.getHeadUri().equals(mDatas.get(i).getHeadUri())) {
-							ImageView mContactHead = (ImageView) view.findViewById(R.id.contact_head); 
+						if (user.getHeadUri() != null
+								&& !"".equals(user.getHeadUri())
+								&& !user.getHeadUri()
+										.equals(mDatas.get(i).getHeadUri())) {
+							ImageView mContactHead = (ImageView) view
+									.findViewById(R.id.contact_head);
 							IMApplication.imageLoader.displayImage(user.getHeadUri(),
 									mContactHead, IMApplication.options);
 							mDatas.get(i).setHeadUri(user.getHeadUri());
@@ -104,40 +104,40 @@ public class MainTabMessages extends Fragment {
 			}
 		});
 
-
 		MessagePushCenter.registerMessageObserve(new MessageObserve() {
 
 			@Override
 			public void notifyMessageReaded(Message message) {
 				mUserMessages.remove(message.getUserID());
 				for (int i = 0; i < mDatas.size(); i++) {
-					if (message.getUserID()
-							.equals(mDatas.get(i).getUserID())) {
+					if (message.getUserID().equals(mDatas.get(i).getUserID())) {
 						View view = getViewByPosition(i, mMessages);
 						if (view == null) {
 							return;
 						}
-						BadgeView mNoticeIndex = (BadgeView) view.findViewById(R.id.contact_noticeIndex);
+						BadgeView mNoticeIndex = (BadgeView) view
+								.findViewById(R.id.contact_noticeIndex);
 						mNoticeIndex.setVisibility(View.INVISIBLE);
 						break;
 					}
 
 				}
-				
+
 			}
 
 			@Override
 			public void notifyMessageComing(Message message) {
-				if (IMApplication.mChattingId==null||!IMApplication.mChattingId.equals(message.getUserID())) {
+				if (IMApplication.mChattingId == null
+						|| !IMApplication.mChattingId.equals(message.getUserID())) {
 					int unread = 0;
 					if (MainTabMessages.this.mUserMessages.get(message.getUserID()) != null) {
-						unread = MainTabMessages.this.mUserMessages.get(message.getUserID());
+						unread = MainTabMessages.this.mUserMessages.get(message
+								.getUserID());
 					}
-					MainTabMessages.this.mUserMessages.put(message.getUserID(), ++unread);
+					MainTabMessages.this.mUserMessages.put(message.getUserID(),
+							++unread);
 				}
-				
-				
-				
+
 				boolean needAddItem = true;
 				for (int i = 0; i < mDatas.size(); i++) {
 					if (message.isMutiChat()) {
@@ -148,7 +148,7 @@ public class MainTabMessages extends Fragment {
 							needAddItem = false;
 							break;
 						}
-					}else {
+					} else {
 						if (message.getUserID().equals(mDatas.get(i).getUserID())) {
 							mDatas.remove(i);
 							mDatas.add(i, message);
@@ -199,8 +199,7 @@ public class MainTabMessages extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.main_tab_message, container,
-				false);
+		View view = inflater.inflate(R.layout.main_tab_message, container, false);
 		mMessages = (ListView) view.findViewById(R.id.id_listview_messages);
 		mEmptyView = view.findViewById(R.id.messages_no_data);
 		mMessages.setEmptyView(mEmptyView);
@@ -208,10 +207,9 @@ public class MainTabMessages extends Fragment {
 
 		mMessages.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				
-				
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+
 				int messageType = mDatas.get(position).getMessageType();
 				MessagePushCenter.notifyAllObservesMessageReaded(mDatas.get(position));
 				switch (messageType) {
@@ -234,23 +232,21 @@ public class MainTabMessages extends Fragment {
 					goChatRoom(mDatas.get(position));
 					break;
 				}
-		
+
 			}
 
 			private void goChatRoom(Message message) {
 				if (message.isMutiChat()) {
-					Intent intent = new Intent(getActivity(), IM_GroupChatActivity.class);
-					intent.putExtra("toGroupId", message
-							.getGroupID());
-					intent.putExtra("toGroupName", message
-							.getGroupName());
+					Intent intent = new Intent(getActivity(),
+							IM_GroupChatActivity.class);
+					
+					intent.putExtra("toGroupId", message.getGroupID());
+					intent.putExtra("toGroupName", message.getGroupName());
 					startActivity(intent);
-				}else{
+				} else {
 					Intent intent = new Intent(getActivity(), IM_ChatActivity.class);
-					intent.putExtra("mCustomUserID", message
-							.getUserID());
-					intent.putExtra("mCustomUserName", message
-							.getUserName());
+					
+					intent.putExtra("mCustomUserID", message.getUserID());
 					startActivity(intent);
 				}
 			}
@@ -258,10 +254,6 @@ public class MainTabMessages extends Fragment {
 		});
 		return view;
 	}
-
-	
-
-	
 
 	private class MessageListAdapter extends BaseAdapter {
 		@Override
@@ -287,8 +279,7 @@ public class MainTabMessages extends Fragment {
 			ViewHolder holder = null;
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = mInflater.inflate(R.layout.item_contact, parent,
-						false);
+				convertView = mInflater.inflate(R.layout.item_contact, parent, false);
 				holder.mContactName = (TextView) convertView
 						.findViewById(R.id.contact_name);
 				holder.mContactHead = (ImageView) convertView
@@ -297,8 +288,9 @@ public class MainTabMessages extends Fragment {
 						.findViewById(R.id.contact_otherInfo);
 				holder.mContactTime = (TextView) convertView
 						.findViewById(R.id.contact_time);
-				holder.mNoticeIndex = (BadgeView) convertView.findViewById(R.id.contact_noticeIndex);
-				
+				holder.mNoticeIndex = (BadgeView) convertView
+						.findViewById(R.id.contact_noticeIndex);
+
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -316,24 +308,23 @@ public class MainTabMessages extends Fragment {
 			if (message.isMutiChat()) {
 				holder.mContactHead.setImageResource(R.drawable.ic_launcher);
 				holder.mContactName.setText(mDatas.get(position).getGroupName());
-			}else {
+			} else {
 				if (message.getHeadUri() != null && !"".equals(message.getHeadUri())) {
 					IMApplication.imageLoader.displayImage(message.getHeadUri(),
 							holder.mContactHead, IMApplication.options);
 				} else {
-					holder.mContactHead
-					.setImageResource(IMApplication.heads[position
-					                                      % IMApplication.heads.length]);
+					holder.mContactHead.setImageResource(IMApplication.heads[position
+							% IMApplication.heads.length]);
 				}
 				holder.mContactName.setText(mDatas.get(position).getUserName());
 			}
-			String time = DateUtil.getTimeBylong(mDatas.get(position)
-					.getTimeSamp()*1000);
+			String time = DateUtil
+					.getTimeBylong(mDatas.get(position).getTimeSamp() * 1000);
 			holder.mContactTime.setText(time);
-	
+
 			holder.mContacetInfo.setStaticEmotionText(mDatas.get(position)
 					.getMessageContent());
-	
+
 			return convertView;
 		}
 
@@ -347,9 +338,9 @@ public class MainTabMessages extends Fragment {
 
 	}
 
-	protected void showDealFriendRequestDialog( Message message) {
+	protected void showDealFriendRequestDialog(Message message) {
 		// TODO Auto-generated method stub
-		final String name = message.getUserName() ;
+		final String name = message.getUserName();
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setTitle("IMDevelop");
 		String content = "是否同意" + name + " 好友请求？";
@@ -360,7 +351,7 @@ public class MainTabMessages extends Fragment {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 				agressFriendRequest(name);
-				
+
 			}
 		});
 		builder.setNegativeButton("拒绝", new OnClickListener() {
@@ -372,20 +363,23 @@ public class MainTabMessages extends Fragment {
 		});
 		builder.create().show();
 	}
+
 	private void agressFriendRequest(final String mCustomUserID) {
 		IMMyselfUsersRelations.agreeToFriendRequest(mCustomUserID, 10,
 				new OnActionListener() {
 
 					@Override
 					public void onSuccess() {
-						showTips(R.drawable.tips_smile, "现在你和" + mCustomUserID + "已经是好友了");
+						showTips(R.drawable.tips_smile, "现在你和" + mCustomUserID
+								+ "已经是好友了");
 					}
 
 					@Override
 					public void onFailure(String error) {
 						// TODO Auto-generated method stub
-						showTips(R.drawable.tips_error, "处理" + mCustomUserID + "好友请求失败：" + error);
-					
+						showTips(R.drawable.tips_error, "处理" + mCustomUserID
+								+ "好友请求失败：" + error);
+
 					}
 				});
 	}
@@ -396,18 +390,19 @@ public class MainTabMessages extends Fragment {
 
 					@Override
 					public void onSuccess() {
-						showTips(R.drawable.tips_error, "你拒绝了" + mCustomUserID + "的好友请求！");
-					
+						showTips(R.drawable.tips_error, "你拒绝了" + mCustomUserID
+								+ "的好友请求！");
+
 					}
 
 					@Override
 					public void onFailure(String error) {
-						showTips(R.drawable.tips_error, "你拒绝了" + mCustomUserID + "的好友请求失败："+error);
-					
+						showTips(R.drawable.tips_error, "你拒绝了" + mCustomUserID
+								+ "的好友请求失败：" + error);
+
 					}
 				});
 	}
-
 
 	/**
 	 * 自定义toast
@@ -418,19 +413,20 @@ public class MainTabMessages extends Fragment {
 	 *            提示文字
 	 */
 	private static TipsToast tipsToast;
+
 	private void showTips(int iconResId, String tips) {
 		if (tipsToast != null) {
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 				tipsToast.cancel();
 			}
 		} else {
-			tipsToast = TipsToast.makeText(getActivity(),
-					tips, TipsToast.LENGTH_SHORT);
+			tipsToast = TipsToast.makeText(getActivity(), tips, TipsToast.LENGTH_SHORT);
 		}
 		tipsToast.show();
 		tipsToast.setIcon(iconResId);
 		tipsToast.setText(tips);
 	}
+
 	public View getViewByPosition(int pos, ListView listView) {
 		final int firstListItemPosition = listView.getFirstVisiblePosition();
 		final int lastListItemPosition = firstListItemPosition
@@ -443,6 +439,5 @@ public class MainTabMessages extends Fragment {
 			return listView.getChildAt(childIndex);
 		}
 	}
-
 
 }

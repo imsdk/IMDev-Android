@@ -237,7 +237,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private void initListener() {
-		IMMyself.setOnReceiveListener(new OnReceiveTextListener() {
+		IMMyself.setOnReceiveTextListener(new OnReceiveTextListener() {
 			@Override
 			public void onReceiveText(String text, String fromCustomUserID,
 					long serverActionTime) {

@@ -57,6 +57,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 	public View getView(final int position, View view, ViewGroup arg2) {
 		ViewHolder viewHolder = null;
 		final Message mContent = list.get(position);
+		
 		if (view == null) {
 			viewHolder = new ViewHolder();
 			view = LayoutInflater.from(mContext).inflate(

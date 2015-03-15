@@ -153,28 +153,25 @@ public class ScrollerNumberPicker extends View {
 				itemObject.drawSelf(canvas);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
-
 	}
 
-	@Override
-	protected void onLayout(boolean changed, int left, int top, int right,
-			int bottom) {
-		// TODO Auto-generated method stub
-		super.onLayout(changed, left, top, right, bottom);
-	}
+//	@Override
+//	protected void onLayout(boolean changed, int left, int top, int right,
+//			int bottom) {
+//		super.onLayout(changed, left, top, right, bottom);
+//	}
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		
 		controlWidth = getWidth();
+		
 		if (controlWidth != 0) {
 			setMeasuredDimension(getWidth(), itemNumber * unitHeight);
 			controlWidth = getWidth();
 		}
-
 	}
 
 	/**

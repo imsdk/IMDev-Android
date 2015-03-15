@@ -67,8 +67,9 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 	private final static int STRANGE = 3;
 	private final static int SELF = 4;
 	private String mSignatureString;
-	
+
 	private boolean mNeedNotify = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,59 +85,60 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 		mPersonalNicknameDetail.setText(mUserName);
 
 		mPersonalLocationDetail = (TextView) findViewById(R.id.personal_location_detail);
-		if (mUser.getLocation() != null&&!"".equals(mUser.getLocation())) {
+		if (mUser.getLocation() != null && !"".equals(mUser.getLocation())) {
 			mPersonalLocationDetail.setText(mUser.getLocation());
 		}
 		mPersonalSexDetail = (TextView) findViewById(R.id.personal_sex_detail);
-		if (mUser.getSex() != null&&!"".equals(mUser.getSex())) {
+		if (mUser.getSex() != null && !"".equals(mUser.getSex())) {
 			mPersonalSexDetail.setText(mUser.getSex());
 		}
 
 		mPersonalSignatureDetail = (TextView) findViewById(R.id.personal_signature_detail);
-		if (mUser.getSignature() != null&&!"".equals(mUser.getSignature())) {
+		if (mUser.getSignature() != null && !"".equals(mUser.getSignature())) {
 			mPersonalSignatureDetail.setText(mUser.getSignature());
 		}
-		
+
 		IMSDKCustomUserInfo.requestCustomUserInfo(mUserId, new OnActionListener() {
-			
+
 			@Override
 			public void onSuccess() {
-				String userInfo =IMSDKCustomUserInfo.getCustomUserInfo(mUserId);
+				String userInfo = IMSDKCustomUserInfo.getCustomUserInfo(mUserId);
 				int index = userInfo.indexOf("/n");
-				if (index!=-1) {
-					String sex = userInfo.substring(0,index);
-					if (sex!=null&&!"".equals(sex)) {
+				if (index != -1) {
+					String sex = userInfo.substring(0, index);
+					if (sex != null && !"".equals(sex)) {
 						if (!mUser.getSex().equals(sex)) {
-							mUser.setSex(sex,ProfileFriendActivity.this);
+							mUser.setSex(sex, ProfileFriendActivity.this);
 							mNeedNotify = true;
 						}
 						mPersonalSexDetail.setText(sex);
-					}else {
+					} else {
 						mPersonalSexDetail.setText("未设置");
 					}
-					userInfo = userInfo.substring(index+2);
-						index = userInfo.indexOf("/n");
-					if (index!=-1) {
-						String location = userInfo.substring(0,index);
-						if (location!=null&&!"".equals(location)) {
+					userInfo = userInfo.substring(index + 2);
+					index = userInfo.indexOf("/n");
+					if (index != -1) {
+						String location = userInfo.substring(0, index);
+						if (location != null && !"".equals(location)) {
 							if (!mUser.getLocation().equals(location)) {
-								mUser.setLocation(location,ProfileFriendActivity.this);
+								mUser.setLocation(location, ProfileFriendActivity.this);
 								mNeedNotify = true;
 							}
 							mPersonalLocationDetail.setText(location);
-						}else {
+						} else {
 							mPersonalLocationDetail.setText("未设置");
 						}
-						
-						userInfo = userInfo.substring(index+2);
+
+						userInfo = userInfo.substring(index + 2);
 						String signature = userInfo;
-						if (signature!=null&&!"".equals(signature)) {
+						if (signature != null && !"".equals(signature)) {
 							if (!mUser.getSignature().equals(signature)) {
-								mUser.setSignature(signature,ProfileFriendActivity.this);
+								mUser.setSignature(signature,
+										ProfileFriendActivity.this);
 								mNeedNotify = true;
 							}
 							mPersonalSignatureDetail.setText(signature);
-						}else {
+						} else {
 							mPersonalSignatureDetail.setText("未设置");
 						}
 						if (mNeedNotify) {
@@ -144,57 +146,49 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 						}
 					}
 				}
-				
-			
 			}
-			
+
 			@Override
 			public void onFailure(String error) {
 				// TODO Auto-generated method stub
-				mSignatureString ="error";
+				mSignatureString = "error";
 				mPersonalSignatureDetail.setText(mSignatureString);
 			}
 		});
-		
-		
+
 		mPersonalHeadImageview = (ImageView) findViewById(R.id.personal_head_imageview);
-		if (mUser.getHeadUri()!=null&&!mUser.getHeadUri().equals("")) {
-			IMApplication.imageLoader.displayImage(mUser.getHeadUri(), mPersonalHeadImageview);
+		if (mUser.getHeadUri() != null && !mUser.getHeadUri().equals("")) {
+			IMApplication.imageLoader.displayImage(mUser.getHeadUri(),
+					mPersonalHeadImageview);
 		}
-		
-		IMSDKMainPhoto.request(mUserId, 30,
-				new OnBitmapRequestProgressListener() {
-					@Override
-					public void onSuccess(Bitmap mainPhoto, byte[] buffer) {
-						if (mainPhoto != null) {
-							mPersonalHeadImageview.setImageBitmap(mainPhoto);
-							storeImage(mainPhoto);
-							
-						}
-					}
 
-					@Override
-					public void onProgress(double progress) {
-						// TODO Auto-generated method stub
-						
-					}
+		IMSDKMainPhoto.request(mUserId, 30, new OnBitmapRequestProgressListener() {
+			@Override
+			public void onSuccess(Bitmap mainPhoto, byte[] buffer) {
+				if (mainPhoto != null) {
+					mPersonalHeadImageview.setImageBitmap(mainPhoto);
+					storeImage(mainPhoto);
 
-					@Override
-					public void onFailure(String error) {
-					}
-				});
-		
-		
-		
-		
-		
+				}
+			}
+
+			@Override
+			public void onProgress(double progress) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onFailure(String error) {
+			}
+		});
 
 		mAddFriendsRebackBtn = (Button) findViewById(R.id.add_friends_reback_btn);
 		mAddFriendsRebackBtn.setOnClickListener(this);
 
 		mMoveBlack = (Button) findViewById(R.id.make_it_black);
 		mMoveBlack.setOnClickListener(this);
-		
+
 		mRemoveBlack = (Button) findViewById(R.id.remove_it_black);
 		mRemoveBlack.setOnClickListener(this);
 
@@ -220,7 +214,7 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 		if (mUserId.equals(IMMyself.getCustomUserID())) {
 			relationBetween = SELF;
 		}
-		
+
 		showUIbyRelation(relationBetween);
 	}
 
@@ -245,152 +239,135 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 			remove_friend();
 			break;
 		case R.id.go_chatroom:
-			Intent intent = new Intent(ProfileFriendActivity.this,IM_ChatActivity.class);
+			Intent intent = new Intent(ProfileFriendActivity.this,
+					IM_ChatActivity.class);
+
 			intent.putExtra("mCustomUserID", mUserId);
-			intent.putExtra("mCustomUserName", mUserName);
 			startActivity(intent);
 			break;
 		default:
 			break;
 		}
 	}
+
 	public void remove_black() {
 		String blackTitle = "确定要解除黑名单?";
-	
+
 		new AlertDialog.Builder(this).setMessage(blackTitle)
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-
-						IMMyselfUsersRelations.removeUserFromBlacklist(mUserId, TIMEOUT,
-								new OnActionListener() {
-
+						IMMyselfUsersRelations.removeUserFromBlacklist(mUserId,
+								TIMEOUT, new OnActionListener() {
 									@Override
 									public void onSuccess() {
-										// TODO Auto-generated method stub
-
 										showUIbyRelation(STRANGE);
-										showTips(R.drawable.tips_success,
-												"移除黑名单成功！");
+										showTips(R.drawable.tips_success, "移除黑名单成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										// TODO Auto-generated method stub
 										showTips(R.drawable.tips_error, "移除黑名单失败"
 												+ error);
 									}
 								});
-
-						
 					}
 				}).setNegativeButton("取消", null).create().show();
 	}
 
-	
-
 	public void make_black() {
 		String blackTitle = "确认要将其加入黑名单?";
-	
+
 		new AlertDialog.Builder(this).setMessage(blackTitle)
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
-						IMMyselfUsersRelations.moveUserToBlacklist(mUserId,
-								TIMEOUT, new OnActionListener() {
+						IMMyselfUsersRelations.moveUserToBlacklist(mUserId, TIMEOUT,
+								new OnActionListener() {
 
 									@Override
 									public void onSuccess() {
 										showUIbyRelation(BLACK);
-										showTips(R.drawable.tips_success,
-												"拉黑成功！");
+										showTips(R.drawable.tips_success, "拉黑成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										showTips(R.drawable.tips_error, "拉黑失败："
-												+ error);
+										showTips(R.drawable.tips_error, "拉黑失败：" + error);
 
 									}
 								});
 
-						
 					}
 				}).setNegativeButton("取消", null).create().show();
 	}
 
 	public void add_friend() {
 		String addTitle = "确认要添加其为好友?";
-	
 
 		new AlertDialog.Builder(this).setMessage(addTitle)
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
-						IMMyselfUsersRelations.sendFriendRequest("", mUserId,
-								TIMEOUT, new OnActionListener() {
+						IMMyselfUsersRelations.sendFriendRequest("", mUserId, TIMEOUT,
+								new OnActionListener() {
 
 									@Override
 									public void onSuccess() {
-										showTips(R.drawable.tips_smile,
-												"好友请求已发送！");
+										showTips(R.drawable.tips_smile, "好友请求已发送！");
 									}
 
 									@Override
 									public void onFailure(String error) {
-										showTips(R.drawable.tips_error,
-												"好友请求发送失败：" + error);
+										showTips(R.drawable.tips_error, "好友请求发送失败："
+												+ error);
 									}
 								});
 
-						
 					}
 				}).setNegativeButton("取消", null).create().show();
 
 	}
-	
-	
+
 	public void remove_friend() {
 		String addTitle = "确定要解除好友关系?";
-	
+
 		new AlertDialog.Builder(this).setMessage(addTitle)
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
-						IMMyselfUsersRelations.removeUserFromFriendsList(mUserId, TIMEOUT,
-								new OnActionListener() {
+						IMMyselfUsersRelations.removeUserFromFriendsList(mUserId,
+								TIMEOUT, new OnActionListener() {
 									@Override
 									public void onSuccess() {
 										showUIbyRelation(STRANGE);
-										showTips(R.drawable.tips_success,
-												"移除好友成功！");
+										showTips(R.drawable.tips_success, "移除好友成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										showTips(R.drawable.tips_error,
-												"移除好友失败：" + error);
-									
+										showTips(R.drawable.tips_error, "移除好友失败："
+												+ error);
+
 									}
 								});
 
-						
 					}
 				}).setNegativeButton("取消", null).create().show();
 
 	}
 
 	public void refresh() {
-//		Intent intent = getIntent();
-//		intent.putExtra("User", mUser);
-//		finish();
-//		startActivity(intent);
+		// Intent intent = getIntent();
+		// intent.putExtra("User", mUser);
+		// finish();
+		// startActivity(intent);
 	}
 
 	private void showUIbyRelation(int relation) {
@@ -443,38 +420,40 @@ public class ProfileFriendActivity extends Activity implements OnClickListener {
 				mTipsToast.cancel();
 			}
 		} else {
-			mTipsToast = TipsToast.makeText(getApplication().getBaseContext(),
-					tips, TipsToast.LENGTH_SHORT);
+			mTipsToast = TipsToast.makeText(getApplication().getBaseContext(), tips,
+					TipsToast.LENGTH_SHORT);
 		}
 		mTipsToast.show();
 		mTipsToast.setIcon(iconResId);
 		mTipsToast.setText(tips);
 	}
-	
+
 	private void storeImage(Bitmap mainPhoto) {
-		File storeFile = new File(FileUtil.getInstance().getImagePath(),mUserId+".jpg");
-		BufferedOutputStream  bos = null;
+		File storeFile = new File(FileUtil.getInstance().getImagePath(), mUserId
+				+ ".jpg");
+		BufferedOutputStream bos = null;
 		try {
 			bos = new BufferedOutputStream(new FileOutputStream(storeFile));
 			mainPhoto.compress(Bitmap.CompressFormat.JPEG, 100, bos);
 			bos.flush();
-			mUser.setHeadUri(Uri.fromFile(storeFile).toString(),ProfileFriendActivity.this);
+			mUser.setHeadUri(Uri.fromFile(storeFile).toString(),
+					ProfileFriendActivity.this);
 			IMApplication.imageLoader.clearMemoryCache();
 			MessagePushCenter.notifyUserInfoModified(mUser);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
-			
-			if (bos!=null) {
+		} finally {
+
+			if (bos != null) {
 				try {
 					bos.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			
+
 		}
 	}
 }

@@ -1,9 +1,8 @@
 package com.imsdk.imdeveloper;
 
-
-
 import imsdk.data.IMMyself;
 import imsdk.data.IMMyself.OnActionListener;
+import imsdk.data.IMMyself.OnAutoLoginListener;
 import imsdk.data.IMSDK;
 import android.app.Activity;
 import android.content.Context;
@@ -29,16 +28,14 @@ import com.imsdk.imdeveloper.util.LoadingDialog;
 import com.imsdk.imdeveloper.view.TipsToast;
 
 public class LoginActivity extends Activity implements OnClickListener {
-
 	private EditText mUsernameEditText; // 帐号编辑框
 	private EditText mPasswordEditText; // 密码编辑框
 
 	private Button mLoginBtn, mRegisteBtn;
 
-	private String mUserName;
+	private String mUserID;
 	private String mPassword;
 	private ImageView mImageIcon;
-	
 
 	private LoadingDialog mDialog;
 
@@ -67,13 +64,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_login);
 		Intent intent = getIntent();
 
-		mUserName = intent.getStringExtra("userName");
+		mUserID = intent.getStringExtra("userName");
 		mPassword = intent.getStringExtra("passWord");
-		
+
 		mUsernameEditText = (EditText) findViewById(R.id.login_user_edit);
 		mPasswordEditText = (EditText) findViewById(R.id.login_passwd_edit);
-		
-		
+
 		mLoginBtn = (Button) findViewById(R.id.login_login_btn);
 		mLoginBtn.setOnClickListener(this);
 
@@ -83,56 +79,61 @@ public class LoginActivity extends Activity implements OnClickListener {
 		mImageIcon = (ImageView) findViewById(R.id.image_icon);
 		if (intent.getBooleanExtra("autoLogin", false)) {
 			String headUri = User.selfUser.getHeadUri();
-			if (headUri!=null&&!"".equals(headUri)) {
-				IMApplication.imageLoader.displayImage(headUri, mImageIcon,IMApplication.options);
-				
-			}else {
-				mPreferences = getSharedPreferences(mUserName, Context.MODE_PRIVATE);
+			if (headUri != null && !"".equals(headUri)) {
+				IMApplication.imageLoader.displayImage(headUri, mImageIcon,
+						IMApplication.options);
+
+			} else {
+				mPreferences = getSharedPreferences(mUserID, Context.MODE_PRIVATE);
+
 				String headuri = mPreferences.getString("headUri", "");
+
 				if (!headuri.equals("")) {
-					IMApplication.imageLoader.displayImage(headuri, mImageIcon,IMApplication.options);
+					IMApplication.imageLoader.displayImage(headuri, mImageIcon,
+							IMApplication.options);
 				}
 			}
-			
+
 			mLoginBtn.setEnabled(false);
-			mDialog = new LoadingDialog(this,"正在登录...");
+			mDialog = new LoadingDialog(this, "正在登录...");
 			mDialog.setCancelable(true);
 			mDialog.show();
-			mUsernameEditText.setText(mUserName);
+			mUsernameEditText.setText(mUserID);
 			mPasswordEditText.setText(mPassword);
 			login(false);
-		}else {
-			if (mUserName!=null) {
-				mUsernameEditText.setText(mUserName);
+		} else {
+			if (mUserID != null) {
+				mUsernameEditText.setText(mUserID);
 			}
-			if (mPassword!=null) {
+
+			if (mPassword != null) {
 				mPasswordEditText.setText(mPassword);
 			}
+
 			String headUri = User.selfUser.getHeadUri();
-			if (headUri!=null&&!"".equals(headUri)) {
-				IMApplication.imageLoader.displayImage(headUri, mImageIcon,IMApplication.options);
-			}else {
-				mPreferences = getSharedPreferences(mUserName, Context.MODE_PRIVATE);
+			
+			if (headUri != null && !"".equals(headUri)) {
+				IMApplication.imageLoader.displayImage(headUri, mImageIcon,
+						IMApplication.options);
+			} else {
+				mPreferences = getSharedPreferences(mUserID, Context.MODE_PRIVATE);
+
 				String headuri = mPreferences.getString("headUri", "");
+
 				if (!headuri.equals("")) {
-					IMApplication.imageLoader.displayImage(headuri, mImageIcon,IMApplication.options);
+					IMApplication.imageLoader.displayImage(headuri, mImageIcon,
+							IMApplication.options);
 				}
 			}
-			
+
 		}
-		
-		
-		
+
 		mUsernameEditText.addTextChangedListener(mTextWatcher);
-		
+
 	}
-
-
-
 
 	private final static int SUCCESS = 0;
 	private final static int FAIL = -1;
-	
 
 	private void updateStatus(int status) {
 		Intent intent = null;
@@ -140,16 +141,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 		case SUCCESS:
 			mDialog.dismiss();
 			showTips(R.drawable.tips_smile, "登录成功");
+
 			// 获得SharedPreferences对象
-			 mPreferences = getSharedPreferences(
-					"userInfo", Activity.MODE_PRIVATE);
+			mPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+
 			// 获得SharedPreferences.Editor
 			SharedPreferences.Editor editor = mPreferences.edit();
+
 			// 保存组件中的值
-			editor.putString("username", mUserName);
+			editor.putString("username", mUserID);
 			editor.putString("password", mPassword);
 			editor.putBoolean("autoLogin", true);
-		
+
 			// 提交保存的结果
 			editor.apply();
 			intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -172,7 +175,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		Intent intent = null;
 		switch (v.getId()) {
 		case R.id.login_login_btn:
-			mDialog = new LoadingDialog(this,"正在登录...");
+			mDialog = new LoadingDialog(this, "正在登录...");
 			mDialog.setCancelable(true);
 			mDialog.show();
 			login(false);
@@ -186,13 +189,21 @@ public class LoginActivity extends Activity implements OnClickListener {
 		}
 	}
 
-
-	
 	private void login(boolean autoRegister) {
-		mUserName = mUsernameEditText.getText().toString();
+		mUserID = mUsernameEditText.getText().toString();
 		mPassword = mPasswordEditText.getText().toString();
-		
-		boolean result = IMMyself.init(getApplicationContext(), mUserName, IMConfiguration.sAppKey);
+
+		// 不设自动登录
+		boolean result = IMMyself.init(getApplicationContext(),
+				IMConfiguration.sAppKey, null);
+
+		if (!result) {
+			showTips(R.drawable.tips_warning, IMSDK.getLastError());
+			mDialog.dismiss();
+			return;
+		}
+
+		result = IMMyself.setCustomUserID(mUserID);
 
 		if (!result) {
 			showTips(R.drawable.tips_warning, IMSDK.getLastError());
@@ -212,9 +223,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				showTips(R.drawable.tips_smile, "登录成功");
-				User.selfUser.setUserId(mUserName);
-				User.selfUser.setName(mUserName);
-				User.initSelf(LoginActivity.this, mUserName);
+				User.selfUser.setUserId(mUserID);
+				User.selfUser.setName(mUserID);
+				User.initSelf(LoginActivity.this, mUserID);
 				updateStatus(SUCCESS);
 			}
 
@@ -231,8 +242,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 		});
 
 	}
-	
-
 
 	/**
 	 * 自定义toast
@@ -243,14 +252,15 @@ public class LoginActivity extends Activity implements OnClickListener {
 	 *            提示文字
 	 */
 	private static TipsToast tipsToast;
+
 	private void showTips(int iconResId, String tips) {
 		if (tipsToast != null) {
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 				tipsToast.cancel();
 			}
 		} else {
-			tipsToast = TipsToast.makeText(getApplication().getBaseContext(),
-					tips, TipsToast.LENGTH_SHORT);
+			tipsToast = TipsToast.makeText(getApplication().getBaseContext(), tips,
+					TipsToast.LENGTH_SHORT);
 		}
 		tipsToast.show();
 		tipsToast.setIcon(iconResId);
@@ -269,9 +279,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 			if (resultCode == RESULT_OK) {
 				String username = data.getStringExtra("username");
 				String password = data.getStringExtra("password");
-				if (null == username || "".equals(username)
-						|| "null".equals(username) || null == password
-						|| "".equals(password) || "null".equals(password)) {
+				if (null == username || "".equals(username) || "null".equals(username)
+						|| null == password || "".equals(password)
+						|| "null".equals(password)) {
 					return;
 				} else {
 
@@ -290,30 +300,26 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
+
 	private TextWatcher mTextWatcher = new TextWatcher() {
 
-
-
 		public void afterTextChanged(Editable s) {
-	
-		}
-
-		public void beforeTextChanged(CharSequence s, int start, int count,
-				int after) {
-		
 
 		}
 
-		public void onTextChanged(CharSequence s, int start, int before,
-				int count) {
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+		}
+
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
 			mPreferences = getSharedPreferences(s.toString(), Context.MODE_PRIVATE);
 			String headuri = mPreferences.getString("headUri", "");
 			if (!headuri.equals("")) {
-				IMApplication.imageLoader.displayImage(headuri, mImageIcon,IMApplication.options);
-			}else {
+				IMApplication.imageLoader.displayImage(headuri, mImageIcon,
+						IMApplication.options);
+			} else {
 				mImageIcon.setImageResource(R.drawable.h10);
 			}
-			
 
 		}
 

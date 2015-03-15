@@ -14,39 +14,40 @@ import android.view.Window;
 public class IM_ChatActivity extends Activity {
 	private String mChatUid;
 	private IMChatView mChatView;
-	private String chatName;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);// 使得音量键控制媒体声音
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mChatUid = getIntent().getStringExtra("mCustomUserID");
-		chatName = getIntent().getStringExtra("mCustomUserName");
 		mChatView = new IMChatView(this, mChatUid);
 		setContentView(mChatView);
-		mChatView.setChatRoomTitle(chatName);
 		mChatView.setUserMainPhotoVisible(false);
 		mChatView.setUserNameVisible(false);
 		mChatView.setMaxGifCountInMessage(10);
 		mChatView.setTitleBarVisible(true);
-		IMApplication.mChattingId = mChatUid;	
+		IMApplication.mChattingId = mChatUid;
 	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		mChatView.onActivityResult(requestCode, resultCode, data);
 	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (mChatView.onKeyDown(keyCode, event)) {
 			return true;
 		}
+		
 		return super.onKeyDown(keyCode, event);
 	}
+
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
-		IMApplication.mChattingId  = null;
+		IMApplication.mChattingId = null;
 	}
 }
