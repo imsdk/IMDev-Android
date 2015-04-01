@@ -51,9 +51,6 @@
     <!-- 录制语音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <service android:name="imsdk.data.IMSDKService" >
-    </service>
-
     <application
         android:name="com.imsdk.imdeveloper.app.IMApplication"
         android:allowBackup="true"
