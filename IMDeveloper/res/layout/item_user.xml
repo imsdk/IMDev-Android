@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_user_layout"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@drawable/mm_listitem"
+    android:gravity="center_vertical" >
+
+    <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
+        android:id="@+id/item_user_mainphoto_imageview"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/item_user_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_user_mainphoto_imageview"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="7dp"
+        android:text="小黑"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/item_user_time_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="7dp"
+        android:textColor="#666" />
+
+    <com.imsdk.imdeveloper.ui.view.BadgeView
+        android:id="@+id/item_user_badgeview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/item_user_time_textview"
+        android:layout_marginRight="23dp" />
+
+    <imsdk.views.IMEmotionTextView
+        android:id="@+id/item_user_otherinfo_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/item_user_badgeview"
+        android:layout_toRightOf="@id/item_user_mainphoto_imageview"
+        android:duplicateParentState="true"
+        android:ellipsize="end"
+        android:paddingBottom="2dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:singleLine="true"
+        android:textColor="#666" />
+
+</RelativeLayout>

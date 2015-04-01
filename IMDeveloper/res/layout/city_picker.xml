@@ -8,7 +8,7 @@
 
     
     
-    <com.imsdk.imdeveloper.view.citypicker.ScrollerNumberPicker
+    <com.imsdk.imdeveloper.ui.view.citypicker.ScrollerNumberPicker
         android:id="@+id/province"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         su:selecredTextSize="18sp"
         su:unitHight="50dp" />
 
-    <com.imsdk.imdeveloper.view.citypicker.ScrollerNumberPicker
+    <com.imsdk.imdeveloper.ui.view.citypicker.ScrollerNumberPicker
         android:id="@+id/city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

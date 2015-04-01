@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eee" >
+
+    <include
+        android:id="@+id/imbase_titlebar"
+        layout="@layout/imbase_titlebar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imbase_titlebar"
+        android:fadingEdge="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/myuserinfo_mainphoto_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/myuserinfo_mainphoto_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13.5dp"
+                    android:text="头像"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:id="@+id/myuserinfo_mainphoto_arrow_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:scaleType="matrix"
+                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+
+                <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
+                    android:id="@+id/myuserinfo_mainphoto_imageview"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_toLeftOf="@id/myuserinfo_mainphoto_arrow_imageview"
+                    android:src="@drawable/h0" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/myuserinfo_nickname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:text="名字"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myuserinfo_nickname_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myuserinfo_gender_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|left"
+                    android:text="性别"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myuserinfo_gender_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    android:text="男"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myuserinfo_region_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13.5dp"
+                    android:gravity="center_vertical"
+                    android:text="地区"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myuserinfo_region_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="未设置"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/myuserinfo_sign_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/shezhi_top_bg" >
+
+                <TextView
+                    android:id="@+id/text_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13.5dp"
+                    android:gravity="center_vertical"
+                    android:text="个性签名"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/text_index"
+                    android:background="@drawable/shezhi_top_bg" >
+
+                    <ImageView
+                        android:id="@+id/arrow_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ziliaobianji_jiantou_icon" />
+
+                    <TextView
+                        android:id="@+id/myuserinfo_sign_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/arrow_index"
+                        android:maxLines="3"
+                        android:text="未设置"
+                        android:textColor="#999999"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

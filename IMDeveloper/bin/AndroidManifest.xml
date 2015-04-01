@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.imsdk.imdeveloper"
-    android:versionCode="16"
-    android:versionName="1.2.6" >
+    android:versionCode="17"
+    android:versionName="1.2.8" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -33,6 +33,8 @@
 
     <!-- 调用系统窗口所需权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 允许一个程序获取信息有关当前或最近运行的任务，一个缩略的任务状态，是否活动等等 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <!-- 用户定位所需权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -49,6 +51,9 @@
     <!-- 录制语音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <service android:name="imsdk.data.IMSDKService" >
+    </service>
+
     <application
         android:name="com.imsdk.imdeveloper.app.IMApplication"
         android:allowBackup="true"
@@ -56,13 +61,13 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.imsdk.imdeveloper.MainActivity"
-            android:screenOrientation="portrait"
+            android:name="com.imsdk.imdeveloper.ui.activity.MainActivity"
             android:logo="@drawable/logo"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.imsdk.imdeveloper.WelcomeActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.WelcomeActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,42 +76,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.imsdk.imdeveloper.LoginActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imsdk.imdeveloper.RegisterActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.NextActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imsdk.imdeveloper.ProfileFriendActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imsdk.imdeveloper.IM_ChatActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.imsdk.imdeveloper.ui.activity.IMChatActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.imsdk.imdeveloper.IM_GroupChatActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.IMGroupChatActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.imsdk.imdeveloper.PasswordModifyActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.PasswordModifyActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.imsdk.imdeveloper.UserInfoActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.MyProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.imsdk.imdeveloper.SignatureModifyActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.SignActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="com.imsdk.imdeveloper.ChoosePhotoActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.ChoosePhotoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imsdk.imdeveloper.SearchAndMakeFriendActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.AddContactActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.imsdk.imdeveloper.SearchAndMakeGroupActivity"
+            android:name="com.imsdk.imdeveloper.ui.activity.MyGroupsActivity"
             android:screenOrientation="portrait" />
     </application>
 

@@ -1,38 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.wechatsample.MainActivity" >
-
-<!--     <item
-        android:id="@+id/action_search"
-        android:actionViewClass="android.widget.SearchView"
-        android:icon="@drawable/actionbar_search_icon"
-        android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/action_search"/>
-    <item
-        android:id="@+id/action_plus"
-        android:actionProviderClass="com.sample.wechat.view.PlusActionProvider"
-        android:icon="@drawable/actionbar_add_icon"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_plus"/>
-    <item
-        android:id="@+id/action_album"
-        android:icon="@drawable/ofm_photo_icon"
-        android:title="@string/action_album"/>
-    <item
-        android:id="@+id/action_collection"
-        android:icon="@drawable/ofm_collect_icon"
-        android:title="@string/action_collection"/>
-    <item
-        android:id="@+id/action_card"
-        android:icon="@drawable/ofm_card_icon"
-        android:title="@string/action_card"/>
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ofm_setting_icon"
-        android:title="@string/action_settings"/>
-    <item
-        android:id="@+id/action_feed"
-        android:icon="@drawable/ofm_feedback_icon"
-        android:title="@string/action_feed"/> -->
-
+    tools:context="com.imsdk.imdeveloper.ui.activity.MainActivity" >
 </menu>

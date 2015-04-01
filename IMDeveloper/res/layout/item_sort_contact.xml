@@ -2,77 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
     android:clickable="false"
+    android:gravity="center_vertical"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/groupIndex"
+        android:id="@+id/item_sort_contact_groupindex_textview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#E0E0E0"
-        android:textColor="#454545"
         android:layout_weight="1.0"
+        android:background="#E0E0E0"
+        android:paddingBottom="5dip"
         android:paddingLeft="5dip"
         android:paddingTop="5dip"
-        android:paddingBottom="5dip"
-        android:text="A"/>
+        android:text="A"
+        android:textColor="#454545" />
 
-        <RelativeLayout 
-    android:id="@+id/item_chat"
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:background="@drawable/mm_listitem"
-    android:clickable="true"
-    android:gravity="center_vertical" >
+    <RelativeLayout
+        android:id="@+id/item_sort_contact_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/mm_listitem"
+        android:clickable="true"
+        android:gravity="center_vertical" >
 
-    <com.imsdk.imdeveloper.view.RoundedCornerImageView
-        android:id="@+id/sort_head"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/ic_launcher" />
+        <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
+            android:id="@+id/item_sort_contact_mainphoto_imageview"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/sort_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/sort_head"
-        android:padding="7dp"
-        android:text="小黑"
-        android:textColor="#000" />
- 
-    
-    <TextView
-         android:id="@+id/sort_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="23dp"
-        android:paddingTop="7dp"
-        android:textColor="#666" />
-       <View
-        android:id="@+id/sort_noticeIndex"
-        android:layout_below="@id/sort_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="23dp"
-        />
+        <TextView
+            android:id="@+id/item_sort_contact_username_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/item_sort_contact_mainphoto_imageview"
+            android:padding="7dp"
+            android:text="小黑"
+            android:textColor="#000" />
 
-    <TextView
-         android:id="@+id/sort_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/sort_head"
-        android:padding="7dp"
-        android:textColor="#666" />
+        <TextView
+            android:id="@+id/sort_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="23dp"
+            android:paddingTop="7dp"
+            android:textColor="#666" />
 
-</RelativeLayout>
-    
+        <View
+            android:id="@+id/item_sort_contact_notice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@id/sort_time"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="7dp" />
+
+        <TextView
+            android:id="@+id/sort_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/item_sort_contact_mainphoto_imageview"
+            android:padding="7dp"
+            android:textColor="#666" />
+    </RelativeLayout>
+
 </LinearLayout>

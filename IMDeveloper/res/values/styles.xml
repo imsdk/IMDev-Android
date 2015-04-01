@@ -37,41 +37,6 @@
     	<item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
 	</style>
-    
- 
- <!-- imsdk start -->
- <style name="chat_text_date_style">
-     <item name="android:padding">2dp</item>
-     <item name="android:textColor">#ffffff</item>
-     <item name="android:textSize">12sp</item>
-     <item name="android:background">#bfbfbf</item>
- </style>
- 
- <style name="chat_content_date_style">
-     <item name="android:minHeight">50dp</item>
-     <item name="android:gravity">left|center</item>
-     <item name="android:textColor">#000000</item>
-     <item name="android:textSize">15sp</item>
-     <item name="android:lineSpacingExtra">2dp</item>
-     <item name="android:clickable">true</item>
-     <item name="android:focusable">true</item>
- </style>
- 
- <style name="chat_text_name_style">
-     <item name="android:textColor">#818181</item>
-     <item name="android:textSize">15sp</item>
-     <item name="android:gravity">center</item>
- </style>
- 
- <style name="custom_dialog_transparent" parent="@android:style/Theme.Panel">
-     <item name="android:windowNoTitle">true</item>
-     <item name="android:windowFrame">@null</item>
-     <item name="android:colorBackgroundCacheHint">@null</item>
-     <item name="android:windowContentOverlay">@null</item>
-     <item name="android:windowIsTranslucent">true</item>
-     <item name="android:windowBackground">@android:color/transparent</item>
- </style>
- <!-- imsdk end -->
  
      <style name="anim_popup_dir">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>

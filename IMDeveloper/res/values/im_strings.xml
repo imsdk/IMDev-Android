@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="str_image">图片</string>
+    <string name="str_take_photo">拍照</string>
+    <string name="str_send">发送</string>
+    <string name="str_voice_press">按住 说话</string>
+    <string name="str_voice_up">松开 结束</string>
+    <string name="chatfooter_too_short">录音时间太短</string>
+    <string name="chatfooter_cancel_rcd">手指上滑，取消传送</string>
+    <string name="chatfooter_cancel_rcd_release">松开手指，取消传送</string>
+    <string name="str_emoji">自定义表情</string>
+    <string name="str_emoji_classical">经典</string>
+    <string name="str_back">返回</string>
+
+</resources>

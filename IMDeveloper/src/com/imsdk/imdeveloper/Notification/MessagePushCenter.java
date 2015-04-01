@@ -6,7 +6,6 @@ import com.imsdk.imdeveloper.bean.Message;
 import com.imsdk.imdeveloper.bean.User;
 
 public class MessagePushCenter {
-	
 	/**
 	 *  IMSDK初始化的观察者
 	 */
@@ -16,11 +15,13 @@ public class MessagePushCenter {
 		public void notifyInitComplete();
 	};
 
-	public static void registerImsdkInitCompleteObserve(ImsdkInitCompleteObserve imsdkInitCompleteObserve) {
+	public static void registerImsdkInitCompleteObserve(
+			ImsdkInitCompleteObserve imsdkInitCompleteObserve) {
 		imsdkInitCompleteObserves.add(imsdkInitCompleteObserve);
 	}
 
-	public static void unRegisterImsdkInitCompleteObserve(ImsdkInitCompleteObserve imsdkInitCompleteObserve) {
+	public static void unRegisterImsdkInitCompleteObserve(
+			ImsdkInitCompleteObserve imsdkInitCompleteObserve) {
 		imsdkInitCompleteObserves.remove(imsdkInitCompleteObserve);
 	}
 
@@ -29,8 +30,7 @@ public class MessagePushCenter {
 			imsdkInitCompleteObserves.get(i).notifyInitComplete();
 		}
 	}
-	
-	
+
 	/**
 	 *  用户信息变化的观察者
 	 */
@@ -61,6 +61,7 @@ public class MessagePushCenter {
 
 	public interface MessageObserve {
 		public void notifyMessageComing(Message user);
+
 		public void notifyMessageReaded(Message user);
 	};
 
@@ -69,9 +70,11 @@ public class MessagePushCenter {
 	}
 
 	/**
-	 * @param position 通知的优先级 0-表示第一个通知
+	 * @param position
+	 *            通知的优先级 0-表示第一个通知
 	 */
-	public static void registerMessageObserve(int position,MessageObserve messageObserve) {
+	public static void registerMessageObserve(int position,
+			MessageObserve messageObserve) {
 		messageObserves.add(position, messageObserve);
 	}
 
@@ -98,18 +101,17 @@ public class MessagePushCenter {
 
 	public interface FriendRequstObserve {
 		public void notifyFriendRequest(Message message);
+
 		public void notifyFriendRequestAgree(Message message);
+
 		public void notifyFriendRequestReject(Message message);
 	};
 
-	public static void registerFriendRequestObserve(
-			FriendRequstObserve requestObserve) {
+	public static void registerFriendRequestObserve(FriendRequstObserve requestObserve) {
 		requestObserves.add(requestObserve);
-
 	}
 
-	public static void unRegisterFriendRequestObserve(
-			FriendRequstObserve requestObserve) {
+	public static void unRegisterFriendRequestObserve(FriendRequstObserve requestObserve) {
 		requestObserves.remove(requestObserve);
 	}
 

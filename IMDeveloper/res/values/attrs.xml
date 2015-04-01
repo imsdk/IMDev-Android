@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<declare-styleable name="IMChatView">
-    <attr name="max_gif_count_in_message" format="reference|integer" />
-    <attr name="title_bar_visible" format="boolean" />
-    <attr name="user_name_visible" format="boolean" />
-    <attr name="main_photo_visible" format="boolean" />
-    <attr name="main_photo_corner_radius" format="dimension" />
-</declare-styleable>
-
     <declare-styleable name="JazzyViewPager">
         <attr name="style">
             <enum name="standard" value="0" />

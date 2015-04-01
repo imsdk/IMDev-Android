@@ -12,8 +12,8 @@
         android:layout_marginRight="20dp"
         android:orientation="vertical" >
 
-        <com.imsdk.imdeveloper.view.RoundedCornerImageView
-            android:id="@+id/image_icon"
+        <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
+            android:id="@+id/login_imageview"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/login_user_edit"
+                android:id="@+id/login_user_name_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#0000"
@@ -40,7 +40,7 @@
             <include layout="@layout/layout_line" />
 
             <EditText
-                android:id="@+id/login_passwd_edit"
+                android:id="@+id/login_password_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#0000"
@@ -62,7 +62,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_yonghu_zhuce"
+            android:id="@+id/login_register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/com/imsdk/imdeveloper/PasswordModifyActivity.java=UTF-8
-encoding//src/com/imsdk/imdeveloper/RegisterActivity.java=UTF-8
-encoding//src/com/imsdk/imdeveloper/view/TipsToast.java=UTF-8
+encoding//src/com/imsdk/imdeveloper/ui/activity/PasswordModifyActivity.java=UTF-8
+encoding//src/com/imsdk/imdeveloper/ui/activity/RegisterActivity.java=UTF-8
+encoding//src/com/imsdk/imdeveloper/ui/view/TipsToast.java=UTF-8
 encoding/<project>=UTF-8

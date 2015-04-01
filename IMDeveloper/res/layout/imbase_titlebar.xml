@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imbasetitlebar"
+    android:layout_width="fill_parent"
+    android:layout_height="45dip"
+    android:background="@drawable/im_title_bg2" >
+
+    <ImageButton
+        android:id="@+id/imbasetitlebar_back"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@null"
+        android:src="@drawable/im_back_select_btn" />
+
+    <ImageView
+        android:id="@+id/dividingline"
+        android:layout_width="wrap_content"
+        android:layout_height="25dip"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/imbasetitlebar_back"
+        android:contentDescription="@null"
+        android:src="@drawable/im_dividingline" />
+
+    <TextView
+        android:id="@+id/imbasetitlebar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dip"
+        android:layout_toRightOf="@id/dividingline"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/imbasetitlebar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="9dp"
+        android:background="@null"
+        android:textColor="@color/im_btn_title_selector"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

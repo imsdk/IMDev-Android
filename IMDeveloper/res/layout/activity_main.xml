@@ -2,73 +2,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sample.wechat.MainActivity" >
+    tools:context="com.imsdk.imdeveloper.ui.activity.MainActivity" >
 
-    <RelativeLayout 
-        android:id="@+id/titlebar"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@android:color/background_dark" >
+    <RelativeLayout
+        android:id="@+id/main_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/background_dark" >
+        <TextView
+            android:id="@+id/mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/mid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/titlebar_logo"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo" />
 
-    <ImageView 
-        android:id="@+id/iv_logo"
-        android:layout_width="30dp"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
-		android:layout_marginLeft="5dp"
-		android:layout_marginBottom="10dp"    
-		android:src="@drawable/logo"    
-        />
-    <TextView
-        android:id="@+id/left"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/iv_logo"
-        android:layout_toLeftOf="@id/mid"
-        android:ellipsize="end"
-        android:gravity="left|center_vertical"
-        android:singleLine="true"
-        android:text="爱萌开发者"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/mid"
+            android:layout_toRightOf="@id/titlebar_logo"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:singleLine="true"
+            android:text="爱萌开发者"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/right"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/mid"
-        android:ellipsize="end"
-        android:gravity="right|center_vertical"
-        android:singleLine="true"
-         android:paddingRight="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/mid"
+            android:ellipsize="end"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
 
-</RelativeLayout>
-    
-    <com.imsdk.imdeveloper.view.CustomRadioGroup
+    <com.imsdk.imdeveloper.ui.view.CustomRadioGroup
         android:id="@+id/main_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-<com.imsdk.imdeveloper.view.jazzviewpager.JazzyViewPager
+    <com.imsdk.imdeveloper.ui.view.jazzviewpager.JazzyViewPager
         android:id="@+id/main_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/titlebar"
-        android:layout_above="@id/main_footer" />
+        android:layout_above="@id/main_footer"
+        android:layout_below="@id/main_titlebar" />
 
 </RelativeLayout>

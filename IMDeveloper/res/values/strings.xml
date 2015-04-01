@@ -2,28 +2,16 @@
 <resources>
 
     <string name="app_name">爱萌开发者</string>
-
-       <string name="tab_message">消息</string>
+    <string name="tab_message">消息</string>
     <string name="tab_contact">联系人</string>
-    <string name="tab_nearby">周边</string>
+    <string name="around">周边</string>
     <string name="tab_me">我的</string>
+
+    <!-- profile -->
+    <string name="profile_title">详细资料</string>
     
-     <string name="msg_load_ing">加载中....</string>
-    
-    <!-- 聊天view -->
-    <string name="str_image">图片</string>
-    <string name="str_take_photo">拍照</string>
-    <string name="str_send">发送</string>
-    <string name="str_voice_press">按住 说话</string>
-    <string name="str_voice_up">松开 结束</string>
-    <string name="chatfooter_too_short">录音时间太短</string>
-    <string name="chatfooter_cancel_rcd">手指上滑，取消传送</string>
-    <string name="chatfooter_cancel_rcd_release">松开手指，取消传送</string>
-    <string name="str_emoji">自定义表情</string>
-    <string name="str_emoji_classical">经典</string>
-    <string name="str_back">返回</string>
-    
-   <!-- 顶部actionbar -->
+    <!-- 顶部actionbar -->
+    <string name="msg_load_ing">加载中....</string>
     <string name="action_search">搜索</string>
     <string name="action_plus">功能</string>
     <string name="action_album">我的相册</string>
@@ -36,9 +24,7 @@
     <string name="plus_video_chat">视频聊天</string>
     <string name="plus_scan">扫一扫</string>
     <string name="plus_take_photo">拍照分享</string>
-    
-    
-      <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
+    <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
     <string name="pull_to_refresh_release_label">Release to refresh…</string>
     <string name="pull_to_refresh_refreshing_label">Loading…</string>
 
@@ -46,4 +32,5 @@
     <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
     <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
     <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+
 </resources>

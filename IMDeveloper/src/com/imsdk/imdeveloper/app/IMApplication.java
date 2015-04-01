@@ -1,8 +1,6 @@
 package com.imsdk.imdeveloper.app;
 
-
 import android.app.Application;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,64 +17,50 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
-
 public class IMApplication extends Application {
-
-
 	/**
 	 * 预定义的头像
 	 */
-	public static final int[] heads = { R.drawable.h0, R.drawable.h1,
-			R.drawable.h2, R.drawable.h3, R.drawable.h4, R.drawable.h5,
-			R.drawable.h6, R.drawable.h7, R.drawable.h8, R.drawable.h9,
-			R.drawable.h10, R.drawable.h11, R.drawable.h12, R.drawable.h13,
-			R.drawable.h14, R.drawable.h15, R.drawable.h16, R.drawable.h17,
-			R.drawable.h18 };
+	public static final int[] heads = { R.drawable.h0, R.drawable.h1, R.drawable.h2,
+			R.drawable.h3, R.drawable.h4, R.drawable.h5, R.drawable.h6, R.drawable.h7,
+			R.drawable.h8, R.drawable.h9, R.drawable.h10, R.drawable.h11,
+			R.drawable.h12, R.drawable.h13, R.drawable.h14, R.drawable.h15,
+			R.drawable.h16, R.drawable.h17, R.drawable.h18 };
 
-
-	public static String mChattingId;
+	public static String sCustomUserID;
 
 	private NotificationManager mNotificationManager;
-	private Notification mNotification;
 
-
+	// 图片下载初始化
+	public static ImageLoader sImageLoader = ImageLoader.getInstance();
+	public static DisplayImageOptions sDisplayImageOptions;
 
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		super.onCreate();
 		initData();
 	}
 
-	private void initData()
-	{
-	
+	private void initData() {
 		mNotificationManager = (NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
 		FileUtil.getInstance().initDirs("imsdk", "data", this);
 		initImageLoader();
 	}
 
-
-	public NotificationManager getNotificationManager()
-	{
-		if (mNotificationManager == null)
+	public NotificationManager getNotificationManager() {
+		if (mNotificationManager == null) {
 			mNotificationManager = (NotificationManager) getSystemService(android.content.Context.NOTIFICATION_SERVICE);
+		}
+
 		return mNotificationManager;
 	}
-
-
-	/**
-	 * 图片下载初始化
-	 * 
-	 */
-	public static ImageLoader imageLoader = ImageLoader.getInstance();
-	public static DisplayImageOptions options;
 
 	public void initImageLoader() {
 		/********** 异步下载图片缓存类 初始化 */
 		IMApplication.initImageLoader(getApplicationContext());
-		options = new DisplayImageOptions.Builder()
-//				.showImageOnLoading(R.drawable.h1)
+		
+		sDisplayImageOptions = new DisplayImageOptions.Builder()
+				// .showImageOnLoading(R.drawable.h1)
 				// 加载等待 时显示的图片
 				// .showImageOnLoading(R.drawable.ic_stub) // resource or
 				// drawable
@@ -106,15 +90,12 @@ public class IMApplication extends Application {
 				 * .displayer(new RoundedBitmapDisplayer(20))
 				 **/
 				.build();
-
 	}
 
 	public static void initImageLoader(Context context) {
 		DiskCache diskCache = new UnlimitedDiscCache(FileUtil.getInstance()
-				.getImagePath().getAbsoluteFile(), null,
-				new Md5FileNameGenerator());
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				context)
+				.getImagePath().getAbsoluteFile(), null, new Md5FileNameGenerator());
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
 				.threadPriority(Thread.NORM_PRIORITY - 2)
 				.denyCacheImageMultipleSizesInMemory()
 				.tasksProcessingOrder(QueueProcessingType.LIFO)
@@ -128,8 +109,7 @@ public class IMApplication extends Application {
 				// .threadPriority(Thread.NORM_PRIORITY - 2) // default
 				// .tasksProcessingOrder(QueueProcessingType.FIFO) // default
 				// .denyCacheImageMultipleSizesInMemory()
-				.diskCache(diskCache)
-				.memoryCache(new LruMemoryCache(2 * 1024 * 1024))
+				.diskCache(diskCache).memoryCache(new LruMemoryCache(2 * 1024 * 1024))
 				.memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(30) // default
 				// .diskCache(new UnlimitedDiscCache(cacheDir)) // default
 				// .diskCacheSize(50 * 1024 * 1024)
@@ -145,6 +125,4 @@ public class IMApplication extends Application {
 		ImageLoader.getInstance().init(config);
 		// imageLoader.init(ImageLoaderConfiguration.createDefault(context));
 	}
-
-
 }
