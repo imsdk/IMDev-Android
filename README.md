@@ -75,5 +75,5 @@ IMMyself.sendText("Hello!", "lyc@imsdk.im", 5, null);
 ```
 <br/>
 
-以上为入门级的代码，4行代码分开写，间隔一定时间执行，在网络环境正常的前提下，即可收发消息。更多内容请参阅Android开发文档。<br/>
+以上为入门级的代码，4行代码分开写，间隔一定时间执行，在网络环境正常的前提下，即可收发消息。更多内容请参阅[Android开发文档](http://docs.imsdk.im/pages/viewpage.action?pageId=2457619)。<br/>
 如有疑问，欢迎加入 `爱萌官方QQ群99823660` ，一起探讨IM开发相关话题！
