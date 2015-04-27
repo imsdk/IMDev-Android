@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:text="昵称"
+            android:textColor="#ea4940"
+            android:textSize="19sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b5b5b5" />
+
+    <LinearLayout
+        android:id="@+id/layout_male"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal" >
+
+		<EditText 
+		    android:id="@+id/dialog_nickname"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical"
+		    android:layout_marginLeft="15dp"
+		    android:layout_marginRight="15dp"
+		    android:background="@drawable/edit_text_holo_light"
+		    android:hint="请输入昵称"
+		    android:textColor="#666666"
+            android:textSize="18sp"/>            
+            
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="15dp"
+        android:background="#CCCCCC" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:orientation="horizontal" >
+
+        <Button 
+            android:id="@+id/dialog_cancle"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            android:background="@drawable/btn_style_alert_dialog_lightc"
+            android:text="取消"/>
+        <View
+	        android:layout_width="1px"
+	        android:layout_height="match_parent"
+	        android:background="#CCCCCC" />
+        <Button 
+            android:id="@+id/dialog_sure"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            android:background="@drawable/btn_style_alert_dialog_lightc"
+            android:text="确定"/>
+        
+    </LinearLayout>
+
+</LinearLayout>
