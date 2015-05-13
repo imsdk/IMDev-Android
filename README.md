@@ -1,7 +1,7 @@
 # IMDev-Android
 
 
-**IMDev**——爱萌开发者，是由爱萌基于IM SDK开发并完全开源的的第一款IM APP 
+**IMDev**——爱萌开发者，是由爱萌基于IM SDK开发并完全开源的的第一款社交 APP 
 <br/>
 
 期待大家能找出bug，及时修正。也欢迎大家随时吐槽，请入QQ群：99823660
@@ -76,4 +76,6 @@ IMMyself.sendText("Hello!", "lyc@imsdk.im", 5, null);
 <br/>
 
 以上为入门级的代码，4行代码分开写，间隔一定时间执行，在网络环境正常的前提下，即可收发消息。更多内容请参阅[Android开发文档](http://docs.imsdk.im/pages/viewpage.action?pageId=2457619)。<br/>
-如有疑问，欢迎加入 `爱萌官方QQ群99823660` ，一起探讨IM开发相关话题！
+如有疑问，欢迎加入 `爱萌官方QQ群99823660` ，一起探讨社交开发相关话题！
+
+共同跨入社交新时代！--imsdk
