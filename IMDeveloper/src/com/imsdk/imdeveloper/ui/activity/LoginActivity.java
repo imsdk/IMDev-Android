@@ -120,9 +120,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 				});
 
 		mUserNameEditText.addTextChangedListener(mTextWatcher);
-		
+
 		String customUserID = getIntent().getStringExtra("CustomUserID");
-		
+
 		if (customUserID != null) {
 			mUserNameEditText.setText(customUserID);
 		}
@@ -143,6 +143,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 			intent.putExtra("userName", mUserNameEditText.getText().toString());
 			startActivity(intent);
+			LoginActivity.this.finish();
 		}
 			break;
 		case FAILURE:

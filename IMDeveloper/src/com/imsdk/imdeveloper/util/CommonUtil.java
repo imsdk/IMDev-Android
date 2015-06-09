@@ -8,4 +8,11 @@ public class CommonUtil {
 		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
 				res.getDisplayMetrics());
 	}
+	
+	public static boolean isNull(String params){
+		if(params == null || params.length() == 0){
+			return true;
+		}
+		return false;
+	}
 }

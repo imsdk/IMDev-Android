@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eee" >
+
+    <include
+        android:id="@+id/imbase_titlebar"
+        layout="@layout/imbase_titlebar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imbase_titlebar"
+        android:fadingEdge="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="14dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:gravity="center_vertical" >
+                
+                <com.imsdk.imdeveloper.ui.view.gridview.MyGridView
+	                android:id="@+id/groupinfo_gridview"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:numColumns="auto_fit"
+	                android:horizontalSpacing="5dp"
+	                android:columnWidth="90dp"
+	                android:stretchMode="columnWidth"
+	                android:gravity="center">
+				</com.imsdk.imdeveloper.ui.view.gridview.MyGridView>
+                
+            </RelativeLayout>
+
+            
+            <RelativeLayout
+                android:id="@+id/groupinfo_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shezhi_top_bg" >
+
+                <TextView
+                    android:id="@+id/text_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13.5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/groupinfo_name"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/text_index"
+                    android:background="@drawable/shezhi_top_bg" >
+
+                    <ImageView
+                        android:id="@+id/arrow_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ziliaobianji_jiantou_icon" />
+
+                    <TextView
+                        android:id="@+id/groupinfo_name_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/arrow_index"
+                        android:text=""
+                        android:singleLine="true"
+        				android:ellipsize="end"
+                        android:textColor="#999999"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/groupinfo_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shezhi_top_bg" >
+
+                <TextView
+                    android:id="@+id/text_index2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13.5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/groupinfo_info"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/text_index2"
+                    android:background="@drawable/shezhi_top_bg" >
+
+                    <ImageView
+                        android:id="@+id/arrow_index2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ziliaobianji_jiantou_icon" />
+
+                    <TextView
+                        android:id="@+id/groupinfo_info_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/arrow_index2"
+                        android:text=""
+                        android:singleLine="true"
+        				android:ellipsize="end"
+                        android:textColor="#999999"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:text="@string/groupinfo_creator"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/groupinfo_creator_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/myuserinfo_cid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:text="@string/groupinfo_size"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myuserinfo_cid_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:text="500人"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

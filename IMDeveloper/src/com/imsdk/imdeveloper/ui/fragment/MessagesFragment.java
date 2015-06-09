@@ -1,10 +1,14 @@
 package com.imsdk.imdeveloper.ui.fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import imsdk.data.IMSDK.OnDataChangedListener;
 import imsdk.data.localchatmessagehistory.IMChatMessage;
 import imsdk.data.localchatmessagehistory.IMMyselfLocalChatMessageHistory;
 import imsdk.data.mainphoto.IMSDKMainPhoto;
 import imsdk.data.mainphoto.IMSDKMainPhoto.OnBitmapRequestProgressListener;
+import imsdk.data.nickname.IMSDKNickname;
 import imsdk.data.recentcontacts.IMMyselfRecentContacts;
 import imsdk.views.IMEmotionTextView;
 import android.content.Intent;
@@ -22,12 +26,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.imsdk.imdeveloper.R;
+import com.imsdk.imdeveloper.bean.UserMessage;
 import com.imsdk.imdeveloper.ui.activity.IMChatActivity;
 import com.imsdk.imdeveloper.ui.activity.MainActivity;
 import com.imsdk.imdeveloper.ui.view.BadgeView;
 import com.imsdk.imdeveloper.ui.view.CustomRadioGroup;
+import com.imsdk.imdeveloper.util.CommonUtil;
 import com.imsdk.imdeveloper.util.DateUtil;
 
+/**
+ * 
+ * 消息
+ *
+ */
 public class MessagesFragment extends Fragment {
 	// data
 	public boolean mShowingGroupMessage;
@@ -36,10 +47,13 @@ public class MessagesFragment extends Fragment {
 	private ListView mListView;
 	private View mEmptyView;
 	private MessageListAdapter mAdapter;
-
+	private List<UserMessage> userMessages;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		initData();
 		mAdapter = new MessageListAdapter();
 	}
 
@@ -70,6 +84,8 @@ public class MessagesFragment extends Fragment {
 
 				CustomRadioGroup.sSingleton.setItemNewsCount(0,
 						unreadMessageCount > 0 ? unreadMessageCount : -1);
+				
+				initData();
 				mAdapter.notifyDataSetChanged();
 			}
 		});
@@ -77,6 +93,7 @@ public class MessagesFragment extends Fragment {
 		IMMyselfRecentContacts.setOnDataChangedListener(new OnDataChangedListener() {
 			@Override
 			public void onDataChanged() {
+				initData();
 				mAdapter.notifyDataSetChanged();
 
 				int unreadMessageCount = (int) IMMyselfRecentContacts
@@ -90,16 +107,47 @@ public class MessagesFragment extends Fragment {
 
 		return view;
 	}
+	
+	/**
+	 * 初始化未读信息
+	 */
+	public void initData(){
+		userMessages = new ArrayList<UserMessage>();
+	    List<String> userLists = IMMyselfRecentContacts.getUsersList();
+	    UserMessage userMessage = null;
+		for(int i = 0 ; i < userLists.size(); i++){
+			String cid = String.valueOf(userLists.get(i));
+			userMessage = new UserMessage();
+			userMessage.setCustomUserID(cid);
+			
+			IMChatMessage chatMessage = IMMyselfLocalChatMessageHistory
+					.getLastChatMessage(cid);
+			if(chatMessage != null){
+				userMessage.setLastMessageContent(chatMessage.getText());
+				userMessage.setLastMessageTime(DateUtil
+						.getTimeBylong(
+								(chatMessage.getServerSendTime() == 0 ? chatMessage.getClientSendTime():chatMessage.getServerSendTime()) 
+								* 1000));
+				userMessage.setUnreadChatMessageCount(IMMyselfRecentContacts
+						.getUnreadChatMessageCount(cid));
+				userMessage.setNickname(IMSDKNickname.get(cid));
+				userMessage.setBitmap(IMSDKMainPhoto.get(cid));
+				
+				userMessages.add(userMessage);	
+			}
+			
+		}
+	}
 
 	private class MessageListAdapter extends BaseAdapter {
 		@Override
 		public int getCount() {
-			return IMMyselfRecentContacts.getUsersList().size();
+			return userMessages.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return IMMyselfRecentContacts.getUsersList().get(position);
+			return userMessages.get(position);
 		}
 
 		@Override
@@ -109,12 +157,8 @@ public class MessagesFragment extends Fragment {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			String customUserID = (String) IMMyselfRecentContacts.getUsersList().get(
-					position);
-			IMChatMessage chatMessage = IMMyselfLocalChatMessageHistory
-					.getLastChatMessage(customUserID);
-			long unreadChatMessageCount = IMMyselfRecentContacts
-					.getUnreadChatMessageCount(customUserID);
+			
+			final UserMessage userMessage = userMessages.get(position);
 			ItemViewHolder itemViewHolder = null;
 
 			if (convertView == null) {
@@ -138,36 +182,34 @@ public class MessagesFragment extends Fragment {
 			}
 
 			// 如果存在新的消息，则设置BadgeView
-			if (unreadChatMessageCount > 0) {
+			if (userMessage.getUnreadChatMessageCount() > 0) {
 				itemViewHolder.mBadgeView.setVisibility(View.VISIBLE);
-				itemViewHolder.mBadgeView.setBadgeCount((int) unreadChatMessageCount);
+				itemViewHolder.mBadgeView.setBadgeCount((int) userMessage.getUnreadChatMessageCount());
 			} else {
 				if (itemViewHolder.mBadgeView != null) {
 					itemViewHolder.mBadgeView.setVisibility(View.INVISIBLE);
 				}
 			}
+			if(CommonUtil.isNull(userMessage.getNickname())){
+				itemViewHolder.mContactNameTextView.setText(userMessage.getCustomUserID());	
+			}else{
+				itemViewHolder.mContactNameTextView.setText(userMessage.getNickname());
+			}
 
-			itemViewHolder.mContactNameTextView.setText(customUserID);
+			itemViewHolder.mContactTimeTextView.setText(userMessage.getLastMessageTime());
+			itemViewHolder.mContactInfoEmotionTextView.setStaticEmotionText(userMessage.getLastMessageContent());
 
-			String time = DateUtil
-					.getTimeBylong(chatMessage.getServerSendTime() * 1000);
-
-			itemViewHolder.mContactTimeTextView.setText(time);
-			itemViewHolder.mContactInfoEmotionTextView.setStaticEmotionText(chatMessage
-					.getText());
-
-			Bitmap bitmap = IMSDKMainPhoto.get(customUserID);
-
-			if (bitmap != null) {
-				itemViewHolder.mContactImageView.setImageBitmap(bitmap);
+			if (userMessage.getBitmap() != null) {
+				itemViewHolder.mContactImageView.setImageBitmap(userMessage.getBitmap());
 			} else {
 				itemViewHolder.mContactImageView
 						.setImageResource(R.drawable.ic_launcher);
 			}
 
 			final ImageView contactImageView = itemViewHolder.mContactImageView;
+			final TextView contactNameTextView = itemViewHolder.mContactNameTextView;
 
-			IMSDKMainPhoto.request(customUserID, 20,
+			IMSDKMainPhoto.request(userMessage.getCustomUserID(), 20,
 					new OnBitmapRequestProgressListener() {
 						@Override
 						public void onSuccess(Bitmap bitmap, byte[] buffer) {
@@ -176,6 +218,11 @@ public class MessagesFragment extends Fragment {
 							} else {
 								contactImageView
 										.setImageResource(R.drawable.ic_launcher);
+							}
+							//头像更新后，昵称也会同步更新
+							String nickname_new =  IMSDKNickname.get(userMessage.getCustomUserID());
+							if(!CommonUtil.isNull(nickname_new)){
+								contactNameTextView.setText(nickname_new);
 							}
 						}
 

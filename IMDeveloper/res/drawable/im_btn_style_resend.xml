@@ -4,5 +4,4 @@
     <item android:drawable="@drawable/im_resend_press" android:state_pressed="true"/>
     <item android:drawable="@drawable/im_resend_normal"/>
 
-
 </selector>

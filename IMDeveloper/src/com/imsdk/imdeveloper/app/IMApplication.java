@@ -58,7 +58,7 @@ public class IMApplication extends Application {
 	public void initImageLoader() {
 		/********** 异步下载图片缓存类 初始化 */
 		IMApplication.initImageLoader(getApplicationContext());
-		
+
 		sDisplayImageOptions = new DisplayImageOptions.Builder()
 				// .showImageOnLoading(R.drawable.h1)
 				// 加载等待 时显示的图片
@@ -95,6 +95,7 @@ public class IMApplication extends Application {
 	public static void initImageLoader(Context context) {
 		DiskCache diskCache = new UnlimitedDiscCache(FileUtil.getInstance()
 				.getImagePath().getAbsoluteFile(), null, new Md5FileNameGenerator());
+
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
 				.threadPriority(Thread.NORM_PRIORITY - 2)
 				.denyCacheImageMultipleSizesInMemory()

@@ -54,8 +54,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="9dp"
                 android:background="@null"
-                android:textColor="@color/im_btn_title_selector"
-                android:textSize="16sp"
+                android:textColor="@color/im_titlebar_right_selector"
+                android:textSize="19sp"
                 android:visibility="gone" />
         </RelativeLayout>
 

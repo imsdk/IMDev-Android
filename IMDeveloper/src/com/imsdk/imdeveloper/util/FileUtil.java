@@ -15,8 +15,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import android.content.Context;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Build.VERSION_CODES;
 
 public class FileUtil {
 	/**
@@ -57,6 +60,7 @@ public class FileUtil {
 	public static boolean writeFile(Context context, String fileName, String content) {
 		boolean success = false;
 		FileOutputStream fos = null;
+
 		try {
 			fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
 			byte[] byteContent = content.getBytes();
@@ -128,8 +132,10 @@ public class FileUtil {
 		if (!exists(context, fileName)) {
 			return null;
 		}
+
 		FileInputStream fis = null;
 		String content = null;
+
 		try {
 			fis = context.openFileInput(fileName);
 			if (fis != null) {
@@ -474,6 +480,7 @@ public class FileUtil {
 	public static Serializable readSerialLizable(Context context, String fileName) {
 		Serializable data = null;
 		ObjectInputStream ois = null;
+
 		try {
 			ois = new ObjectInputStream(context.openFileInput(fileName));
 			data = (Serializable) ois.readObject();
@@ -576,27 +583,38 @@ public class FileUtil {
 	private File videoPath = null;
 	private File filePath;
 
-	// 在sibuchatoption里面有写
 	public static FileUtil getInstance() {
 		if (instance == null) {
 			instance = new FileUtil();
 		}
+
 		return instance;
 	}
 
 	public void initDirs(String firstDir, String secondDir, Context context) {
 		this.voicePath = generateVoicePath(firstDir, secondDir, context);
-		if (!this.voicePath.exists())
+
+		if (!this.voicePath.exists()) {
 			this.voicePath.mkdirs();
+		}
+
 		this.videoPath = generateVideoPath(firstDir, secondDir, context);
-		if (!this.videoPath.exists())
+
+		if (!this.videoPath.exists()) {
 			this.videoPath.mkdirs();
+		}
+
 		this.imagePath = generateImagePath(firstDir, secondDir, context);
-		if (!this.imagePath.exists())
+
+		if (!this.imagePath.exists()) {
 			this.imagePath.mkdirs();
+		}
+
 		this.filePath = generateFiePath(firstDir, secondDir, context);
-		if (!this.filePath.exists())
+
+		if (!this.filePath.exists()) {
 			this.filePath.mkdirs();
+		}
 	}
 
 	public File getImagePath() {
@@ -618,10 +636,13 @@ public class FileUtil {
 	private static File generateFiePath(String firstDir, String secondDir,
 			Context context) {
 		String str = null;
-		if (firstDir == null)
+
+		if (firstDir == null) {
 			str = secondDir + "/file/";
-		else
+		} else {
 			str = firstDir + "/" + secondDir + "/file/";
+		}
+
 		return new File(getStorageDir(context), str);
 	}
 
@@ -630,17 +651,33 @@ public class FileUtil {
 		if (storageDir == null) {
 			if (android.os.Environment.getExternalStorageState().equals(
 					android.os.Environment.MEDIA_MOUNTED)) {
-				path = context.getExternalCacheDir().getAbsolutePath()
-						.replace("cache", "");
+				
+				if(Build.VERSION.SDK_INT >= VERSION_CODES.FROYO){
+					
+					if(context.getExternalCacheDir() == null){
+						path = Environment.getExternalStorageDirectory().getAbsolutePath();
+					}else{
+						path = context.getExternalCacheDir().getAbsolutePath()
+								.replace("cache", "");	
+					}
+				}else{
+					path = Environment.getExternalStorageDirectory().getPath() + 
+							"/Android/data/" + context.getPackageName();
+				}
+				
 			} else {
 				path = context.getCacheDir().getAbsolutePath().replace("cache", "");
 			}
+
 			File localFile = new File(path);
+
 			if (!localFile.exists()) {
 				localFile.mkdirs();
 			}
+
 			return localFile;
 		}
+
 		storageDir = context.getFilesDir();
 		return storageDir;
 	}
@@ -648,37 +685,45 @@ public class FileUtil {
 	private static File generateImagePath(String firstDir, String secondDir,
 			Context context) {
 		String str = null;
-		if (firstDir == null)
+
+		if (firstDir == null) {
 			str = secondDir + "/image/";
-		else
+		} else {
 			str = firstDir + "/" + secondDir + "/image/";
+		}
+
 		return new File(getStorageDir(context), str);
 	}
 
 	private static File generateVoicePath(String firstDir, String secondDir,
 			Context context) {
 		String str = null;
+
 		if (firstDir == null) {
 			str = secondDir + "/voice/";
 		} else {
 			str = firstDir + "/" + secondDir + "/voice/";
 		}
+
 		return new File(getStorageDir(context), str);
 	}
 
 	private static File generateVideoPath(String firstDir, String secondDir,
 			Context context) {
 		String str = null;
+
 		if (firstDir == null) {
 			str = secondDir + "/video/";
 		} else {
 			str = firstDir + "/" + secondDir + "/video/";
 		}
+
 		return new File(getStorageDir(context), str);
 	}
 
 	public static File getTempPath(File file) {
 		File localFile = new File(file.getAbsoluteFile() + ".tmp");
+
 		return localFile;
 	}
 }

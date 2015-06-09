@@ -26,7 +26,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -39,7 +39,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -52,7 +52,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -65,7 +65,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -78,7 +78,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -91,7 +91,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -104,7 +104,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -133,7 +133,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -146,7 +146,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -159,7 +159,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -172,7 +172,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -185,7 +185,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -198,7 +198,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -211,7 +211,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -240,7 +240,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -253,7 +253,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -266,7 +266,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -279,7 +279,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -292,7 +292,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -305,7 +305,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"
@@ -318,7 +318,7 @@
             android:layout_height="32dp"
             android:background="@null"
             android:contentDescription="@null"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="fill_parent"

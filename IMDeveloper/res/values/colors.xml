@@ -3,4 +3,5 @@
     <color name="holo_blue">#FF33E5B5</color>
     <color name="menu_text_normal">#999999</color>
     <color name="menu_text_selected">#45C01A</color>
+    <color name="black_light">#CCCCCC</color>
 </resources>

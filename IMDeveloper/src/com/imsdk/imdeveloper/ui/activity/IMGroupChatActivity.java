@@ -1,11 +1,13 @@
 package com.imsdk.imdeveloper.ui.activity;
 
+import imsdk.views.IMChatView;
 import imsdk.views.IMGroupChatView;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 
 public class IMGroupChatActivity extends Activity {
@@ -20,7 +22,7 @@ public class IMGroupChatActivity extends Activity {
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		String groupID = getIntent().getStringExtra("groupID");
+		final String groupID = getIntent().getStringExtra("groupID");
 
 		mChatView = new IMGroupChatView(this, groupID);
 
@@ -30,6 +32,31 @@ public class IMGroupChatActivity extends Activity {
 		mChatView.setTitleBarVisible(true);
 
 		setContentView(mChatView);
+		
+		//点击头像事件
+		mChatView.setOnHeadPhotoClickListener(new IMChatView.OnHeadPhotoClickListener() {
+			
+			@Override
+			public void onClick(View v, String customUserID) {
+				
+				Intent intent = new Intent(IMGroupChatActivity.this, ProfileActivity.class);
+				intent.putExtra("CustomUserID", customUserID);
+				IMGroupChatActivity.this.startActivity(intent);
+			}
+		});
+		
+		//群信息
+		mChatView.setRightTitleBarText("群信息");
+		mChatView.setOnRightTitleBarClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(IMGroupChatActivity.this, GroupInfoActivity.class);
+				intent.putExtra("groupID", groupID);
+				IMGroupChatActivity.this.startActivity(intent);
+			}
+		});
+		
 	}
 
 	@Override

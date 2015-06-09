@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 
 import com.imsdk.imdeveloper.app.IMApplication;
@@ -26,12 +27,24 @@ public class IMChatActivity extends Activity {
 		mChatView = new IMChatView(this, mCustomUserID);
 		setContentView(mChatView);
 
-		mChatView.setUserMainPhotoVisible(false);
+		mChatView.setUserMainPhotoVisible(true);
 		mChatView.setUserNameVisible(false);
 		mChatView.setMaxGifCountInMessage(10);
 		mChatView.setTitleBarVisible(true);
 
 		IMApplication.sCustomUserID = mCustomUserID;
+		
+		//点击头像事件
+		mChatView.setOnHeadPhotoClickListener(new IMChatView.OnHeadPhotoClickListener() {
+			
+			@Override
+			public void onClick(View v, String customUserID) {
+				
+				Intent intent = new Intent(IMChatActivity.this, ProfileActivity.class);
+				intent.putExtra("CustomUserID", customUserID);
+				IMChatActivity.this.startActivity(intent);
+			}
+		});
 	}
 
 	@Override
@@ -48,6 +61,8 @@ public class IMChatActivity extends Activity {
 
 		return super.onKeyDown(keyCode, event);
 	}
+	
+	
 
 	@Override
 	protected void onDestroy() {

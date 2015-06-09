@@ -9,6 +9,15 @@
 
     <!-- profile -->
     <string name="profile_title">详细资料</string>
+    <string name="profile_nickname">昵称</string>
+    <string name="profile_imsdk_cid">爱萌账号</string>
+    <string name="profile_modifypass">修改密码</string>
+    
+    <!-- groupinfo -->
+    <string name="groupinfo_name">群名称</string>
+    <string name="groupinfo_info">群信息</string>
+    <string name="groupinfo_creator">群创建者</string>
+    <string name="groupinfo_size">群聊大小</string>
     
     <!-- 顶部actionbar -->
     <string name="msg_load_ing">加载中....</string>

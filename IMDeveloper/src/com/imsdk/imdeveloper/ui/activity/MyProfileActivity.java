@@ -5,6 +5,9 @@ import imsdk.data.IMMyself.OnActionListener;
 import imsdk.data.IMSDK.OnActionProgressListener;
 import imsdk.data.customuserinfo.IMMyselfCustomUserInfo;
 import imsdk.data.mainphoto.IMMyselfMainPhoto;
+import imsdk.data.mainphoto.IMSDKMainPhoto;
+import imsdk.data.mainphoto.IMSDKMainPhoto.OnBitmapRequestProgressListener;
+import imsdk.data.nickname.IMSDKNickname;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,6 +25,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +39,7 @@ import com.imsdk.imdeveloper.ui.a1common.UICommon;
 import com.imsdk.imdeveloper.ui.view.SelectPicPopupWindow;
 import com.imsdk.imdeveloper.ui.view.citypicker.CityPicker;
 import com.imsdk.imdeveloper.ui.view.citypicker.CityPicker.OnSelectingListener;
+import com.imsdk.imdeveloper.util.CommonUtil;
 import com.imsdk.imdeveloper.util.LoadingDialog;
 import com.imsdk.imdeveloper.util.cropImage.CropParams;
 
@@ -48,9 +54,12 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 	private LinearLayout mGenderLayout;
 	private LinearLayout mRegionLayout;
 	private RelativeLayout mSignLayout;
+	private LinearLayout mNickNamelayout;
+	private LinearLayout mModifyPassLayout;
 
 	private ImageView mMainPhotoImageView;
 	private TextView mNickNameTextView;
+	private TextView mCustomUserIDTextView;
 	private TextView mGenderTextView;
 	private TextView mRegionTextView;
 	private TextView mSignTextView;
@@ -79,24 +88,30 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 			return;
 		}
 
+		//title
+		((TextView)this.findViewById(R.id.imbasetitlebar_title)).setText(R.string.profile_title);
+		
 		mMainPhotoLayout = (RelativeLayout) findViewById(R.id.myuserinfo_mainphoto_layout);
 		mGenderLayout = (LinearLayout) findViewById(R.id.myuserinfo_gender_layout);
 		mRegionLayout = (LinearLayout) findViewById(R.id.myuserinfo_region_layout);
 		mSignLayout = (RelativeLayout) findViewById(R.id.myuserinfo_sign_layout);
+		mNickNamelayout = (LinearLayout)findViewById(R.id.myuserinfo_nickname_layout);
+		mModifyPassLayout = (LinearLayout)findViewById(R.id.myuserinfo_modifypass_layout);
 
 		mMainPhotoLayout.setOnClickListener(this);
 		mGenderLayout.setOnClickListener(this);
 		mRegionLayout.setOnClickListener(this);
 		mSignLayout.setOnClickListener(this);
+		mNickNamelayout.setOnClickListener(this);
+		mModifyPassLayout.setOnClickListener(this);
 
 		mNickNameTextView = (TextView) findViewById(R.id.myuserinfo_nickname_textview);
+		mCustomUserIDTextView = (TextView)findViewById(R.id.myuserinfo_cid_textview);
 		mGenderTextView = (TextView) findViewById(R.id.myuserinfo_gender_textview);
 		mRegionTextView = (TextView) findViewById(R.id.myuserinfo_region_textview);
 		mSignTextView = (TextView) findViewById(R.id.myuserinfo_sign_textview);
 
 		mMainPhotoImageView = (ImageView) findViewById(R.id.myuserinfo_mainphoto_imageview);
-
-		mNickNameTextView.setText(IMMyself.getCustomUserID());
 
 		String customUserInfo = IMMyselfCustomUserInfo.get();
 		String[] array = customUserInfo.split("\n");
@@ -106,14 +121,9 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 			mRegionTextView.setText(array[1]);
 			mSignTextView.setText(array[2]);
 		}
-
-		Bitmap bitmap = IMMyselfMainPhoto.get();
-
-		if (bitmap != null) {
-			mMainPhotoImageView.setImageBitmap(bitmap);
-		} else {
-			mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
-		}
+		mCustomUserIDTextView.setText(IMMyself.getCustomUserID());
+		//设置头像和昵称
+		setMainPhotoAndNickname();
 	}
 
 	@Override
@@ -121,6 +131,9 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 		int viewId = v.getId();
 
 		switch (viewId) {
+		case R.id.myuserinfo_nickname_layout: 
+			showNicknameDialog();
+			break;
 		case R.id.myuserinfo_mainphoto_layout: {
 			Intent intent = new Intent(this, ChoosePhotoActivity.class);
 
@@ -153,6 +166,11 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 			Intent intent = new Intent(MyProfileActivity.this, SignActivity.class);
 
 			startActivityForResult(intent, 1000);
+		}
+			break;
+		case R.id.myuserinfo_modifypass_layout:{
+			Intent intent = new Intent(MyProfileActivity.this, ModifyPasswordActivity.class);
+			startActivity(intent);
 		}
 			break;
 		default:
@@ -234,6 +252,58 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 					mGenderTextView.setText("女");
 					commitInfo();
 				}
+			}
+		});
+	}
+	
+	
+	private void showNicknameDialog() {
+		AlertDialog.Builder builder = new Builder(MyProfileActivity.this);
+		View view = LayoutInflater.from(MyProfileActivity.this).inflate(
+				R.layout.dialog_nickname, null);
+		
+		final EditText nicknameET = (EditText)view.findViewById(R.id.dialog_edittext);
+		Button cancleBtn = (Button)view.findViewById(R.id.dialog_cancle);
+		Button sureBtn = (Button)view.findViewById(R.id.dialog_sure);
+
+		builder.setView(view);
+
+		final AlertDialog dialog = builder.create();
+
+		dialog.show();
+
+		cancleBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+
+				
+			}
+		});
+
+		sureBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				String nickname = nicknameET.getText().toString();
+				updateNickname(nickname);
+			}
+		});
+	}
+	
+	
+	public void updateNickname(final String nickname){
+		IMSDKNickname.commit(nickname, 20, new IMMyself.OnActionListener() {
+			
+			@Override
+			public void onSuccess() {
+				mNickNameTextView.setText(nickname);
+				UICommon.showTips(R.drawable.tips_success, "修改昵称成功");
+			}
+			
+			@Override
+			public void onFailure(String error) {
+				UICommon.showTips(R.drawable.tips_error, "修改昵称失败：" + error);
 			}
 		});
 	}
@@ -332,5 +402,49 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 初始化头像和昵称
+	 */
+	public void setMainPhotoAndNickname(){
+		
+		//头像
+		Bitmap bitmap = IMMyselfMainPhoto.get();
+
+		if (bitmap != null) {
+			mMainPhotoImageView.setImageBitmap(bitmap);
+		} else {
+			mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+		}
+		//昵称、爱萌账号
+		String nickname = IMSDKNickname.get();
+		mNickNameTextView.setText(nickname);
+		
+		if(bitmap == null || nickname == null){
+			IMSDKMainPhoto.request(IMMyself.getCustomUserID(), 20,
+					new OnBitmapRequestProgressListener() {
+						@Override
+						public void onSuccess(Bitmap bitmap, byte[] buffer) {
+							if (bitmap != null) {
+								mMainPhotoImageView.setImageBitmap(bitmap);
+							} 
+							// 头像更新后，昵称也会同步更新
+							String nickname_new = IMSDKNickname.get(IMMyself.getCustomUserID());
+							if (!CommonUtil.isNull(nickname_new)) {
+								mNickNameTextView.setText(nickname_new);
+							}
+						}
+
+						@Override
+						public void onProgress(double arg0) {
+						}
+
+						@Override
+						public void onFailure(String arg0) {
+						}
+					});
+		}
+	
 	}
 }

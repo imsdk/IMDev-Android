@@ -18,19 +18,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.imsdk.imdeveloper.R;
+import com.imsdk.imdeveloper.ui.activity.GroupSearchMemberActivity;
 import com.imsdk.imdeveloper.ui.activity.MyGroupsActivity;
+import com.imsdk.imdeveloper.ui.activity.ProfileActivity;
 import com.imsdk.imdeveloper.ui.view.sortlistview.CharacterParser;
 import com.imsdk.imdeveloper.ui.view.sortlistview.ClearEditText;
 import com.imsdk.imdeveloper.ui.view.sortlistview.PinyinComparator;
 import com.imsdk.imdeveloper.ui.view.sortlistview.SideBar;
 import com.imsdk.imdeveloper.ui.view.sortlistview.SideBar.OnTouchingLetterChangedListener;
 import com.imsdk.imdeveloper.ui.view.sortlistview.SortAdapter;
-
+/**
+ * 联系人
+ *
+ */
 public class ContactsFragment extends Fragment {
 	// data
 	private List<String> mSortCustomUserIDsList;
@@ -56,13 +62,14 @@ public class ContactsFragment extends Fragment {
 
 		if (IMMyselfRelations.isInitialized()) {
 			initDatas();
-			
-			IMMyselfRelations.setOnFriendsListDataChangedListener(new OnDataChangedListener() {
-				@Override
-				public void onDataChanged() {
-					initDatas();
-				}
-			});
+
+			IMMyselfRelations
+					.setOnFriendsListDataChangedListener(new OnDataChangedListener() {
+						@Override
+						public void onDataChanged() {
+							initDatas();
+						}
+					});
 		} else {
 			// 设置初始化事件监听
 			IMMyselfRelations.setOnInitializedListener(new OnInitializedListener() {
@@ -70,12 +77,13 @@ public class ContactsFragment extends Fragment {
 				public void onInitialized() {
 					initDatas();
 
-					IMMyselfRelations.setOnFriendsListDataChangedListener(new OnDataChangedListener() {
-						@Override
-						public void onDataChanged() {
-							initDatas();
-						}
-					});
+					IMMyselfRelations
+							.setOnFriendsListDataChangedListener(new OnDataChangedListener() {
+								@Override
+								public void onDataChanged() {
+									initDatas();
+								}
+							});
 				}
 			});
 		}
@@ -121,6 +129,7 @@ public class ContactsFragment extends Fragment {
 
 		mAdapter = new SortAdapter(getActivity(), mSortCustomUserIDsList);
 		mListView.setAdapter(mAdapter);
+		
 
 		if (mSortCustomUserIDsList.size() == 0) {
 			mEmptyTextView.setVisibility(View.VISIBLE);

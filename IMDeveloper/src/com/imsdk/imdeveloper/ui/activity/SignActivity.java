@@ -51,6 +51,14 @@ public class SignActivity extends Activity {
 		mSignEditText.addTextChangedListener(mTextWatcher);
 		mSignEditText.setSelection(mSignEditText.length()); // 将光标移动最后一个字符后面
 
+		String customUserInfo = IMMyselfCustomUserInfo.get();
+		String[] array = customUserInfo.split("\n");
+
+		if (array.length == 3) {
+			mSignEditText.setText(array[2]);
+		}
+
+		
 		setLeftCount();
 	}
 

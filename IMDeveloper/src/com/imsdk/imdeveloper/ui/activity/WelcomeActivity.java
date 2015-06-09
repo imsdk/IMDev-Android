@@ -22,7 +22,7 @@ public class WelcomeActivity extends Activity {
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_welcome);
-
+		
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {

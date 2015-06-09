@@ -10,6 +10,7 @@
         android:layout_height="46dp" >
 
         <TextView
+            android:id="@+id/dialog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -31,7 +32,7 @@
         android:orientation="horizontal" >
 
 		<EditText 
-		    android:id="@+id/dialog_nickname"
+		    android:id="@+id/dialog_edittext"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center_vertical"

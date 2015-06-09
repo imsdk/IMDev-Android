@@ -29,7 +29,7 @@
                 android:layout_marginBottom="0.0dip"
                 android:layout_marginLeft="35.0dip"
                 android:layout_marginTop="5.0dip"
-                   android:contentDescription="@null"
+                android:contentDescription="@null"
                 android:src="@drawable/im_voice_rcd_hint" />
 
             <ImageView
@@ -38,9 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imageView1"
                 android:layout_marginLeft="4.0dip"
-                   android:contentDescription="@null"
                 android:layout_toRightOf="@+id/imageView1"
-                android:background="@drawable/im_amp1" />
+                android:background="@drawable/im_amp1"
+                android:contentDescription="@null" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,8 +64,8 @@
             android:layout_marginLeft="10.0dip"
             android:layout_marginRight="20.0dip"
             android:background="@drawable/im_voice_rcd_cancel_bg"
+            android:contentDescription="@null"
             android:padding="7.0dip"
-               android:contentDescription="@null"
             android:src="@drawable/im_rcd_cancel_icon"
             android:visibility="gone" />
 
@@ -83,9 +83,9 @@
                 android:id="@+id/voice_rcd_hint_cancel_icon"
                 android:layout_width="75.0dip"
                 android:layout_height="75.0dip"
-                   android:contentDescription="@null"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20.0dip"
+                android:contentDescription="@null"
                 android:src="@drawable/im_rcd_cancel_icon" />
 
             <TextView
@@ -131,10 +131,11 @@
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone" >
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-               android:contentDescription="@null"
+            android:contentDescription="@null"
             android:src="@drawable/im_voice_to_short" />
 
         <TextView
@@ -144,4 +145,5 @@
             android:text="@string/chatfooter_too_short"
             android:textColor="@color/white" />
     </LinearLayout>
+
 </LinearLayout>

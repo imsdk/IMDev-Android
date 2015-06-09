@@ -4,6 +4,7 @@ import imsdk.data.IMMyself;
 import imsdk.data.IMMyself.OnInitializedListener;
 import imsdk.data.customuserinfo.IMMyselfCustomUserInfo;
 import imsdk.data.mainphoto.IMMyselfMainPhoto;
+import imsdk.data.nickname.IMSDKNickname;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,7 +28,13 @@ import com.imsdk.imdeveloper.app.IMConfiguration;
 import com.imsdk.imdeveloper.ui.activity.LoginActivity;
 import com.imsdk.imdeveloper.ui.activity.MyProfileActivity;
 import com.imsdk.imdeveloper.ui.view.SettingSwitchButton;
+import com.imsdk.imdeveloper.util.CommonUtil;
 
+/**
+ * 
+ * 我的
+ *
+ */
 public class MineFragment extends Fragment implements OnClickListener,
 		OnCheckedChangeListener {
 	// data
@@ -45,7 +52,12 @@ public class MineFragment extends Fragment implements OnClickListener,
 	private SettingSwitchButton mVibrateSwitchBtn;
 
 	private void updateUserNameRegion() {
-		mUserNameTextView.setText(IMMyself.getCustomUserID());
+		
+		if(CommonUtil.isNull(IMSDKNickname.get())){
+			mUserNameTextView.setText(IMMyself.getCustomUserID());	
+		}else{
+			mUserNameTextView.setText(IMSDKNickname.get());
+		}
 
 		String customUserInfo = IMMyselfCustomUserInfo.get();
 		String[] array = customUserInfo.split("\n");
@@ -154,6 +166,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 			intent.putExtra("CustomUserID", IMMyself.getCustomUserID());
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
+			getActivity().finish();
 			break;
 		default:
 			break;

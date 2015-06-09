@@ -53,6 +53,7 @@ public class AddContactActivity extends Activity implements View.OnClickListener
 	private User searchUser = null;
 	protected String userID;
 	private LoadingDialog mDialog;
+	private String fromtype; //来源标识
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class AddContactActivity extends Activity implements View.OnClickListener
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_addcontact);
+		
+		fromtype = getIntent().getStringExtra("fromtype");
 
 		mEditText = (ClearEditText) findViewById(R.id.addcontact_edittext);
 		search_name = (TextView) findViewById(R.id.search_name);
@@ -179,13 +182,11 @@ public class AddContactActivity extends Activity implements View.OnClickListener
 
 							@Override
 							public void onFailure(String error) {
-								Log.e("-----------------", "失败了.................");
 								item_search.setVisibility(View.GONE);
 								mDialog.dismiss();
 								UICommon.showTips(R.drawable.tips_error, error);
 							}
 						});
-
 					}
 
 					return true;
@@ -258,10 +259,17 @@ public class AddContactActivity extends Activity implements View.OnClickListener
 			this.finish();
 			break;
 		case R.id.item_search:
-			Intent intent = new Intent(AddContactActivity.this, ProfileActivity.class);
-
-			intent.putExtra("CustomUserID", searchUser.getUserId());
-			AddContactActivity.this.startActivity(intent);
+			if(fromtype != null && fromtype.equals("group")){
+				//跳回群信息页面
+				Intent mIntent = new Intent();  
+		        mIntent.putExtra("CustomUserID", searchUser.getUserId());
+		        this.setResult(20, mIntent);
+		        this.finish();
+			}else{
+				Intent intent = new Intent(AddContactActivity.this, ProfileActivity.class);
+				intent.putExtra("CustomUserID", searchUser.getUserId());
+				AddContactActivity.this.startActivity(intent);	
+			}
 			break;
 		default:
 			break;

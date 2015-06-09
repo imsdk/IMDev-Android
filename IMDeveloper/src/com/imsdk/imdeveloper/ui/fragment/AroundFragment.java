@@ -5,6 +5,7 @@ import imsdk.data.around.IMMyselfAround;
 import imsdk.data.around.IMMyselfAround.OnAroundActionListener;
 import imsdk.data.customuserinfo.IMSDKCustomUserInfo;
 import imsdk.data.mainphoto.IMSDKMainPhoto;
+import imsdk.data.nickname.IMSDKNickname;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,11 @@ import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase.Mode;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase.OnRefreshListener2;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshListView;
-
+import com.imsdk.imdeveloper.util.CommonUtil;
+/**
+ * 周边
+ *
+ */
 public class AroundFragment extends Fragment {
 	// ui
 	private PullToRefreshListView mListView;
@@ -170,7 +175,12 @@ public class AroundFragment extends Fragment {
 						.setImageResource(R.drawable.ic_launcher);
 			}
 
-			viewHolder.mUserNameTextView.setText(customUserID);
+			//有昵称则设置昵称
+			if(CommonUtil.isNull(IMSDKNickname.get(customUserID))){
+				viewHolder.mUserNameTextView.setText(customUserID);	
+			}else{
+				viewHolder.mUserNameTextView.setText(IMSDKNickname.get(customUserID));
+			}
 
 			IMSDKCustomUserInfo.removeOnDataChangedListener(viewHolder);
 			IMSDKCustomUserInfo.addOnDataChangedListener(customUserID, viewHolder);

@@ -8,6 +8,7 @@ import imsdk.data.group.IMMyselfGroup.OnGroupEventsListener;
 import imsdk.data.group.IMSDKGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.ui.a1common.UICommon;
@@ -36,6 +38,8 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 	private TextView mEmptyDataShow;
 	private ListView mListView;
 	private ProgressBar mProgressBar;
+	
+	private List<String> mGroupsList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +49,28 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_searchandmakegroup);
-
+		
+		findViewById();
+		setListener();
+		init();
+	}
+	
+	public void findViewById(){
 		mInflater = LayoutInflater.from(MyGroupsActivity.this);
-
+		
 		mTitleBarRightView = (TextView) findViewById(R.id.right);
-		mTitleBarRightView.setText("创建群组");
-		mTitleBarRightView.setOnClickListener(this);
-
-		((TextView) findViewById(R.id.left)).setOnClickListener(this);
-		((ImageView) findViewById(R.id.titlebar_logo)).setOnClickListener(this);
-
+		
 		mEmptyDataShow = (TextView) findViewById(R.id.text_noinfo);
 		mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-		mAdapter = new GroupsListAdapter();
+		
 		mListView = (ListView) findViewById(R.id.grouplist);
-
-		mListView.setEmptyView(mEmptyDataShow);
-		mListView.setAdapter(mAdapter);
-
+	}
+	
+	public void setListener(){
+		mTitleBarRightView.setOnClickListener(this);
+		((TextView) findViewById(R.id.left)).setOnClickListener(this);
+		((ImageView) findViewById(R.id.titlebar_logo)).setOnClickListener(this);
+		
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -70,7 +78,7 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 				Intent intent = new Intent(MyGroupsActivity.this,
 						IMGroupChatActivity.class);
 
-				intent.putExtra("groupID", (String)IMMyselfGroup.getMyGroupsList()
+				intent.putExtra("groupID", (String) mGroupsList
 						.get(position));
 				startActivity(intent);
 			}
@@ -92,8 +100,8 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 			}
 
 			@Override
-			public void onGroupMemberUpdated(ArrayList membersList,
-					String groupID, long actionServerTime) {
+			public void onGroupMemberUpdated(ArrayList membersList, String groupID,
+					long actionServerTime) {
 			}
 
 			@Override
@@ -111,6 +119,39 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 			}
 		});
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void init(){
+		
+		mTitleBarRightView.setText("创建群组");
+		
+		mGroupsList = IMMyselfGroup.getMyGroupsList();
+		
+		if(mGroupsList == null){
+			mGroupsList = new ArrayList<String>();//为空时，要赋值
+			Toast.makeText(MyGroupsActivity.this, "无群组信息", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		mAdapter = new GroupsListAdapter();
+		mListView.setEmptyView(mEmptyDataShow);
+		mListView.setAdapter(mAdapter);
+		
+		//判断群组模块是否初始化成功
+		if(!IMMyselfGroup.isInitialized()){
+			
+			Toast.makeText(MyGroupsActivity.this, "重新群组模块初始化", Toast.LENGTH_SHORT).show();
+			
+			IMMyselfGroup.setOnInitializedListener(new OnInitializedListener() {
+				
+				@Override
+				public void onInitialized() {
+					Toast.makeText(MyGroupsActivity.this, "群组模块初始化成功", Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
+		
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -125,13 +166,18 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 			mTitleBarRightView.setEnabled(false);
 
 			IMMyselfGroup.createGroup("我的IMSDK群", new OnActionResultListener() {
+				@SuppressWarnings("unchecked")
 				@Override
 				public void onSuccess(Object result) {
 					if (!(result instanceof String)) {
 						mTitleBarRightView.setEnabled(true);
 						return;
 					}
-
+					List<String> gList = IMMyselfGroup.getMyGroupsList();
+					mGroupsList.clear();
+					for(int i = 0 ; i < gList.size(); i ++){
+						mGroupsList.add(gList.get(i));	
+					}
 					mAdapter.notifyDataSetChanged();
 					UICommon.showTips(R.drawable.tips_success, "创建群成功!");
 					mTitleBarRightView.setEnabled(true);
@@ -139,7 +185,11 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 
 				@Override
 				public void onFailure(String error) {
-					UICommon.showTips(R.drawable.tips_error, "创建失败:" + error);
+					if(error.equals("Has reached Limit")){
+						UICommon.showTips(R.drawable.tips_error, "群组数已达到上限");
+					}else{
+						UICommon.showTips(R.drawable.tips_error, "创建失败:" + error + " " + IMMyselfGroup.getLastError());	
+					}
 					mTitleBarRightView.setEnabled(true);
 				}
 			});
@@ -200,14 +250,15 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 	// }
 
 	private class GroupsListAdapter extends BaseAdapter {
+		
 		@Override
 		public int getCount() {
-			return IMMyselfGroup.getMyGroupsList().size();
+			return mGroupsList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return IMMyselfGroup.getMyGroupsList().get(position);
+			return mGroupsList.get(position);
 		}
 
 		@Override
@@ -217,7 +268,7 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			String groupID = (String) IMMyselfGroup.getMyGroupsList().get(position);
+			String groupID = (String) mGroupsList.get(position);
 			IMGroupInfo groupInfo = IMSDKGroup.getGroupInfo(groupID);
 			ViewHolder holder = null;
 

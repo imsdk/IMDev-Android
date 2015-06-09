@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+        
+    <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
+        android:id="@+id/ItemImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/h0" />
+    
+    <ImageButton
+        android:id="@+id/ItemDel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/ItemImage"
+        android:contentDescription="@null"
+        android:background="#00000000"
+        android:src="@drawable/group_delete_member"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/ItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ItemImage"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_centerHorizontal="true"
+        android:text="" >
+    </TextView>
+
+</RelativeLayout>

@@ -74,12 +74,42 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="13.5dp"
-                    android:text="名字"
+                    android:text="@string/profile_nickname"
                     android:textColor="#565555"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/myuserinfo_nickname_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/myuserinfo_cid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13.5dp"
+                    android:text="@string/profile_imsdk_cid"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myuserinfo_cid_textview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -217,6 +247,45 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
             </RelativeLayout>
+            
+            <LinearLayout
+                android:id="@+id/myuserinfo_modifypass_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shezhi_top_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13.5dp"
+                    android:gravity="center_vertical"
+                    android:text="修改密码"
+                    android:textColor="#565555"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="未设置"
+                    android:textColor="#999999"
+                    android:textSize="16sp"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+            </LinearLayout>
+            
         </LinearLayout>
     </ScrollView>
 

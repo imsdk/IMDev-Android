@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -136,11 +138,13 @@ public class CustomRadioGroup extends LinearLayout {
 
 		RadioButton a = mRadioBtnsList.get(leftIndex);
 		RadioButton b = mRadioBtnsList.get(rightIndex);
-		a.mTopImageView.setAlpha(alpha);
-		a.mBottomImageView.setAlpha(1 - alpha);
-		b.mTopImageView.setAlpha(1 - alpha);
-		b.mBottomImageView.setAlpha(alpha);
-
+		if(hasHoneycomb()){
+			a.mTopImageView.setAlpha(alpha);
+			a.mBottomImageView.setAlpha(1 - alpha);
+			b.mTopImageView.setAlpha(1 - alpha);
+			b.mBottomImageView.setAlpha(alpha);
+		}
+		
 		int aColor = getNewColor(1 - alpha);
 		int bColor = getNewColor(alpha);
 
@@ -155,8 +159,10 @@ public class CustomRadioGroup extends LinearLayout {
 
 		RadioButton a = mRadioBtnsList.get(index);
 
-		a.mTopImageView.setAlpha(1 - alpha);
-		a.mBottomImageView.setAlpha(alpha);
+		if(hasHoneycomb()){
+			a.mTopImageView.setAlpha(1 - alpha);
+			a.mBottomImageView.setAlpha(alpha);	
+		}
 
 		int aColor = getNewColor(alpha);
 
@@ -227,9 +233,11 @@ public class CustomRadioGroup extends LinearLayout {
 			mNewsTextView = (TextView) mView.findViewById(ID_NEWS);
 
 			mTopImageView.setImageResource(unSelected);
-			mTopImageView.setAlpha(1.0f);
 			mBottomImageView.setImageResource(selected);
-			mBottomImageView.setAlpha(0.0f);
+			if(hasHoneycomb()){
+				mTopImageView.setAlpha(1.0f);
+				mBottomImageView.setAlpha(0.0f);
+			}
 			mTextView.setText(string);
 			mNewsTextView.setVisibility(INVISIBLE);
 			mView.setLayoutParams(mItemLayoutParams);
@@ -243,11 +251,15 @@ public class CustomRadioGroup extends LinearLayout {
 		 */
 		void setChecked(boolean checked) {
 			if (checked) {
-				mTopImageView.setAlpha(0.0f);
-				mBottomImageView.setAlpha(1.0f);
+				if(hasHoneycomb()){
+					mTopImageView.setAlpha(0.0f);
+					mBottomImageView.setAlpha(1.0f);	
+				}
 			} else {
-				mTopImageView.setAlpha(1.0f);
-				mBottomImageView.setAlpha(0.0f);
+				if(hasHoneycomb()){
+					mTopImageView.setAlpha(1.0f);
+					mBottomImageView.setAlpha(0.0f);	
+				}
 			}
 		}
 
@@ -279,5 +291,9 @@ public class CustomRadioGroup extends LinearLayout {
 	 */
 	public interface OnItemChangedListener {
 		public void onItemChanged();
+	}
+	
+	private boolean hasHoneycomb() {
+		return Build.VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB;
 	}
 }

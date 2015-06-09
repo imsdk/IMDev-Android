@@ -3,10 +3,12 @@ package com.imsdk.imdeveloper.ui.view.sortlistview;
 import imsdk.data.IMSDK.OnDataChangedListener;
 import imsdk.data.customuserinfo.IMSDKCustomUserInfo;
 import imsdk.data.mainphoto.IMSDKMainPhoto;
+import imsdk.data.nickname.IMSDKNickname;
 
 import java.util.List;
 import java.util.Locale;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -23,14 +25,21 @@ import android.widget.TextView;
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.ui.a1common.DataCommon;
 import com.imsdk.imdeveloper.ui.activity.ProfileActivity;
+import com.imsdk.imdeveloper.util.CommonUtil;
 
 public class SortAdapter extends BaseAdapter implements SectionIndexer {
 	private List<String> mList = null;
 	private Context mContext;
+	private boolean mIsGroupSearch;
 
 	public SortAdapter(Context context, List<String> list) {
 		mContext = context;
 		mList = list;
+	}
+	public SortAdapter(Context context, List<String> list, boolean isGroupSearch) {
+		mContext = context;
+		mList = list;
+		mIsGroupSearch = isGroupSearch;
 	}
 
 	public void updateListView(List<String> list) {
@@ -92,16 +101,29 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 		} else {
 			viewHolder.mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
 		}
-
-		viewHolder.mUserNameTextView.setText(this.mList.get(position));
+		//有昵称则设置昵称
+		if(CommonUtil.isNull(IMSDKNickname.get(this.mList.get(position)))){
+			viewHolder.mUserNameTextView.setText(this.mList.get(position));	
+		}else{
+			viewHolder.mUserNameTextView.setText(IMSDKNickname.get(this.mList.get(position)));
+		}
 
 		viewHolder.mUserLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(mContext, ProfileActivity.class);
+				if(mIsGroupSearch){
+					//群组
+					Intent mIntent = new Intent();  
+			        mIntent.putExtra("CustomUserID", mList.get(position));
+			        ((Activity) mContext).setResult(10, mIntent);
+			        ((Activity) mContext).finish();
+			        
+				}else{
+					Intent intent = new Intent(mContext, ProfileActivity.class);
 
-				intent.putExtra("CustomUserID", mList.get(position));
-				mContext.startActivity(intent);
+					intent.putExtra("CustomUserID", mList.get(position));
+					mContext.startActivity(intent);	
+				}
 			}
 		});
 

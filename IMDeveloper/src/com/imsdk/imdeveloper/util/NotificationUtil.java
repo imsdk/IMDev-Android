@@ -22,7 +22,6 @@ import com.imsdk.imdeveloper.ui.activity.IMChatActivity;
  * 
  */
 public class NotificationUtil {
-
 	private static NotificationUtil instance = null;
 	private static NotificationManager noManager = null;
 	private static Context mContext;
@@ -40,6 +39,7 @@ public class NotificationUtil {
 			instance = new NotificationUtil(context);
 			mContext = context;
 		}
+
 		return instance;
 	}
 
@@ -68,6 +68,7 @@ public class NotificationUtil {
 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("CustomUserID", message.getUserID());
+
 		PendingIntent pendingIntent = PendingIntent.getActivity(mContext,
 				NOTIFICATION_ID, intent, PendingIntent.FLAG_ONE_SHOT);
 
@@ -82,6 +83,7 @@ public class NotificationUtil {
 				// .setNumber(++messageNum)
 				.setAutoCancel(true).setDefaults(Notification.DEFAULT_ALL)
 				.setContentIntent(pendingIntent).build();
+
 		noManager.notify(NOTIFICATION_ID, notification);
 		NOTIFICATION_ID++;
 	}
@@ -89,15 +91,17 @@ public class NotificationUtil {
 	private boolean checkIsRunningTopApp(Context context) {
 		ActivityManager am = (ActivityManager) context
 				.getSystemService(Context.ACTIVITY_SERVICE);
+
 		List<RunningTaskInfo> tasksInfo = am.getRunningTasks(1);
 		String MY_PKG_NAME = context.getPackageName();
+
 		if (tasksInfo.size() > 0) {
 			// 应用程序位于堆栈的顶层
 			if (MY_PKG_NAME.equals(tasksInfo.get(0).topActivity.getPackageName())) {
 				return true;
 			}
 		}
+
 		return false;
 	}
-
 }

@@ -11,11 +11,7 @@
         style="@style/chat_text_date_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/drawable_time_bg"
-        android:paddingBottom="2dip"
-        android:paddingLeft="9dip"
-        android:paddingRight="9dip"
-        android:paddingTop="2dip" />
+        android:background="@drawable/im_drawable_time_bg"/>
 
     <TextView
         android:id="@+id/chatting_item_system_content"
