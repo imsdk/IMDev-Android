@@ -31,6 +31,7 @@ import com.imsdk.imdeveloper.ui.activity.IMChatActivity;
 import com.imsdk.imdeveloper.ui.activity.MainActivity;
 import com.imsdk.imdeveloper.ui.view.BadgeView;
 import com.imsdk.imdeveloper.ui.view.CustomRadioGroup;
+import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 import com.imsdk.imdeveloper.util.CommonUtil;
 import com.imsdk.imdeveloper.util.DateUtil;
 
@@ -167,7 +168,7 @@ public class MessagesFragment extends Fragment {
 						R.layout.item_user, parent, false);
 				itemViewHolder.mContactNameTextView = (TextView) convertView
 						.findViewById(R.id.item_user_name_textview);
-				itemViewHolder.mContactImageView = (ImageView) convertView
+				itemViewHolder.mContactImageView = (RoundedCornerImageView) convertView
 						.findViewById(R.id.item_user_mainphoto_imageview);
 				itemViewHolder.mContactInfoEmotionTextView = (IMEmotionTextView) convertView
 						.findViewById(R.id.item_user_otherinfo_textview);
@@ -199,11 +200,12 @@ public class MessagesFragment extends Fragment {
 			itemViewHolder.mContactTimeTextView.setText(userMessage.getLastMessageTime());
 			itemViewHolder.mContactInfoEmotionTextView.setStaticEmotionText(userMessage.getLastMessageContent());
 
+			itemViewHolder.mContactImageView.setRoundness(8);
 			if (userMessage.getBitmap() != null) {
 				itemViewHolder.mContactImageView.setImageBitmap(userMessage.getBitmap());
 			} else {
 				itemViewHolder.mContactImageView
-						.setImageResource(R.drawable.ic_launcher);
+						.setImageResource(R.drawable.news_head_man);
 			}
 
 			final ImageView contactImageView = itemViewHolder.mContactImageView;
@@ -217,7 +219,7 @@ public class MessagesFragment extends Fragment {
 								contactImageView.setImageBitmap(bitmap);
 							} else {
 								contactImageView
-										.setImageResource(R.drawable.ic_launcher);
+										.setImageResource(R.drawable.news_head_man);
 							}
 							//头像更新后，昵称也会同步更新
 							String nickname_new =  IMSDKNickname.get(userMessage.getCustomUserID());
@@ -239,7 +241,7 @@ public class MessagesFragment extends Fragment {
 		}
 
 		private final class ItemViewHolder {
-			ImageView mContactImageView;
+			RoundedCornerImageView mContactImageView;
 			TextView mContactNameTextView;
 			IMEmotionTextView mContactInfoEmotionTextView;
 			TextView mContactTimeTextView;

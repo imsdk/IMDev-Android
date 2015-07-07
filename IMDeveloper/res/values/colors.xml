@@ -4,4 +4,6 @@
     <color name="menu_text_normal">#999999</color>
     <color name="menu_text_selected">#45C01A</color>
     <color name="black_light">#CCCCCC</color>
+    <color name="mm_list_focus">#06bf04</color>
+    <color name="mm_list_red">#ee524d</color>
 </resources>

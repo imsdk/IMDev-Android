@@ -83,7 +83,7 @@ public class GroupInfoAdapter extends BaseAdapter{
         }else{
         	holder.tv.setText((String)mList.get(position).get("text"));
         	if(mList.get(position).get("img") == null){
-        		holder.img.setImageResource(R.drawable.ic_launcher);//默认
+        		holder.img.setImageResource(R.drawable.icon);//默认
         	}else{
         		holder.img.setImageBitmap((Bitmap)mList.get(position).get("img"));	
         	}

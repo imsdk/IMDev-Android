@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#eee"
+    android:background="#f2f2f2"
     android:orientation="vertical" >
 
     <ScrollView
@@ -20,8 +20,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
-                android:background="@drawable/preference_single_item"
                 android:clickable="true"
+                android:background="#ffffff"
                 android:gravity="center_vertical" >
 
                 <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
@@ -29,7 +29,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/h0" />
+                    android:src="@drawable/news_head_man" />
 
                 <TextView
                     android:id="@+id/mine_name_textview"
@@ -49,7 +49,7 @@
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/mine_mainphoto_imageview"
                     android:text="地区：蜀国"
-                    android:textColor="@color/menu_text_normal"
+                    android:textColor="#999999"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -59,14 +59,15 @@
                     android:layout_centerVertical="true"
                     android:clickable="true"
                     android:scaleType="matrix"
-                    android:src="@drawable/mm_submenu" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/arrow_right" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/preference_first_item"
+                android:background="#ffffff"
                 android:clickable="true"
                 android:gravity="center_vertical" >
 
@@ -75,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:padding="8dp"
-                    android:text="消息声音提醒"
+                    android:text="声音"
                     android:textColor="#000"
                     android:textSize="15sp" />
 
@@ -87,11 +88,15 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="14dp" />
             </RelativeLayout>
-
+			<View 
+			    android:layout_width="match_parent"
+			    android:layout_height="1px"
+			    android:layout_marginLeft="8dp"
+			    android:background="#dddddd"/>
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/preference_last_item"
+                android:background="#ffffff"
                 android:clickable="true"
                 android:gravity="center_vertical" >
 
@@ -100,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:padding="8dp"
-                    android:text="消息震动提醒"
+                    android:text="震动"
                     android:textColor="#000"
                     android:textSize="15sp" />
 
@@ -119,15 +124,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
                 android:layout_marginTop="54dp"
-                android:background="@drawable/btn_style_red"
+                android:background="@drawable/btn_logout"
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="退出登录"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="18sp" />
+            
         </LinearLayout>
     </ScrollView>
 

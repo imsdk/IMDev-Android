@@ -48,7 +48,7 @@
                     android:layout_marginRight="10dp"
                     android:clickable="true"
                     android:scaleType="matrix"
-                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+                    android:src="@drawable/arrow_right" />
 
                 <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
                     android:id="@+id/myuserinfo_mainphoto_imageview"
@@ -160,7 +160,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+                    android:src="@drawable/arrow_right" />
             </LinearLayout>
 
             <LinearLayout
@@ -197,7 +197,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+                    android:src="@drawable/arrow_right" />
             </LinearLayout>
 
             <RelativeLayout
@@ -232,7 +232,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10dp"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/ziliaobianji_jiantou_icon" />
+                        android:src="@drawable/arrow_right" />
 
                     <TextView
                         android:id="@+id/myuserinfo_sign_textview"
@@ -283,7 +283,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ziliaobianji_jiantou_icon" />
+                    android:src="@drawable/arrow_right" />
             </LinearLayout>
             
         </LinearLayout>

@@ -81,13 +81,13 @@ public class MainActivity extends FragmentActivity {
 	private CustomRadioGroup mFooter;
 	private JazzyViewPager mBody;
 
-	private int[] mItemImage = { R.drawable.main_footer_message,
-			R.drawable.main_footer_contanct, R.drawable.main_footer_discovery,
-			R.drawable.main_footer_me };
-	private int[] mItemCheckedImage = { R.drawable.main_footer_message_selected,
-			R.drawable.main_footer_contanct_selected,
-			R.drawable.main_footer_discovery_selected,
-			R.drawable.main_footer_me_selected };
+	private int[] mItemImage = { R.drawable.tab_news,
+			R.drawable.tab_contact, R.drawable.tab_nearby,
+			R.drawable.tab_me };
+	private int[] mItemCheckedImage = { R.drawable.tab_news_,
+			R.drawable.tab_contact_,
+			R.drawable.tab_nearby_,
+			R.drawable.tab_me_ };
 	private String[] mItemText = { "消息", "联系人", "周边", "我的" };
 
 	private ArrayList<Fragment> mFragmentsList;
@@ -571,7 +571,7 @@ public class MainActivity extends FragmentActivity {
 				// Notification.DEFAULT_ALL Notification.DEFAULT_SOUND 添加声音 //
 				// requires VIBRATE permission
 				.setAutoCancel(true)// 点击后让通知将消失
-				.setSmallIcon(R.drawable.ic_launcher);
+				.setSmallIcon(R.drawable.icon);
 
 		// 点击的意图ACTION是跳转到Intent
 		Intent resultIntent = new Intent(this, clazz);
@@ -602,7 +602,7 @@ public class MainActivity extends FragmentActivity {
 				.setDefaults(Notification.DEFAULT_ALL)// 向通知添加声音、闪灯和振动效果的最简单、最一致的方式是使用当前的用户默认设置，使用defaults属性，可以组合：
 				// Notification.DEFAULT_ALL Notification.DEFAULT_SOUND 添加声音 //
 				// requires VIBRATE permission
-				.setSmallIcon(R.drawable.ic_launcher);
+				.setSmallIcon(R.drawable.icon);
 
 		notificationManager.notify(notifyId, builder.build());
 	}

@@ -84,7 +84,7 @@
                 android:id="@+id/imchatview_face"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
                 android:src="@drawable/im_chatting_emoji_btn" />
@@ -95,7 +95,7 @@
                 android:id="@+id/imchatview_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="8dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
                 android:src="@drawable/im_type_select_btn" />
@@ -130,7 +130,7 @@
                     android:text="@string/str_voice_press"
                     android:visibility="gone" />
 
-                <ImageButton
+                <imsdk.views.CustomImageButton
                     android:id="@+id/imchatview_sendoraudioswtich"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
@@ -159,11 +159,12 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="6dp" >
+                    android:paddingTop="5dp" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical" >
@@ -172,16 +173,16 @@
                             android:id="@+id/imchatview_choosephoto"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/im_app_panel_pic_icon"
+                            android:background="@drawable/im_app_panel_shade"
                             android:contentDescription="@null"
                             android:scaleType="centerInside"
-                            android:src="@drawable/im_app_panel_shade" />
+                            android:src="@drawable/im_chat_photo" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_image"
-                            android:textColor="@color/black"
+                            android:textColor="#999"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -197,16 +198,64 @@
                             android:id="@+id/imchatview_takephoto"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/im_app_panel_take_photo_icon"
+                            android:background="@drawable/im_app_panel_shade"
                             android:contentDescription="@null"
                             android:scaleType="centerInside"
-                            android:src="@drawable/im_app_panel_shade" />
+                            android:src="@drawable/im_chat_camera" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_take_photo"
-                            android:textColor="@color/black"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_take_photo"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_camera" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_take_photo"
+                            android:textColor="#999"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </TableRow>

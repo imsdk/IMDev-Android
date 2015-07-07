@@ -84,8 +84,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	public void registerThread() {
 		// 不设自动登录
-		boolean result = IMMyself.init(getApplicationContext(),
-				IMConfiguration.sAppKey, null);
+		boolean result = IMMyself.init(null);
 
 		if (!result) {
 			UICommon.showTips(R.drawable.tips_warning, IMSDK.getLastError());
@@ -123,6 +122,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			public void onFailure(String error) {
 				if (error.equals("Timeout")) {
 					error = "注册超时";
+				}
+				if (error.equals("9")) {
+					error = "注册帐号已存在";
 				}
 
 				T.show(RegisterActivity.this, "注册失败:" + error);

@@ -4,10 +4,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.imsdk.imdeveloper.R;
 
@@ -41,5 +45,6 @@ public class WelcomeActivity extends Activity {
 		Timer timer = new Timer();
 
 		timer.schedule(task, mSplashDelay);
+		
 	}
 }

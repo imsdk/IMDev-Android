@@ -27,6 +27,7 @@ import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.app.IMConfiguration;
 import com.imsdk.imdeveloper.ui.activity.LoginActivity;
 import com.imsdk.imdeveloper.ui.activity.MyProfileActivity;
+import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 import com.imsdk.imdeveloper.ui.view.SettingSwitchButton;
 import com.imsdk.imdeveloper.util.CommonUtil;
 
@@ -44,7 +45,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 	private RelativeLayout mModifyUserInfoLayout;
 	private Button mLogoutBtn;
 
-	private ImageView mMainPhotoImageView;
+	private RoundedCornerImageView mMainPhotoImageView;
 	private TextView mUserNameTextView;
 	private TextView mRegionTextView;
 
@@ -81,8 +82,10 @@ public class MineFragment extends Fragment implements OnClickListener,
 		mLogoutBtn = (Button) view.findViewById(R.id.mine_logout_btn);
 		mLogoutBtn.setOnClickListener(this);
 
-		mMainPhotoImageView = (ImageView) view
+		mMainPhotoImageView = (RoundedCornerImageView) view
 				.findViewById(R.id.mine_mainphoto_imageview);
+		mMainPhotoImageView.setRoundness(8);//圆角
+		
 		mUserNameTextView = (TextView) view.findViewById(R.id.mine_name_textview);
 		mRegionTextView = (TextView) view.findViewById(R.id.mine_location_textview);
 
@@ -112,7 +115,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 			if (bitmap != null) {
 				mMainPhotoImageView.setImageBitmap(bitmap);
 			} else {
-				mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+				mMainPhotoImageView.setImageResource(R.drawable.news_head_man);
 			}
 		} else {
 			IMMyselfMainPhoto.setOnInitializedListener(new OnInitializedListener() {
@@ -123,7 +126,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 					if (bitmap != null) {
 						mMainPhotoImageView.setImageBitmap(bitmap);
 					} else {
-						mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+						mMainPhotoImageView.setImageResource(R.drawable.news_head_man);
 					}
 				}
 			});
@@ -201,7 +204,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 			if (bitmap != null) {
 				mMainPhotoImageView.setImageBitmap(bitmap);
 			} else {
-				mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+				mMainPhotoImageView.setImageResource(R.drawable.news_head_man);
 			}
 		}
 	}

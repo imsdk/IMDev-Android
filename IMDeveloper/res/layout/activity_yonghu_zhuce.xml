@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg" >
+    android:layout_height="match_parent">
+    
     <RelativeLayout 
         android:id="@+id/top"
         android:layout_width="match_parent"
@@ -13,18 +13,11 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/str_back"
-            android:textColor="#fff"
+            android:text="取消"
+            android:textColor="#06bf04"
             android:background="@null"
-            android:textSize="16sp" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户注册"
-            android:textColor="#ffffff"
-            android:layout_centerInParent="true"
-            android:textSize="22sp"
-            />
+            android:textSize="18sp" />
+        
         
     </RelativeLayout>
     
@@ -42,37 +35,34 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/shape_rounded_miaobian"
             android:orientation="vertical" >
 
             <EditText
                 android:id="@+id/register_user_edit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#0000"
-                android:hint="用户名"
+                android:background="@drawable/edit_text_holo_light"
+                android:hint="请输入用户名"
                 android:singleLine="true"
                 android:padding="8dp" />
 
-            <include layout="@layout/layout_line" />
 
             <EditText
                 android:id="@+id/register_passwd_edit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#0000"
-                android:hint="密码"
+                android:background="@drawable/edit_text_holo_light"
+                android:hint="请输入密码"
                 android:singleLine="true"
 				android:password="true"
                 android:padding="8dp" />
-             <include layout="@layout/layout_line" />
 
             <EditText
                 android:id="@+id/re_register_passwd_edit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#0000"
-                android:hint="密码确认"
+                android:background="@drawable/edit_text_holo_light"
+                android:hint="请确认密码"
                 android:singleLine="true"
 				android:password="true"
                 android:padding="8dp" />
@@ -82,11 +72,11 @@
             android:id="@+id/register_register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/btn_denglu"
             android:gravity="center"
             android:padding="8dp"
             android:text="注 册"
-            android:textStyle="bold"
             android:textColor="#ffffff" />
     </LinearLayout>
 

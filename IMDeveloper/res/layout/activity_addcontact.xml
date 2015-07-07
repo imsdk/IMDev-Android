@@ -100,7 +100,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/icon" />
 
         <TextView
             android:id="@+id/search_name"

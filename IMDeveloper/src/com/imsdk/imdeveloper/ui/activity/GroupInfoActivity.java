@@ -215,12 +215,21 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 		switch (v.getId()) {
 			case R.id.groupinfo_name_layout:
 			{
+				
+				if(!groupInfo.getOwnerCustomUserID().equals(IMMyself.getCustomUserID())){
+					UICommon.showTips(R.drawable.tips_error, "您不是群主，不能修改群名称");
+					return;
+				}
 				//修改群名称
 				showGroupNameOrInfoDialog("群名称");
 			}
 				break;
 			case R.id.groupinfo_info_layout:
 			{
+				if(!groupInfo.getOwnerCustomUserID().equals(IMMyself.getCustomUserID())){
+					UICommon.showTips(R.drawable.tips_error, "您不是群主，不能修改群信息");
+					return;
+				}
 				//修改群信息
 				showGroupNameOrInfoDialog("群信息");
 			}

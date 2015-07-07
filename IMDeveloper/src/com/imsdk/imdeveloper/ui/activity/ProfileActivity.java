@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.ui.a1common.UICommon;
+import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 
 public class ProfileActivity extends Activity implements OnClickListener {
 	// data
@@ -30,7 +31,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	private String mCustomUserID;
 
 	// ui
-	private ImageView mMainPhotoImageView;
+	private RoundedCornerImageView mMainPhotoImageView;
 
 	private TextView mNickNameTextView;
 	private TextView mGenderTextView;
@@ -59,7 +60,8 @@ public class ProfileActivity extends Activity implements OnClickListener {
 
 		mCustomUserID = getIntent().getStringExtra("CustomUserID");
 
-		mMainPhotoImageView = (ImageView) findViewById(R.id.profile_mainphoto_imageview);
+		mMainPhotoImageView = (RoundedCornerImageView) findViewById(R.id.profile_mainphoto_imageview);
+		mMainPhotoImageView.setRoundness(8);
 
 		mNickNameTextView = (TextView) findViewById(R.id.profile_nickname_textview);
 		mGenderTextView = (TextView) findViewById(R.id.profile_gender_textview);
@@ -72,7 +74,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		if (bitmap != null) {
 			mMainPhotoImageView.setImageBitmap(bitmap);
 		} else {
-			mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+			mMainPhotoImageView.setImageResource(R.drawable.icon);
 		}
 
 		mKickToBlacklistBtn = (Button) findViewById(R.id.profile_kicktoblack_btn);
@@ -134,7 +136,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 							mMainPhotoImageView.setImageBitmap(bitmap);
 						} else {
 							mMainPhotoImageView
-									.setImageResource(R.drawable.ic_launcher);
+									.setImageResource(R.drawable.icon);
 						}
 					}
 

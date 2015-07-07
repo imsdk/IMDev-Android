@@ -2,8 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome"
-    >
+    android:background="@color/white">
 
+    
+    <ImageView
+        android:id="@+id/wel_img1" 
+        android:layout_width="120dp"
+        android:layout_height="153dp"
+        android:src="@drawable/welcome_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@null"/>
+    
+    
+    <ImageView 
+        android:id="@+id/wel_img2"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:src="@drawable/welcome_2"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:contentDescription="@null"/>
+    
 
 </RelativeLayout>

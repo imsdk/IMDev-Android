@@ -4,16 +4,33 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <com.imsdk.imdeveloper.ui.view.sortlistview.ClearEditText
-        android:id="@+id/contacts_edittext"
+    <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dip"
-        android:background="@drawable/search_bar_edit_selector"
-        android:drawableLeft="@drawable/search_bar_icon_normal"
-        android:hint="请输入关键字"
-        android:singleLine="true"
-        android:textSize="15.0dip" />
+        android:background="#f0f0f0"
+        android:orientation="vertical">
+        
+        <com.imsdk.imdeveloper.ui.view.sortlistview.ClearEditText
+	        android:id="@+id/contacts_edittext"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dip"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginRight="10dip"
+	        android:layout_marginBottom="10dip"
+	        android:background="@drawable/edit_rounded"
+	        android:drawableLeft="@drawable/search"
+	        android:hint=" 搜索好友"
+	        android:textColorHint="#cccccc"
+	        android:singleLine="true"
+	        android:textSize="15.0dip" />
+        
+        <View 
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#dddddd"/>
+        
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"

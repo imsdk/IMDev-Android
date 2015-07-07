@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.ui.a1common.DataCommon;
 import com.imsdk.imdeveloper.ui.activity.ProfileActivity;
+import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 import com.imsdk.imdeveloper.util.CommonUtil;
 
 public class SortAdapter extends BaseAdapter implements SectionIndexer {
@@ -69,7 +70,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 					null);
 			viewHolder.mGroupIndexTextView = (TextView) view
 					.findViewById(R.id.item_sort_contact_groupindex_textview);
-			viewHolder.mMainPhotoImageView = (ImageView) view
+			viewHolder.mMainPhotoImageView = (RoundedCornerImageView) view
 					.findViewById(R.id.item_sort_contact_mainphoto_imageview);
 			viewHolder.mUserNameTextView = (TextView) view
 					.findViewById(R.id.item_sort_contact_username_textview);
@@ -96,10 +97,11 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 
 		Uri uri = IMSDKMainPhoto.getLocalUri(customUserID);
 
+		viewHolder.mMainPhotoImageView.setRoundness(8);
 		if (uri != null) {
 			viewHolder.mMainPhotoImageView.setImageURI(uri);
 		} else {
-			viewHolder.mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+			viewHolder.mMainPhotoImageView.setImageResource(R.drawable.news_head_man);
 		}
 		//有昵称则设置昵称
 		if(CommonUtil.isNull(IMSDKNickname.get(this.mList.get(position)))){
@@ -141,7 +143,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 
 		// ui
 		TextView mGroupIndexTextView;
-		ImageView mMainPhotoImageView;
+		RoundedCornerImageView mMainPhotoImageView;
 		TextView mUserNameTextView;
 		RelativeLayout mUserLayout;
 
@@ -152,7 +154,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 			if (uri != null) {
 				mMainPhotoImageView.setImageURI(uri);
 			} else {
-				mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+				mMainPhotoImageView.setImageResource(R.drawable.icon);
 			}
 		}
 	}

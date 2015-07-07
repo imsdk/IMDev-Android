@@ -10,7 +10,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +26,7 @@ public class SignActivity extends Activity {
 	private ImageView mDeleteImageView;
 	private EditText mSignEditText;
 	private TextView mCount;
-	private TextView mSubmit;
+	private Button mSubmit;
 	private final static int MAX_COUNT = 25;
 
 	@Override
@@ -42,7 +44,7 @@ public class SignActivity extends Activity {
 
 	private void initViews() {
 		mCount = (TextView) findViewById(R.id.addmood_count);
-		mSubmit = (TextView) findViewById(R.id.submit);
+		mSubmit = (Button) findViewById(R.id.imbasetitlebar_right);
 		mDeleteImageView = (ImageView) findViewById(R.id.iv_delete);
 
 		mSignEditText = (EditText) findViewById(R.id.addmood_content);
@@ -58,6 +60,20 @@ public class SignActivity extends Activity {
 			mSignEditText.setText(array[2]);
 		}
 
+		//title
+		((TextView)this.findViewById(R.id.imbasetitlebar_title)).setText("个性签名");
+		
+		//返回事件
+		((ImageButton) findViewById(R.id.imbasetitlebar_back))
+		.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
+		mSubmit.setVisibility(View.VISIBLE);
+		mSubmit.setText("完成");
 		
 		setLeftCount();
 	}
@@ -89,12 +105,6 @@ public class SignActivity extends Activity {
 			}
 		});
 
-		findViewById(R.id.iv_back).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
 	}
 
 	private TextWatcher mTextWatcher = new TextWatcher() {

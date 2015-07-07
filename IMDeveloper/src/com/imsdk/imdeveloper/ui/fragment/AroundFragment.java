@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.ui.activity.MainActivity;
 import com.imsdk.imdeveloper.ui.activity.ProfileActivity;
+import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase.Mode;
 import com.imsdk.imdeveloper.ui.view.pulltorefresh.PullToRefreshBase.OnRefreshListener2;
@@ -153,7 +154,7 @@ public class AroundFragment extends Fragment {
 				viewHolder = new UserItemViewHolder();
 				convertView = MainActivity.sSingleton.mInflater.inflate(
 						R.layout.item_user, parent, false);
-				viewHolder.mUserMainPhotoImageView = (ImageView) convertView
+				viewHolder.mUserMainPhotoImageView = (RoundedCornerImageView) convertView
 						.findViewById(R.id.item_user_mainphoto_imageview);
 				viewHolder.mUserNameTextView = (TextView) convertView
 						.findViewById(R.id.item_user_name_textview);
@@ -168,11 +169,12 @@ public class AroundFragment extends Fragment {
 
 			Bitmap bitmap = IMSDKMainPhoto.get(customUserID);
 
+			viewHolder.mUserMainPhotoImageView.setRoundness(8);
 			if (bitmap != null) {
 				viewHolder.mUserMainPhotoImageView.setImageBitmap(bitmap);
 			} else {
 				viewHolder.mUserMainPhotoImageView
-						.setImageResource(R.drawable.ic_launcher);
+						.setImageResource(R.drawable.icon);
 			}
 
 			//有昵称则设置昵称
@@ -195,17 +197,18 @@ public class AroundFragment extends Fragment {
 			private String mCustomUserID;
 
 			// ui
-			private ImageView mUserMainPhotoImageView;
+			private RoundedCornerImageView mUserMainPhotoImageView;
 			private TextView mUserNameTextView;
 
 			@Override
 			public void onDataChanged() {
 				Uri uri = IMSDKMainPhoto.getLocalUri(mCustomUserID);
 
+				mUserMainPhotoImageView.setRoundness(8);
 				if (uri != null) {
 					mUserMainPhotoImageView.setImageURI(uri);
 				} else {
-					mUserMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+					mUserMainPhotoImageView.setImageResource(R.drawable.icon);
 				}
 			}
 		}

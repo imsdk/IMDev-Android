@@ -7,6 +7,7 @@ import imsdk.data.IMSDK;
 import imsdk.data.mainphoto.IMSDKMainPhoto;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -30,6 +32,7 @@ import com.imsdk.imdeveloper.util.LoadingDialog;
 
 public class LoginActivity extends Activity implements OnClickListener {
 	public static LoginActivity sSingleton;
+	private SharedPreferences mySharedPreferences;
 
 	private EditText mUserNameEditText; // 帐号编辑框
 	private EditText mPasswordEditText; // 密码编辑框
@@ -37,6 +40,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private ImageView mImageView;
 	private Button mLoginBtn;
 	private Button mRegisterBtn;
+	private CheckBox mRememberMe;
 
 	private LoadingDialog mDialog;
 
@@ -68,9 +72,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
+		
+		mySharedPreferences = getSharedPreferences("imsdk", Activity.MODE_PRIVATE); 
 
 		mUserNameEditText = (EditText) findViewById(R.id.login_user_name_edittext);
 		mPasswordEditText = (EditText) findViewById(R.id.login_password_edittext);
+		mRememberMe = (CheckBox)findViewById(R.id.select_remember_me);
 
 		mLoginBtn = (Button) findViewById(R.id.login_login_btn);
 		mLoginBtn.setOnClickListener(this);
@@ -80,7 +87,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		mImageView = (ImageView) findViewById(R.id.login_imageview);
 
-		IMMyself.init(getApplicationContext(), IMConfiguration.sAppKey,
+		IMMyself.init(
 				new OnAutoLoginListener() {
 					@Override
 					public void onAutoLoginBegan() {
@@ -125,6 +132,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		if (customUserID != null) {
 			mUserNameEditText.setText(customUserID);
+		}else{
+			//设置默认的
+			mUserNameEditText.setText(mySharedPreferences.getString("userName", ""));
 		}
 	}
 
@@ -144,6 +154,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 			intent.putExtra("userName", mUserNameEditText.getText().toString());
 			startActivity(intent);
 			LoginActivity.this.finish();
+			
+			//缓存用户名
+			if(mRememberMe.isChecked()){
+				SharedPreferences.Editor editor = mySharedPreferences.edit();
+				editor.putString("userName", mUserNameEditText.getText().toString());
+				editor.commit();	
+			}
 		}
 			break;
 		case FAILURE:
@@ -277,7 +294,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				IMApplication.sImageLoader.displayImage(uri.toString(), mImageView,
 						IMApplication.sDisplayImageOptions);
 			} else {
-				mImageView.setImageResource(R.drawable.ic_launcher);
+				mImageView.setImageResource(R.drawable.icon);
 			}
 		}
 	};

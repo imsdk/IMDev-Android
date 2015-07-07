@@ -415,7 +415,7 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 		if (bitmap != null) {
 			mMainPhotoImageView.setImageBitmap(bitmap);
 		} else {
-			mMainPhotoImageView.setImageResource(R.drawable.ic_launcher);
+			mMainPhotoImageView.setImageResource(R.drawable.icon);
 		}
 		//昵称、爱萌账号
 		String nickname = IMSDKNickname.get();

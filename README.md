@@ -7,7 +7,7 @@
 期待大家能找出bug，及时修正。也欢迎大家随时吐槽，请入QQ群：99823660
 <br/>
 
-截止2015-04-02 最新版本号：v1.2.8
+截止2015-07-07 最新版本号：v1.3.7
 <br/>
 <br/>
 
@@ -58,8 +58,8 @@ AndroidManifest.xml权限配置
 
 ```
 // 初始化IMSDK
-// 设置applicationContext和appKey
-IMMyself.init(getApplicationContext(), "00b6413a92d4c1c84ad99e0a", null);
+// 在Application类onCreate()方法中，设置applicationContext和appKey
+IMSDK.init(getApplicationContext(), "00b6413a92d4c1c84ad99e0a");
  
 // 设置本用户的用户名
 IMMyself.setCustomUserID("im@imsdk.im");

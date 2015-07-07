@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,64 +14,126 @@
 
         <com.imsdk.imdeveloper.ui.view.RoundedCornerImageView
             android:id="@+id/login_imageview"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:background="@drawable/h10" />
+            android:background="@drawable/icon" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shape_rounded_miaobian"
-            android:orientation="vertical" >
+            android:layout_marginTop="20dp">
 
             <EditText
                 android:id="@+id/login_user_name_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#0000"
-                android:hint="用户名"
-                 android:inputType="textEmailAddress"
-                android:padding="8dp"
+                android:hint="请输入用户名"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/edit_text_holo_light"
+                android:paddingLeft="25dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:singleLine="true" />
-
-            <include layout="@layout/layout_line" />
-
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_alignLeft="@id/login_user_name_edittext"
+                android:layout_centerVertical="true"
+                android:src="@drawable/login_uesr"/>
+            
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+            
             <EditText
                 android:id="@+id/login_password_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#0000"
-                android:hint="密码"
-                android:padding="8dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/edit_text_holo_light"
+                android:hint="请输入密码"
                 android:password="true"
                 android:singleLine="true" />
-        </LinearLayout>
+            
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_alignLeft="@id/login_password_edittext"
+                android:layout_centerVertical="true"
+                android:src="@drawable/login_password"/>
+            
+		</RelativeLayout>
+		            
 
         <Button
             android:id="@+id/login_login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/btn_denglu"
             android:gravity="center"
             android:padding="8dp"
             android:text="登 录"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/login_register_btn"
-            android:layout_width="match_parent"
+            android:textColor="#ffffff"/>
+        
+        
+        <!-- 记住用户名 -->
+        <RelativeLayout 
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shape_juxing_zhijiao_baise"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="注册（30秒搞定）"
-            android:textColor="#939393"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+            
+            <CheckBox 
+                android:id="@+id/select_remember_me"  
+        		android:layout_width="wrap_content"  
+        		android:layout_height="wrap_content"
+        		android:checked="true"
+        		android:layout_centerVertical="true"
+        		style="@style/CustomCheckboxTheme"/>
+            
+            <TextView
+                android:layout_alignLeft="@id/select_remember_me"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+        		android:layout_centerHorizontal="true"
+                android:text="记住用户名"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+            
+            
+        </RelativeLayout>
+        
+        
     </LinearLayout>
+    
+    
+    <Button
+	    android:id="@+id/login_register_btn"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="15dp"
+	    android:background="@null"
+	    android:gravity="center"
+	    android:padding="8dp"
+	    android:text="注册"
+	    android:textColor="#576b95"
+	    android:textSize="20sp"/>
+    
 
 </RelativeLayout>

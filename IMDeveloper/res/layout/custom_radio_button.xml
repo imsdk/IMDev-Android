@@ -23,7 +23,7 @@
             android:contentDescription="@string/app_name"
             android:layout_width="32dp"
             android:layout_height="28dp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/icon"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             />
@@ -32,7 +32,7 @@
             android:contentDescription="@string/app_name"
             android:layout_width="32dp"
             android:layout_height="28dp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/icon"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             />

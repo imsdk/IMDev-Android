@@ -1,5 +1,7 @@
 package com.imsdk.imdeveloper.app;
 
+import imsdk.data.IMMyself;
+import imsdk.data.IMSDK;
 import android.app.Application;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -38,6 +40,9 @@ public class IMApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		IMSDK.init(getApplicationContext(), IMConfiguration.sAppKey);
+		
 		initData();
 	}
 

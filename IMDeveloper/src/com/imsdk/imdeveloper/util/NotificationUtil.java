@@ -61,7 +61,7 @@ public class NotificationUtil {
 
 		if (icon == null) {
 			icon = BitmapFactory.decodeResource(mContext.getResources(),
-					R.drawable.ic_launcher);
+					R.drawable.icon);
 		}
 
 		Intent intent = new Intent(mContext, IMChatActivity.class);

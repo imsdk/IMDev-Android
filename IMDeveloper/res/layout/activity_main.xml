@@ -27,14 +27,15 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            android:contentDescription="@null"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/left"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toLeftOf="@id/mid"
-            android:layout_toRightOf="@id/titlebar_logo"
+            android:layout_marginLeft="5dp"
             android:ellipsize="end"
             android:gravity="left|center_vertical"
             android:singleLine="true"
@@ -56,6 +57,7 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
+    
     <com.imsdk.imdeveloper.ui.view.CustomRadioGroup
         android:id="@+id/main_footer"
         android:layout_width="match_parent"
