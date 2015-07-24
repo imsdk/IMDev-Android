@@ -286,6 +286,10 @@ public class MainActivity extends FragmentActivity {
 
 			@Override
 			public void onReceiveSystemText(String text, long serverActionTime) {
+				
+				Toast.makeText(MainActivity.this, "收到系统消息："+text, Toast.LENGTH_SHORT)
+				.show();
+				
 			}
 		});
 

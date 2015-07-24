@@ -83,31 +83,14 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	}
 
 	public void registerThread() {
-		// 不设自动登录
-		boolean result = IMMyself.init(null);
-
-		if (!result) {
-			UICommon.showTips(R.drawable.tips_warning, IMSDK.getLastError());
-			return;
-		}
-
-		result = IMMyself.setCustomUserID(mCustomUserID);
-
-		if (!result) {
-			UICommon.showTips(R.drawable.tips_warning, IMSDK.getLastError());
-			return;
-		}
-
-		result = IMMyself.setPassword(mPassword);
-
-		if (!result) {
-			UICommon.showTips(R.drawable.tips_warning, IMSDK.getLastError());
-			return;
-		}
+	
+		IMMyself.setCustomUserID(mCustomUserID);
+		IMMyself.setPassword(mPassword);
 
 		IMMyself.register(5, new OnActionListener() {
 			@Override
 			public void onSuccess() {
+				mRegisterBtn.setEnabled(true);
 				T.show(RegisterActivity.this, "注册成功");
 
 				Intent intent = new Intent();
@@ -116,10 +99,13 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				intent.putExtra("password", mPassword);
 				setResult(Activity.RESULT_OK, intent);
 				finish();
+				
 			}
 
 			@Override
 			public void onFailure(String error) {
+				mRegisterBtn.setEnabled(true);
+				
 				if (error.equals("Timeout")) {
 					error = "注册超时";
 				}

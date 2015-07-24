@@ -16,13 +16,23 @@
     <TextView
         android:id="@+id/chatting_item_system_content"
         style="@style/chat_content_date_style"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dip"
-        android:layout_marginRight="40dip"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/im_chatsystem_bg_normal"
+        android:background="@drawable/im_chatsystem_bg"
         android:gravity="left|center_vertical" />
+    
+    <!-- 自定义View区域 (可选) -->
+    <imsdk.views.IMCustomLView
+        android:id="@+id/chatting_item_custom_view"
+        android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:layout_gravity="center"
+  		android:orientation="vertical"
+  		android:visibility="gone">
+    </imsdk.views.IMCustomLView>
 
     <LinearLayout
         android:id="@+id/chatting_item_left"
@@ -68,6 +78,7 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
+                        android:id="@+id/left_content_chat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/im_chatfrom_bg_normal"
@@ -91,7 +102,7 @@
                             android:background="@anim/im_chatting_left_voice_play" />
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <imsdk.views.IMCustomRView
                         android:id="@+id/content_left_image_root"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,7 +134,7 @@
                             android:gravity="center"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
-                    </RelativeLayout>
+                    </imsdk.views.IMCustomRView>
                 </FrameLayout>
 
                 <ImageView
@@ -200,6 +211,7 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
+                        android:id="@+id/right_content_chat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/im_chatto_bg_normal"
@@ -223,7 +235,7 @@
                             android:background="@anim/im_chatting_right_voice_play" />
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <imsdk.views.IMCustomRView
                         android:id="@+id/content_right_image_root"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -254,7 +266,7 @@
                             android:gravity="center"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
-                    </RelativeLayout>
+                    </imsdk.views.IMCustomRView>
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>

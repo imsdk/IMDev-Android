@@ -183,7 +183,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.login_register_btn: {
 			Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-
 			startActivityForResult(intent, 1);
 		}
 			break;
@@ -259,21 +258,23 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (requestCode) {
 		case 1:
 			if (resultCode == RESULT_OK) {
+				
 				String username = data.getStringExtra("username");
-				String password = data.getStringExtra("password");
-
-				if (null == username || "".equals(username) || "null".equals(username)
-						|| null == password || "".equals(password)
-						|| "null".equals(password)) {
-					return;
-				} else {
-					mUserNameEditText.setText(username);
-					mPasswordEditText.setText(password);
-					mLoginBtn.setEnabled(false);
-					mDialog = new LoadingDialog(this, "正在登录...");
-					mDialog.show();
-					login();
+				
+				//缓存用户名
+				if(mRememberMe.isChecked()){
+					SharedPreferences.Editor editor = mySharedPreferences.edit();
+					editor.putString("userName", username);
+					editor.commit();	
 				}
+				
+				//注册成功，已是登录状态，
+				//跳转首页
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+				intent.putExtra("userName", username);
+				startActivity(intent);
+				LoginActivity.this.finish();
 			}
 
 			break;

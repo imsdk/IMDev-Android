@@ -1,6 +1,5 @@
 package com.imsdk.imdeveloper.app;
 
-import imsdk.data.IMMyself;
 import imsdk.data.IMSDK;
 import android.app.Application;
 import android.app.NotificationManager;

@@ -22,30 +22,18 @@
             android:visibility="gone" >
 
             <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="0.0dip"
-                android:layout_marginLeft="35.0dip"
-                android:layout_marginTop="5.0dip"
-                android:contentDescription="@null"
-                android:src="@drawable/im_voice_rcd_hint" />
-
-            <ImageView
                 android:id="@+id/voice_rcd_hint_anim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView1"
-                android:layout_marginLeft="4.0dip"
-                android:layout_toRightOf="@+id/imageView1"
-                android:background="@drawable/im_amp1"
-                android:contentDescription="@null" />
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@null"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25.0dip"
-                android:layout_below="@+id/imageView1"
+                android:layout_below="@+id/voice_rcd_hint_anim"
                 android:layout_marginBottom="5.0dip"
                 android:gravity="bottom|center"
                 android:minWidth="120.0dip"
@@ -94,7 +82,6 @@
                 android:layout_height="25.0dip"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="5.0dip"
-                android:background="@drawable/im_rcd_cancel_bg"
                 android:gravity="bottom|center"
                 android:minWidth="120.0dip"
                 android:paddingBottom="3.0dip"

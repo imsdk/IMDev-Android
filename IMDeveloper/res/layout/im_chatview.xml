@@ -18,13 +18,14 @@
             android:background="@drawable/im_title_bg2"
             android:visibility="visible" >
 
-            <ImageButton
+            <imsdk.views.CustomImageButton
                 android:id="@+id/imchatview_back"
                 android:layout_width="60dip"
                 android:layout_height="45dip"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
+                android:scaleType="center"
                 android:src="@drawable/im_back_select_btn" />
 
             <ImageView
@@ -41,21 +42,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="15dip"
-                android:layout_toRightOf="@id/dividingline"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
-            <Button
+            <imsdk.views.CustomImageButton
                 android:id="@+id/imchatview_titlebarright"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="9dp"
-                android:background="@null"
-                android:textColor="@color/im_titlebar_right_selector"
-                android:textSize="19sp"
+                android:contentDescription="@null"
+                android:background="@android:color/transparent"
+                android:scaleType="center"
                 android:visibility="gone" />
         </RelativeLayout>
 
@@ -72,33 +71,34 @@
             android:transcriptMode="alwaysScroll" />
 
         <LinearLayout
+            android:id="@+id/imchatview_inputbar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/im_tab_bg"
             android:gravity="center"
             android:orientation="horizontal" >
 
+            <!-- “+” 号按钮 -->
+			
+            <ImageButton
+                android:id="@+id/imchatview_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/im_type_select_btn" />
+            
             <!-- “表情” 按钮 -->
 
             <ImageButton
                 android:id="@+id/imchatview_face"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@null"
-                android:src="@drawable/im_chatting_emoji_btn" />
-
-            <!-- “+” 号按钮 -->
-
-            <ImageButton
-                android:id="@+id/imchatview_plus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:src="@drawable/im_type_select_btn" />
+                android:src="@drawable/im_chatting_emoji_btn" />
 
             <LinearLayout
                 android:id="@+id/chat_plantext_root"
@@ -118,9 +118,10 @@
                     android:maxLines="3"
                     android:minHeight="45dp"
                     android:singleLine="false"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textColor="#000" />
 
-                <Button
+                <imsdk.views.CustomImageButton
                     android:id="@+id/imchatview_record"
                     android:layout_width="0dip"
                     android:layout_height="45dp"
@@ -145,7 +146,7 @@
         <LinearLayout
             android:id="@+id/imchatview_footer"
             android:layout_width="fill_parent"
-            android:layout_height="208dp"
+            android:layout_height="170dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:visibility="gone" >
@@ -153,7 +154,7 @@
             <TableLayout
                 android:id="@+id/imchatview_pluscontent"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:layout_width="fill_parent"
@@ -179,6 +180,7 @@
                             android:src="@drawable/im_chat_photo" />
 
                         <TextView
+                            android:id="@+id/imchatview_choosephoto_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_image"
@@ -204,6 +206,7 @@
                             android:src="@drawable/im_chat_camera" />
 
                         <TextView
+                            android:id="@+id/imchatview_takephoto_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_take_photo"
@@ -212,6 +215,7 @@
                     </LinearLayout>
                     
                     <LinearLayout
+                        android:id="@+id/plusmenu_layout_3"          
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -220,6 +224,7 @@
                         android:visibility="invisible" >
 
                         <ImageButton
+							android:id="@+id/plusmenu_btn_3"                            
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/im_app_panel_shade"
@@ -228,6 +233,7 @@
                             android:src="@drawable/im_chat_camera" />
 
                         <TextView
+                            android:id="@+id/plusmenu_btntxt_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_take_photo"
@@ -236,6 +242,7 @@
                     </LinearLayout>
                     
                     <LinearLayout
+                        android:id="@+id/plusmenu_layout_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -244,6 +251,7 @@
                         android:visibility="invisible" >
 
                         <ImageButton
+                            android:id="@+id/plusmenu_btn_4"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/im_app_panel_shade"
@@ -252,6 +260,7 @@
                             android:src="@drawable/im_chat_camera" />
 
                         <TextView
+                            android:id="@+id/plusmenu_btntxt_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/str_take_photo"
@@ -259,7 +268,7 @@
                             android:textSize="16sp" />
                     </LinearLayout>
                 </TableRow>
-
+				
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -347,7 +356,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="9dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
             </LinearLayout>
