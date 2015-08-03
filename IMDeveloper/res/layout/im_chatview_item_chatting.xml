@@ -102,7 +102,7 @@
                             android:background="@anim/im_chatting_left_voice_play" />
                     </LinearLayout>
 
-                    <imsdk.views.IMCustomRView
+					<RelativeLayout
                         android:id="@+id/content_left_image_root"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,7 +134,15 @@
                             android:gravity="center"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
+                    </RelativeLayout>
+                    
+                    <imsdk.views.IMCustomRView
+                        android:id="@+id/content_left_custom_root"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/im_chatfrom_bg_normal" >
                     </imsdk.views.IMCustomRView>
+                    
                 </FrameLayout>
 
                 <ImageView
@@ -235,7 +243,7 @@
                             android:background="@anim/im_chatting_right_voice_play" />
                     </LinearLayout>
 
-                    <imsdk.views.IMCustomRView
+					<RelativeLayout
                         android:id="@+id/content_right_image_root"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -266,7 +274,15 @@
                             android:gravity="center"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
+                    </RelativeLayout>
+                    
+                    <imsdk.views.IMCustomRView
+                        android:id="@+id/content_right_custom_root"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/im_chatto_bg_normal" >
                     </imsdk.views.IMCustomRView>
+                    
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>
