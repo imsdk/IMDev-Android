@@ -184,7 +184,7 @@ public class AddContactActivity extends Activity implements View.OnClickListener
 							public void onFailure(String error) {
 								item_search.setVisibility(View.GONE);
 								mDialog.dismiss();
-								UICommon.showTips(R.drawable.tips_error, error);
+								UICommon.showTips(AddContactActivity.this, R.drawable.tips_error, error);
 							}
 						});
 					}

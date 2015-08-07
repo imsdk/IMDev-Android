@@ -2,7 +2,6 @@ package com.imsdk.imdeveloper.ui.activity;
 
 import imsdk.data.IMMyself;
 import imsdk.data.IMMyself.OnActionListener;
-import imsdk.data.IMSDK;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.imsdk.imdeveloper.R;
-import com.imsdk.imdeveloper.app.IMConfiguration;
 import com.imsdk.imdeveloper.ui.a1common.UICommon;
 import com.imsdk.imdeveloper.util.T;
 
@@ -72,9 +70,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 		// 判断帐号和密码
 		if ("".equals(mCustomUserID) || "".equals(mPassword) || "".equals(mRepassword)) {
-			UICommon.showTips(R.drawable.tips_warning, "帐号或密码不能为空，\n请输入后再登录！");
+			UICommon.showTips(RegisterActivity.this, R.drawable.tips_warning, "帐号或密码不能为空，\n请输入后再登录！");
 		} else if (!mPassword.equals(mRepassword)) {
-			UICommon.showTips(R.drawable.tips_warning, "两次输入的密码不一致!");
+			UICommon.showTips(RegisterActivity.this, R.drawable.tips_warning, "两次输入的密码不一致!");
 		} else {
 			mRegisterBtn.setEnabled(false);
 			// 注册

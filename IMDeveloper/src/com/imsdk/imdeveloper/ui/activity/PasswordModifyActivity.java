@@ -66,11 +66,11 @@ public class PasswordModifyActivity extends Activity implements OnClickListener 
 				|| "".equals(mRePassword))// 判断
 		// 帐号和密码
 		{
-			UICommon.showTips(R.drawable.tips_warning, "密码不能为空！");
+			UICommon.showTips(PasswordModifyActivity.this, R.drawable.tips_warning, "密码不能为空！");
 		} else if (!mNewPassword.equals(IMMyself.getPassword())) {
-			UICommon.showTips(R.drawable.tips_warning, "当前密码输入错误！");
+			UICommon.showTips(PasswordModifyActivity.this, R.drawable.tips_warning, "当前密码输入错误！");
 		} else if (!mNewPassword.equals(mRePassword)) {
-			UICommon.showTips(R.drawable.tips_warning, "两次输入的新密码不一致!");
+			UICommon.showTips(PasswordModifyActivity.this, R.drawable.tips_warning, "两次输入的新密码不一致!");
 		} else {
 			mModifyBtn.setEnabled(false);
 			// 注册

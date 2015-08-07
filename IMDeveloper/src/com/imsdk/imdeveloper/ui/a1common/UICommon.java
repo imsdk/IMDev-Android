@@ -1,5 +1,6 @@
 package com.imsdk.imdeveloper.ui.a1common;
 
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
@@ -9,8 +10,8 @@ import com.imsdk.imdeveloper.ui.view.TipsToast;
 public class UICommon {
 	private static TipsToast sTipsToast;
 
-	public static void showTips(int iconResID, String tips) {
-		if (LoginActivity.sSingleton == null) {
+	public static void showTips(Context context, int iconResID, String tips) {
+		if (context == null) {
 			return;
 		}
 
@@ -23,11 +24,8 @@ public class UICommon {
 				sTipsToast.cancel();
 			}
 		} else {
-			LoginActivity.sSingleton.getApplication();
-			LoginActivity.sSingleton.getApplication().getBaseContext();
-			
-
-			sTipsToast = TipsToast.makeText(LoginActivity.sSingleton, tips,
+		
+			sTipsToast = TipsToast.makeText(context, tips,
 					TipsToast.LENGTH_SHORT);
 		}
 

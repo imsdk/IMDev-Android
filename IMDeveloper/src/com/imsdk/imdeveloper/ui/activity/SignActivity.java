@@ -187,14 +187,14 @@ public class SignActivity extends Activity {
 		IMMyselfCustomUserInfo.commit(customUserInfo, new OnActionListener() {
 			@Override
 			public void onSuccess() {
-				UICommon.showTips(R.drawable.tips_success, "修改成功");
+				UICommon.showTips(SignActivity.this, R.drawable.tips_success, "修改成功");
 				setResult(Activity.RESULT_OK);
 				finish();
 			}
 
 			@Override
 			public void onFailure(String error) {
-				UICommon.showTips(R.drawable.tips_error, "修改失败：" + error);
+				UICommon.showTips(SignActivity.this, R.drawable.tips_error, "修改失败：" + error);
 			}
 		});
 	}

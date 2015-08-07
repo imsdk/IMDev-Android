@@ -196,14 +196,14 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 			    @Override
 			    public void onSuccess() {    
 			        // 移除成功回调
-			    	UICommon.showTips(R.drawable.tips_success, "移除成功");
+			    	UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_success, "移除成功");
 			    	init();
 			    }
 			     
 			    @Override
 			    public void onFailure(String error) {
 			        // 移除失败回调
-			    	UICommon.showTips(R.drawable.tips_error, "移除失败：" + error);
+			    	UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_error, "移除失败：" + error);
 			    }
 			});
 			
@@ -217,7 +217,7 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 			{
 				
 				if(!groupInfo.getOwnerCustomUserID().equals(IMMyself.getCustomUserID())){
-					UICommon.showTips(R.drawable.tips_error, "您不是群主，不能修改群名称");
+					UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_error, "您不是群主，不能修改群名称");
 					return;
 				}
 				//修改群名称
@@ -227,7 +227,7 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 			case R.id.groupinfo_info_layout:
 			{
 				if(!groupInfo.getOwnerCustomUserID().equals(IMMyself.getCustomUserID())){
-					UICommon.showTips(R.drawable.tips_error, "您不是群主，不能修改群信息");
+					UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_error, "您不是群主，不能修改群信息");
 					return;
 				}
 				//修改群信息
@@ -307,12 +307,12 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 				if(info != null){
 					mGroupInfoTV.setText(info);	
 				}
-				UICommon.showTips(R.drawable.tips_success, "修改"+showName+"成功");
+				UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_success, "修改"+showName+"成功");
 			}
 			
 			@Override
 			public void onFailure(String error) {
-				UICommon.showTips(R.drawable.tips_error, "修改"+showName+"失败：" + error);
+				UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_error, "修改"+showName+"失败：" + error);
 			}
 		});
 	}
@@ -334,14 +334,14 @@ public class GroupInfoActivity extends Activity implements OnClickListener{
 				@Override
 			    public void onSuccess() {
 			        // 添加成功回调
-					UICommon.showTips(R.drawable.tips_success, "添加群成员成功");
+					UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_success, "添加群成员成功");
 					init();
 			    }
 			    
 			    @Override
 			    public void onFailure(String error) {
 			        // 添加失败回调  
-			    	UICommon.showTips(R.drawable.tips_error, "添加群成员失败：" + error);
+			    	UICommon.showTips(GroupInfoActivity.this, R.drawable.tips_error, "添加群成员失败：" + error);
 			    }
 			});
 		}

@@ -54,31 +54,31 @@ public class ModifyPasswordActivity extends Activity implements OnClickListener{
 				String newPass = mNewPasswordET.getText().toString();
 				
 				if(oldPass == null || oldPass.length() == 0){
-					UICommon.showTips(R.drawable.tips_error, "请输入旧密码");
+					UICommon.showTips(ModifyPasswordActivity.this, R.drawable.tips_error, "请输入旧密码");
 					return;
 				}
 				
 				if(newPass == null || newPass.length() == 0){
-					UICommon.showTips(R.drawable.tips_error, "请输入新密码");
+					UICommon.showTips(ModifyPasswordActivity.this, R.drawable.tips_error, "请输入新密码");
 					return;
 				}
 				
 				if(oldPass.equals(newPass)){
-					UICommon.showTips(R.drawable.tips_error, "新密码不能与旧密码一致");
+					UICommon.showTips(ModifyPasswordActivity.this, R.drawable.tips_error, "新密码不能与旧密码一致");
 					return;
 				}
 				IMMyself.modifyPassword(oldPass, newPass, new IMMyself.OnActionListener() {
 					
 					@Override
 					public void onSuccess() {
-						UICommon.showTips(R.drawable.tips_success, "修改密码成功");
+						UICommon.showTips(ModifyPasswordActivity.this, R.drawable.tips_success, "修改密码成功");
 						mOldPasswordET.setText("");
 						mNewPasswordET.setText("");
 					}
 					
 					@Override
 					public void onFailure(String error) {
-						UICommon.showTips(R.drawable.tips_error, "修改密码失败："+error);
+						UICommon.showTips(ModifyPasswordActivity.this, R.drawable.tips_error, "修改密码失败："+error);
 					}
 				});
 				

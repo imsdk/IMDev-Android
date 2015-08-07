@@ -8,5 +8,16 @@
         <attr name="main_photo_visible" format="boolean" />
         <attr name="main_photo_corner_radius" format="dimension" />
     </declare-styleable>
+    
+    <declare-styleable name="CustomImageButton">
+        <attr name="custom_background" format="reference|color" />
+        <attr name="custom_src" format="reference|color" />
+        <attr name="custom_text" format="reference|string" />
+        <attr name="custom_textColor" format="color" />
+        <attr name="custom_textSize" format="dimension" />
+        <attr name="custom_width" format="dimension" />
+        <attr name="custom_height" format="dimension" />
+        <attr name="custom_weight" format="integer" />
+    </declare-styleable>
 
 </resources>

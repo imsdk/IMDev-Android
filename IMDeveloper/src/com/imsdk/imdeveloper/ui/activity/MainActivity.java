@@ -389,6 +389,7 @@ public class MainActivity extends FragmentActivity {
 												@Override
 												public void onSuccess() {
 													UICommon.showTips(
+															MainActivity.this,
 															R.drawable.tips_error,
 															"你拒绝了" + fromCustomUserID
 																	+ "的好友请求！");

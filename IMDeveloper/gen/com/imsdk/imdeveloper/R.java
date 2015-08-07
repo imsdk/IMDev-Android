@@ -25,6 +25,70 @@ public final class R {
         public static final int jazzy_effects=0x7f060001;
     }
     public static final class attr {
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int custom_background=0x7f010026;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_height=0x7f01002c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int custom_src=0x7f010027;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int custom_text=0x7f010028;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_textColor=0x7f010029;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_textSize=0x7f01002a;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_weight=0x7f01002d;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int custom_width=0x7f01002b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -602,9 +666,9 @@ containing a value of this type.
         public static final int ziliaobianji_jiantou_icon=0x7f0200e9;
     }
     public static final class id {
-        public static final int ItemDel=0x7f0700f9;
-        public static final int ItemImage=0x7f0700f8;
-        public static final int ItemText=0x7f0700fa;
+        public static final int ItemDel=0x7f0700fb;
+        public static final int ItemImage=0x7f0700fa;
+        public static final int ItemText=0x7f0700fc;
         public static final int accordion=0x7f07000b;
         public static final int addcontact_edittext=0x7f07001d;
         public static final int addmood_content=0x7f070065;
@@ -670,35 +734,35 @@ containing a value of this type.
         public static final int dialog_title=0x7f070080;
         public static final int disabled=0x7f07000c;
         public static final int dividingline=0x7f070098;
-        public static final int emo_1=0x7f0700d4;
-        public static final int emo_10=0x7f0700dd;
-        public static final int emo_11=0x7f0700de;
-        public static final int emo_12=0x7f0700df;
-        public static final int emo_13=0x7f0700e0;
-        public static final int emo_14=0x7f0700e1;
-        public static final int emo_15=0x7f0700e2;
-        public static final int emo_16=0x7f0700e3;
-        public static final int emo_17=0x7f0700e4;
-        public static final int emo_18=0x7f0700e5;
-        public static final int emo_19=0x7f0700e6;
-        public static final int emo_2=0x7f0700d5;
-        public static final int emo_20=0x7f0700e7;
-        public static final int emo_21=0x7f0700e8;
-        public static final int emo_3=0x7f0700d6;
-        public static final int emo_4=0x7f0700d7;
-        public static final int emo_5=0x7f0700d8;
-        public static final int emo_6=0x7f0700d9;
-        public static final int emo_7=0x7f0700da;
-        public static final int emo_8=0x7f0700db;
-        public static final int emo_9=0x7f0700dc;
+        public static final int emo_1=0x7f0700d6;
+        public static final int emo_10=0x7f0700df;
+        public static final int emo_11=0x7f0700e0;
+        public static final int emo_12=0x7f0700e1;
+        public static final int emo_13=0x7f0700e2;
+        public static final int emo_14=0x7f0700e3;
+        public static final int emo_15=0x7f0700e4;
+        public static final int emo_16=0x7f0700e5;
+        public static final int emo_17=0x7f0700e6;
+        public static final int emo_18=0x7f0700e7;
+        public static final int emo_19=0x7f0700e8;
+        public static final int emo_2=0x7f0700d7;
+        public static final int emo_20=0x7f0700e9;
+        public static final int emo_21=0x7f0700ea;
+        public static final int emo_3=0x7f0700d8;
+        public static final int emo_4=0x7f0700d9;
+        public static final int emo_5=0x7f0700da;
+        public static final int emo_6=0x7f0700db;
+        public static final int emo_7=0x7f0700dc;
+        public static final int emo_8=0x7f0700dd;
+        public static final int emo_9=0x7f0700de;
         public static final int empty_cart_view=0x7f070056;
-        public static final int fl_inner=0x7f070119;
+        public static final int fl_inner=0x7f07011b;
         public static final int flip=0x7f070014;
         public static final int fliphorizontal=0x7f070005;
         public static final int flipvertical=0x7f070004;
         public static final int gridview=0x7f070016;
-        public static final int groupIcon=0x7f0700f6;
-        public static final int groupName=0x7f0700f7;
+        public static final int groupIcon=0x7f0700f8;
+        public static final int groupName=0x7f0700f9;
         public static final int groupinfo_creator_textview=0x7f070039;
         public static final int groupinfo_gridview=0x7f070030;
         public static final int groupinfo_info_layout=0x7f070035;
@@ -706,22 +770,24 @@ containing a value of this type.
         public static final int groupinfo_name_layout=0x7f070031;
         public static final int groupinfo_name_textview=0x7f070034;
         public static final int grouplist=0x7f070062;
-        public static final int icon=0x7f070118;
+        public static final int icon=0x7f07011a;
         public static final int id_choose_dir=0x7f070026;
         public static final int id_dialog_loading_msg=0x7f07007f;
-        public static final int id_dir_item_count=0x7f070111;
-        public static final int id_dir_item_image=0x7f07010f;
-        public static final int id_dir_item_name=0x7f070110;
+        public static final int id_dir_item_count=0x7f070113;
+        public static final int id_dir_item_image=0x7f070111;
+        public static final int id_dir_item_name=0x7f070112;
         public static final int id_gridView=0x7f070024;
         public static final int id_item_image=0x7f070093;
         public static final int id_item_select=0x7f070094;
-        public static final int id_list_dir=0x7f07010e;
+        public static final int id_list_dir=0x7f070110;
         public static final int id_total_count=0x7f070027;
+        public static final int im_cusbtn=0x7f0700d4;
+        public static final int im_tv=0x7f0700d5;
         public static final int imbase_titlebar=0x7f070029;
         public static final int imbasetitlebar=0x7f070057;
-        public static final int imbasetitlebar_back=0x7f0700f3;
-        public static final int imbasetitlebar_right=0x7f0700f5;
-        public static final int imbasetitlebar_title=0x7f0700f4;
+        public static final int imbasetitlebar_back=0x7f0700f5;
+        public static final int imbasetitlebar_right=0x7f0700f7;
+        public static final int imbasetitlebar_title=0x7f0700f6;
         public static final int imchatview_back=0x7f070097;
         public static final int imchatview_choosephoto=0x7f0700a5;
         public static final int imchatview_choosephoto_txt=0x7f0700a6;
@@ -745,17 +811,17 @@ containing a value of this type.
         public static final int imimg_image=0x7f0700b2;
         public static final int imimg_loading=0x7f0700b3;
         public static final int item_search=0x7f07001e;
-        public static final int item_sort_contact_groupindex_textview=0x7f0700fb;
-        public static final int item_sort_contact_mainphoto_imageview=0x7f0700fd;
-        public static final int item_sort_contact_notice_view=0x7f070100;
-        public static final int item_sort_contact_user_layout=0x7f0700fc;
-        public static final int item_sort_contact_username_textview=0x7f0700fe;
-        public static final int item_user_badgeview=0x7f07010c;
-        public static final int item_user_layout=0x7f070108;
-        public static final int item_user_mainphoto_imageview=0x7f070109;
-        public static final int item_user_name_textview=0x7f07010a;
-        public static final int item_user_otherinfo_textview=0x7f07010d;
-        public static final int item_user_time_textview=0x7f07010b;
+        public static final int item_sort_contact_groupindex_textview=0x7f0700fd;
+        public static final int item_sort_contact_mainphoto_imageview=0x7f0700ff;
+        public static final int item_sort_contact_notice_view=0x7f070102;
+        public static final int item_sort_contact_user_layout=0x7f0700fe;
+        public static final int item_sort_contact_username_textview=0x7f070100;
+        public static final int item_user_badgeview=0x7f07010e;
+        public static final int item_user_layout=0x7f07010a;
+        public static final int item_user_mainphoto_imageview=0x7f07010b;
+        public static final int item_user_name_textview=0x7f07010c;
+        public static final int item_user_otherinfo_textview=0x7f07010f;
+        public static final int item_user_time_textview=0x7f07010d;
         public static final int iv_delete=0x7f070066;
         public static final int iv_female=0x7f07007e;
         public static final int iv_male=0x7f07007c;
@@ -768,7 +834,7 @@ containing a value of this type.
         public static final int left_content=0x7f0700ba;
         public static final int left_content_chat=0x7f0700bc;
         public static final int left_content_p=0x7f0700bb;
-        public static final int line1=0x7f070113;
+        public static final int line1=0x7f070115;
         public static final int login_imageview=0x7f07003d;
         public static final int login_login_btn=0x7f070040;
         public static final int login_main=0x7f07003c;
@@ -804,9 +870,9 @@ containing a value of this type.
         public static final int myuserinfo_sign_layout=0x7f070053;
         public static final int myuserinfo_sign_textview=0x7f070054;
         public static final int newpass_edittext=0x7f070047;
-        public static final int normal_iv=0x7f070103;
-        public static final int normal_layout=0x7f070102;
-        public static final int normal_tv=0x7f070104;
+        public static final int normal_iv=0x7f070105;
+        public static final int normal_layout=0x7f070104;
+        public static final int normal_tv=0x7f070106;
         public static final int oldpass_edittext=0x7f070046;
         public static final int plusmenu_btn_3=0x7f0700ab;
         public static final int plusmenu_btn_4=0x7f0700ae;
@@ -826,16 +892,16 @@ containing a value of this type.
         public static final int profile_sendmsg_btn=0x7f070060;
         public static final int profile_sign_textview=0x7f07005c;
         public static final int progressBar=0x7f070064;
-        public static final int progressBar1=0x7f0700f1;
+        public static final int progressBar1=0x7f0700f3;
         public static final int province=0x7f070074;
         public static final int pullDownFromTop=0x7f070011;
         public static final int pullFromEnd=0x7f07000e;
         public static final int pullFromStart=0x7f07000d;
         public static final int pullUpFromBottom=0x7f070012;
-        public static final int pull_to_refresh_image=0x7f07011a;
-        public static final int pull_to_refresh_progress=0x7f07011b;
-        public static final int pull_to_refresh_sub_text=0x7f07011d;
-        public static final int pull_to_refresh_text=0x7f07011c;
+        public static final int pull_to_refresh_image=0x7f07011c;
+        public static final int pull_to_refresh_progress=0x7f07011d;
+        public static final int pull_to_refresh_sub_text=0x7f07011f;
+        public static final int pull_to_refresh_text=0x7f07011e;
         public static final int re_register_passwd_edit=0x7f07006e;
         public static final int region_select_textview=0x7f070084;
         public static final int region_submit=0x7f070086;
@@ -854,38 +920,38 @@ containing a value of this type.
         public static final int search_info=0x7f070021;
         public static final int search_name=0x7f070020;
         public static final int select_remember_me=0x7f070041;
-        public static final int selected_iv=0x7f070106;
-        public static final int selected_layout=0x7f070105;
-        public static final int selected_tv=0x7f070107;
-        public static final int sort_info=0x7f070101;
-        public static final int sort_time=0x7f0700ff;
+        public static final int selected_iv=0x7f070108;
+        public static final int selected_layout=0x7f070107;
+        public static final int selected_tv=0x7f070109;
+        public static final int sort_info=0x7f070103;
+        public static final int sort_time=0x7f070101;
         public static final int stack=0x7f070006;
         public static final int standard=0x7f070000;
-        public static final int status_bar_latest_event_content=0x7f070117;
-        public static final int status_bar_latest_event_content_large_icon=0x7f070112;
+        public static final int status_bar_latest_event_content=0x7f070119;
+        public static final int status_bar_latest_event_content_large_icon=0x7f070114;
         public static final int sumbit_btn=0x7f070048;
         public static final int tablet=0x7f070001;
-        public static final int text=0x7f070116;
+        public static final int text=0x7f070118;
         public static final int text_index=0x7f070032;
         public static final int text_index2=0x7f070036;
         public static final int text_noinfo=0x7f070063;
-        public static final int time=0x7f070115;
-        public static final int tips_icon=0x7f07011e;
-        public static final int tips_loading_msg=0x7f070120;
-        public static final int tips_msg=0x7f07011f;
-        public static final int title=0x7f070114;
+        public static final int time=0x7f070117;
+        public static final int tips_icon=0x7f070120;
+        public static final int tips_loading_msg=0x7f070122;
+        public static final int tips_msg=0x7f070121;
+        public static final int title=0x7f070116;
         public static final int title_back=0x7f070023;
         public static final int titlebar_logo=0x7f07001a;
         public static final int top=0x7f07006a;
-        public static final int voice_rcd_hint_anim=0x7f0700eb;
-        public static final int voice_rcd_hint_anim_area=0x7f0700ea;
-        public static final int voice_rcd_hint_cancel_area=0x7f0700ed;
-        public static final int voice_rcd_hint_cancel_icon=0x7f0700ee;
-        public static final int voice_rcd_hint_cancel_icon_small=0x7f0700ec;
-        public static final int voice_rcd_hint_cancel_text=0x7f0700ef;
-        public static final int voice_rcd_hint_loading=0x7f0700f0;
-        public static final int voice_rcd_hint_rcding=0x7f0700e9;
-        public static final int voice_rcd_hint_tooshort=0x7f0700f2;
+        public static final int voice_rcd_hint_anim=0x7f0700ed;
+        public static final int voice_rcd_hint_anim_area=0x7f0700ec;
+        public static final int voice_rcd_hint_cancel_area=0x7f0700ef;
+        public static final int voice_rcd_hint_cancel_icon=0x7f0700f0;
+        public static final int voice_rcd_hint_cancel_icon_small=0x7f0700ee;
+        public static final int voice_rcd_hint_cancel_text=0x7f0700f1;
+        public static final int voice_rcd_hint_loading=0x7f0700f2;
+        public static final int voice_rcd_hint_rcding=0x7f0700eb;
+        public static final int voice_rcd_hint_tooshort=0x7f0700f4;
         public static final int webview=0x7f070017;
         public static final int wel_img1=0x7f070068;
         public static final int wel_img2=0x7f070069;
@@ -922,23 +988,24 @@ containing a value of this type.
         public static final int im_chatview=0x7f03001a;
         public static final int im_chatview_image=0x7f03001b;
         public static final int im_chatview_item_chatting=0x7f03001c;
-        public static final int im_emotion_pager_classical_item=0x7f03001d;
-        public static final int im_voice_rcd_dialog=0x7f03001e;
-        public static final int imbase_titlebar=0x7f03001f;
-        public static final int item_group=0x7f030020;
-        public static final int item_groupinfo_user=0x7f030021;
-        public static final int item_sort_contact=0x7f030022;
-        public static final int item_tab=0x7f030023;
-        public static final int item_user=0x7f030024;
-        public static final int layout_line=0x7f030025;
-        public static final int list_dir=0x7f030026;
-        public static final int list_dir_item=0x7f030027;
-        public static final int notify_status_bar_latest_event_content_large_icon=0x7f030028;
-        public static final int notify_status_bar_latest_event_view=0x7f030029;
-        public static final int pull_to_refresh_header_horizontal=0x7f03002a;
-        public static final int pull_to_refresh_header_vertical=0x7f03002b;
-        public static final int view_tips=0x7f03002c;
-        public static final int view_tips_loading=0x7f03002d;
+        public static final int im_custom_imagebutton=0x7f03001d;
+        public static final int im_emotion_pager_classical_item=0x7f03001e;
+        public static final int im_voice_rcd_dialog=0x7f03001f;
+        public static final int imbase_titlebar=0x7f030020;
+        public static final int item_group=0x7f030021;
+        public static final int item_groupinfo_user=0x7f030022;
+        public static final int item_sort_contact=0x7f030023;
+        public static final int item_tab=0x7f030024;
+        public static final int item_user=0x7f030025;
+        public static final int layout_line=0x7f030026;
+        public static final int list_dir=0x7f030027;
+        public static final int list_dir_item=0x7f030028;
+        public static final int notify_status_bar_latest_event_content_large_icon=0x7f030029;
+        public static final int notify_status_bar_latest_event_view=0x7f03002a;
+        public static final int pull_to_refresh_header_horizontal=0x7f03002b;
+        public static final int pull_to_refresh_header_vertical=0x7f03002c;
+        public static final int view_tips=0x7f03002d;
+        public static final int view_tips_loading=0x7f03002e;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1045,6 +1112,146 @@ containing a value of this type.
         public static final int dialog=0x7f0b0006;
     }
     public static final class styleable {
+        /** Attributes that can be used with a CustomImageButton.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_background com.imsdk.imdeveloper:custom_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_height com.imsdk.imdeveloper:custom_height}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_src com.imsdk.imdeveloper:custom_src}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_text com.imsdk.imdeveloper:custom_text}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_textColor com.imsdk.imdeveloper:custom_textColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_textSize com.imsdk.imdeveloper:custom_textSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_weight com.imsdk.imdeveloper:custom_weight}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomImageButton_custom_width com.imsdk.imdeveloper:custom_width}</code></td><td></td></tr>
+           </table>
+           @see #CustomImageButton_custom_background
+           @see #CustomImageButton_custom_height
+           @see #CustomImageButton_custom_src
+           @see #CustomImageButton_custom_text
+           @see #CustomImageButton_custom_textColor
+           @see #CustomImageButton_custom_textSize
+           @see #CustomImageButton_custom_weight
+           @see #CustomImageButton_custom_width
+         */
+        public static final int[] CustomImageButton = {
+            0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029,
+            0x7f01002a, 0x7f01002b, 0x7f01002c, 0x7f01002d
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_background}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name android:custom_background
+        */
+        public static final int CustomImageButton_custom_background = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_height}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:custom_height
+        */
+        public static final int CustomImageButton_custom_height = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_src}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name android:custom_src
+        */
+        public static final int CustomImageButton_custom_src = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_text}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name android:custom_text
+        */
+        public static final int CustomImageButton_custom_text = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_textColor}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:custom_textColor
+        */
+        public static final int CustomImageButton_custom_textColor = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_textSize}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:custom_textSize
+        */
+        public static final int CustomImageButton_custom_textSize = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_weight}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:custom_weight
+        */
+        public static final int CustomImageButton_custom_weight = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.imsdk.imdeveloper.R.attr#custom_width}
+          attribute's value can be found in the {@link #CustomImageButton} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:custom_width
+        */
+        public static final int CustomImageButton_custom_width = 5;
         /** Attributes that can be used with a IMChatView.
            <p>Includes the following attributes:</p>
            <table>

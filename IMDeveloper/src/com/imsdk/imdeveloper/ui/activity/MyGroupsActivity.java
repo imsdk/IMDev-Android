@@ -181,16 +181,16 @@ public class MyGroupsActivity extends Activity implements View.OnClickListener {
 						mGroupsList.add(gList.get(i));	
 					}
 					mAdapter.notifyDataSetChanged();
-					UICommon.showTips(R.drawable.tips_success, "创建群成功!");
+					UICommon.showTips(MyGroupsActivity.this, R.drawable.tips_success, "创建群成功!");
 					mTitleBarRightView.setEnabled(true);
 				}
 
 				@Override
 				public void onFailure(String error) {
 					if(error.equals("Has reached Limit")){
-						UICommon.showTips(R.drawable.tips_error, "群组数已达到上限");
+						UICommon.showTips(MyGroupsActivity.this, R.drawable.tips_error, "群组数已达到上限");
 					}else{
-						UICommon.showTips(R.drawable.tips_error, "创建失败:" + error + " " + IMMyselfGroup.getLastError());	
+						UICommon.showTips(MyGroupsActivity.this, R.drawable.tips_error, "创建失败:" + error + " " + IMMyselfGroup.getLastError());	
 					}
 					mTitleBarRightView.setEnabled(true);
 				}

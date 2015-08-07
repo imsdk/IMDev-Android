@@ -209,14 +209,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 									@Override
 									public void onSuccess() {
 										showUIByRelation(STRANGER);
-										UICommon.showTips(R.drawable.tips_success,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_success,
 												"移除黑名单成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										UICommon.showTips(R.drawable.tips_error,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_error,
 												"移除黑名单失败" + error);
 									}
 								});
@@ -238,14 +238,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 									@Override
 									public void onSuccess() {
 										showUIByRelation(BLACKLIST);
-										UICommon.showTips(R.drawable.tips_success,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_success,
 												"拉黑成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										UICommon.showTips(R.drawable.tips_error,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_error,
 												"拉黑失败：" + error);
 
 									}
@@ -268,13 +268,13 @@ public class ProfileActivity extends Activity implements OnClickListener {
 
 									@Override
 									public void onSuccess() {
-										UICommon.showTips(R.drawable.tips_smile,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_smile,
 												"好友请求已发送！");
 									}
 
 									@Override
 									public void onFailure(String error) {
-										UICommon.showTips(R.drawable.tips_error,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_error,
 												"好友请求发送失败：" + error);
 									}
 								});
@@ -298,14 +298,14 @@ public class ProfileActivity extends Activity implements OnClickListener {
 									@Override
 									public void onSuccess() {
 										showUIByRelation(STRANGER);
-										UICommon.showTips(R.drawable.tips_success,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_success,
 												"移除好友成功！");
 										refresh();
 									}
 
 									@Override
 									public void onFailure(String error) {
-										UICommon.showTips(R.drawable.tips_error,
+										UICommon.showTips(ProfileActivity.this, R.drawable.tips_error,
 												"移除好友失败：" + error);
 
 									}

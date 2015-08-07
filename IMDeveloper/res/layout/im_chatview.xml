@@ -19,14 +19,17 @@
             android:visibility="visible" >
 
             <imsdk.views.CustomImageButton
+                xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imchatview_back"
                 android:layout_width="60dip"
                 android:layout_height="45dip"
                 android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
                 android:contentDescription="@null"
                 android:scaleType="center"
-                android:src="@drawable/im_back_select_btn" />
+                IMSDK:custom_width="60dip"
+                IMSDK:custom_height="45dip"
+                IMSDK:custom_background="@android:color/transparent"
+                IMSDK:custom_src="@drawable/im_back_select_btn" />
 
             <ImageView
                 android:id="@+id/dividingline"
@@ -46,6 +49,7 @@
                 android:textSize="20sp"/>
 
             <imsdk.views.CustomImageButton
+                xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imchatview_titlebarright"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +57,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="9dp"
                 android:contentDescription="@null"
-                android:background="@android:color/transparent"
+                IMSDK:custom_textColor="@color/white"
+                IMSDK:custom_textSize="16sp"
+                IMSDK:custom_background="@android:color/transparent"
                 android:scaleType="center"
                 android:visibility="gone" />
         </RelativeLayout>
@@ -122,24 +128,31 @@
                     android:textColor="#000" />
 
                 <imsdk.views.CustomImageButton
+                    xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imchatview_record"
                     android:layout_width="0dip"
                     android:layout_height="45dp"
-                    android:layout_margin="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/im_chatting_send_btn_bg"
-                    android:text="@string/str_voice_press"
+                    android:layout_margin="3dp"
+                    IMSDK:custom_height="45dp"
+                    IMSDK:custom_weight="1"
+                    IMSDK:custom_background="@drawable/im_chatting_send_btn_bg"
+                    IMSDK:custom_text="@string/str_voice_press"
+                    IMSDK:custom_textSize="16sp"
+                    IMSDK:custom_textColor="@color/black"
                     android:visibility="gone" />
 
                 <imsdk.views.CustomImageButton
+                    xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imchatview_sendoraudioswtich"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginRight="6dp"
-                    android:background="@drawable/im_chatting_send_btn_bg"
                     android:contentDescription="@null"
                     android:scaleType="center"
-                    android:src="@drawable/im_chatting_setmode_voice_btn_normal" />
+                    IMSDK:custom_height="36dp"
+                    IMSDK:custom_background="@drawable/im_chatting_send_btn_bg"
+                    IMSDK:custom_src="@drawable/im_chatting_setmode_voice_btn_normal" />
             </LinearLayout>
         </LinearLayout>
 

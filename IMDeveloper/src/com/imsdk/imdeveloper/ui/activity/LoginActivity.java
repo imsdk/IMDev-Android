@@ -25,13 +25,11 @@ import android.widget.ImageView;
 
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.app.IMApplication;
-import com.imsdk.imdeveloper.app.IMConfiguration;
 import com.imsdk.imdeveloper.ui.a1common.UICommon;
 import com.imsdk.imdeveloper.ui.view.TipsToast;
 import com.imsdk.imdeveloper.util.LoadingDialog;
 
 public class LoginActivity extends Activity implements OnClickListener {
-	public static LoginActivity sSingleton;
 	private SharedPreferences mySharedPreferences;
 
 	private EditText mUserNameEditText; // 帐号编辑框
@@ -45,48 +43,50 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private LoadingDialog mDialog;
 
 	private long mExitTime;
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			if ((System.currentTimeMillis() - mExitTime) > 2000) {
-				UICommon.showTips(R.drawable.tips_smile, "再按一次返回桌面");
-				mExitTime = System.currentTimeMillis();
-			} else {
-				finish();
-			}
-
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
-	}
+	
+	private final static int SUCCESS = 0;
+	private final static int FAILURE = -1;
+	
+	private static TipsToast mTipsToast;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		sSingleton = this;
-
 		// 使得音量键控制媒体声音
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//layout
 		setContentView(R.layout.activity_login);
 		
-		mySharedPreferences = getSharedPreferences("imsdk", Activity.MODE_PRIVATE); 
-
+		initView();
+		initListener();
+	}
+	
+	
+	private void initView(){
+	
 		mUserNameEditText = (EditText) findViewById(R.id.login_user_name_edittext);
 		mPasswordEditText = (EditText) findViewById(R.id.login_password_edittext);
 		mRememberMe = (CheckBox)findViewById(R.id.select_remember_me);
 
 		mLoginBtn = (Button) findViewById(R.id.login_login_btn);
-		mLoginBtn.setOnClickListener(this);
-
 		mRegisterBtn = (Button) findViewById(R.id.login_register_btn);
-		mRegisterBtn.setOnClickListener(this);
 
 		mImageView = (ImageView) findViewById(R.id.login_imageview);
 
+		//设置默认用户名
+		mUserNameEditText.addTextChangedListener(mTextWatcher);
+		mySharedPreferences = getSharedPreferences("imsdk", Activity.MODE_PRIVATE);
+		mUserNameEditText.setText(mySharedPreferences.getString("userName", ""));
+		
+	}
+	
+	private void initListener(){
+		
+		mLoginBtn.setOnClickListener(this);
+		mRegisterBtn.setOnClickListener(this);
+		
+		
 		IMMyself.init(
 				new OnAutoLoginListener() {
 					@Override
@@ -110,36 +110,24 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 					@Override
 					public void onAutoLoginSuccess() {
-						UICommon.showTips(R.drawable.tips_smile, "登录成功");
+						UICommon.showTips(LoginActivity.this, R.drawable.tips_smile, "登录成功");
 						updateStatus(SUCCESS);
 					}
 
 					@Override
 					public void onAutoLoginFailure(boolean conflict) {
 						if (conflict) {
-							UICommon.showTips(R.drawable.tips_error, "登录冲突");
+							UICommon.showTips(LoginActivity.this, R.drawable.tips_error, "登录冲突");
 						} else {
-							UICommon.showTips(R.drawable.tips_error, "登录失败");
+							UICommon.showTips(LoginActivity.this, R.drawable.tips_error, "登录失败");
 						}
 
 						updateStatus(FAILURE);
 					}
 				});
-
-		mUserNameEditText.addTextChangedListener(mTextWatcher);
-
-		String customUserID = getIntent().getStringExtra("CustomUserID");
-
-		if (customUserID != null) {
-			mUserNameEditText.setText(customUserID);
-		}else{
-			//设置默认的
-			mUserNameEditText.setText(mySharedPreferences.getString("userName", ""));
-		}
 	}
 
-	private final static int SUCCESS = 0;
-	private final static int FAILURE = -1;
+	
 
 	private void updateStatus(int status) {
 		mLoginBtn.setEnabled(true);
@@ -147,13 +135,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (status) {
 		case SUCCESS: {
 			mDialog.dismiss();
-			UICommon.showTips(R.drawable.tips_smile, "登录成功");
+			UICommon.showTips(LoginActivity.this, R.drawable.tips_smile, "登录成功");
 
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
 			intent.putExtra("userName", mUserNameEditText.getText().toString());
 			startActivity(intent);
-			LoginActivity.this.finish();
 			
 			//缓存用户名
 			if(mRememberMe.isChecked()){
@@ -161,6 +148,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 				editor.putString("userName", mUserNameEditText.getText().toString());
 				editor.commit();	
 			}
+			
+			LoginActivity.this.finish();
 		}
 			break;
 		case FAILURE:
@@ -196,7 +185,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				.toString());
 
 		if (!result) {
-			UICommon.showTips(R.drawable.tips_warning, IMSDK.getLastError());
+			UICommon.showTips(LoginActivity.this, R.drawable.tips_warning, IMSDK.getLastError());
 			mDialog.dismiss();
 			return;
 		}
@@ -212,7 +201,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		IMMyself.login(false, 5, new OnActionListener() {
 			@Override
 			public void onSuccess() {
-				UICommon.showTips(R.drawable.tips_smile, "登录成功");
+				UICommon.showTips(LoginActivity.this, R.drawable.tips_smile, "登录成功");
 				updateStatus(SUCCESS);
 			}
 
@@ -225,12 +214,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 				}
 
 				updateStatus(FAILURE);
-				UICommon.showTips(R.drawable.tips_error, error);
+				UICommon.showTips(LoginActivity.this, R.drawable.tips_error, error);
 			}
 		});
 	}
 
-	private static TipsToast mTipsToast;
 
 	private void showTips(int iconResId, String tips) {
 		if (mTipsToast != null) {
@@ -299,4 +287,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 		}
 	};
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if ((System.currentTimeMillis() - mExitTime) > 2000) {
+				UICommon.showTips(LoginActivity.this, R.drawable.tips_smile, "再按一次返回桌面");
+				mExitTime = System.currentTimeMillis();
+			} else {
+				finish();
+			}
+
+			return true;
+		}
+
+		return super.onKeyDown(keyCode, event);
+	}
 }

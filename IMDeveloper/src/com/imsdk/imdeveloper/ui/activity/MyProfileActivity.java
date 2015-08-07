@@ -298,12 +298,12 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				mNickNameTextView.setText(nickname);
-				UICommon.showTips(R.drawable.tips_success, "修改昵称成功");
+				UICommon.showTips(MyProfileActivity.this, R.drawable.tips_success, "修改昵称成功");
 			}
 			
 			@Override
 			public void onFailure(String error) {
-				UICommon.showTips(R.drawable.tips_error, "修改昵称失败：" + error);
+				UICommon.showTips(MyProfileActivity.this, R.drawable.tips_error, "修改昵称失败：" + error);
 			}
 		});
 	}
@@ -359,12 +359,12 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 		IMMyselfCustomUserInfo.commit(customUserInfo, new OnActionListener() {
 			@Override
 			public void onSuccess() {
-				UICommon.showTips(R.drawable.tips_success, "修改成功");
+				UICommon.showTips(MyProfileActivity.this, R.drawable.tips_success, "修改成功");
 			}
 
 			@Override
 			public void onFailure(String error) {
-				UICommon.showTips(R.drawable.tips_error, "修改失败：" + error);
+				UICommon.showTips(MyProfileActivity.this, R.drawable.tips_error, "修改失败：" + error);
 			}
 		});
 	}
@@ -384,7 +384,7 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 					dialog.dismiss();
 					IMApplication.sImageLoader.displayImage(uri.toString(),
 							mMainPhotoImageView, IMApplication.sDisplayImageOptions);
-					UICommon.showTips(R.drawable.tips_success, "头像更换成功！");
+					UICommon.showTips(MyProfileActivity.this, R.drawable.tips_success, "头像更换成功！");
 				}
 
 				@Override
@@ -394,7 +394,7 @@ public class MyProfileActivity extends Activity implements OnClickListener {
 				@Override
 				public void onFailure(String error) {
 					dialog.dismiss();
-					UICommon.showTips(R.drawable.tips_success, "头像更换失败：" + error);
+					UICommon.showTips(MyProfileActivity.this, R.drawable.tips_success, "头像更换失败：" + error);
 				}
 			});
 		} catch (FileNotFoundException e) {
