@@ -18,15 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.imsdk.imdeveloper.R;
-import com.imsdk.imdeveloper.ui.activity.GroupSearchMemberActivity;
 import com.imsdk.imdeveloper.ui.activity.MyGroupsActivity;
-import com.imsdk.imdeveloper.ui.activity.ProfileActivity;
+import com.imsdk.imdeveloper.ui.activity.shop.MyMerchantActivity;
 import com.imsdk.imdeveloper.ui.view.sortlistview.CharacterParser;
 import com.imsdk.imdeveloper.ui.view.sortlistview.ClearEditText;
 import com.imsdk.imdeveloper.ui.view.sortlistview.PinyinComparator;
@@ -107,15 +105,26 @@ public class ContactsFragment extends Fragment {
 		mEmptyTextView = (TextView) view.findViewById(R.id.contacts_emtpy_textview);
 		mLoadingLayout = (LinearLayout) view.findViewById(R.id.contacts_loading_layout);
 
-		View v = LayoutInflater.from(getActivity()).inflate(R.layout.item_group, null);
+		//群聊+商家
+		View v = LayoutInflater.from(getActivity()).inflate(R.layout.activity_contacts_list_head, null);
 
 		mListView.addHeaderView(v);
 
-		v.setOnClickListener(new OnClickListener() {
+		LinearLayout shopLayout = (LinearLayout)v.findViewById(R.id.listhead_shop);
+		LinearLayout groupLayout = (LinearLayout)v.findViewById(R.id.listhead_group);
+		shopLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
+				Intent intent = new Intent(getActivity(), MyMerchantActivity.class);
+				startActivity(intent);
+			}
+		});
+		groupLayout.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
 				Intent intent = new Intent(getActivity(), MyGroupsActivity.class);
-
 				startActivity(intent);
 			}
 		});

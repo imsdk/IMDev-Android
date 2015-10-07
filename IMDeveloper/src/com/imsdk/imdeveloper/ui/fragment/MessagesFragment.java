@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import imsdk.data.IMSDK.OnDataChangedListener;
+import imsdk.data.customerservice.IMSDKCustomerService;
+import imsdk.data.customerservice.IMServiceNumberInfo;
 import imsdk.data.localchatmessagehistory.IMChatMessage;
 import imsdk.data.localchatmessagehistory.IMMyselfLocalChatMessageHistory;
 import imsdk.data.mainphoto.IMSDKMainPhoto;
@@ -11,10 +13,15 @@ import imsdk.data.mainphoto.IMSDKMainPhoto.OnBitmapRequestProgressListener;
 import imsdk.data.nickname.IMSDKNickname;
 import imsdk.data.recentcontacts.IMMyselfRecentContacts;
 import imsdk.views.IMEmotionTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +33,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.imsdk.imdeveloper.R;
+import com.imsdk.imdeveloper.bean.MerchantInfo;
 import com.imsdk.imdeveloper.bean.UserMessage;
+import com.imsdk.imdeveloper.constants.Constants;
+import com.imsdk.imdeveloper.db.DBHelper;
 import com.imsdk.imdeveloper.ui.activity.IMChatActivity;
 import com.imsdk.imdeveloper.ui.activity.MainActivity;
+import com.imsdk.imdeveloper.ui.activity.shop.IMMerchantChatActivity;
+import com.imsdk.imdeveloper.ui.activity.shop.MyMerchantActivity;
 import com.imsdk.imdeveloper.ui.view.BadgeView;
 import com.imsdk.imdeveloper.ui.view.CustomRadioGroup;
 import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
@@ -43,7 +55,7 @@ import com.imsdk.imdeveloper.util.DateUtil;
 public class MessagesFragment extends Fragment {
 	// data
 	public boolean mShowingGroupMessage;
-
+	private BroadcastReceiver mReceiver;
 	// ui
 	private ListView mListView;
 	private View mEmptyView;
@@ -72,11 +84,29 @@ public class MessagesFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				String customUserID = IMMyselfRecentContacts.getUser(position);
-				Intent intent = new Intent(getActivity(), IMChatActivity.class);
-
-				intent.putExtra("CustomUserID", customUserID);
-				startActivity(intent);
+				
+				String customUserID = userMessages.get(position).getCustomUserID();
+				if(customUserID.startsWith("kefu_")){
+					//客服服务号时
+					MerchantInfo minfo = DBHelper.queryMerchantInfoByCid(getActivity(), customUserID);
+					Intent intent = new Intent(getActivity(), IMMerchantChatActivity.class);
+					intent.putExtra("CustomUserID", customUserID);
+					if(customUserID.equals(Constants.IMDEV_KEFU_SERVICEID)){
+						intent.putExtra("mName", "爱萌客服");
+					}else if(minfo != null && !TextUtils.isEmpty(minfo.getShop_name())){
+						intent.putExtra("mName", minfo.getShop_name());
+					}else{
+						intent.putExtra("mName", customUserID);
+					}
+					
+					startActivity(intent);
+					
+				}else{
+					//普通账号时
+					Intent intent = new Intent(getActivity(), IMChatActivity.class);
+					intent.putExtra("CustomUserID", customUserID);
+					startActivity(intent);	
+				}
 
 				IMMyselfRecentContacts.clearUnreadChatMessage(customUserID);
 
@@ -105,6 +135,27 @@ public class MessagesFragment extends Fragment {
 						unreadMessageCount > 0 ? unreadMessageCount : -1);
 			}
 		});
+		
+		//消息更新监听
+		IntentFilter ift = new IntentFilter();
+        ift.addAction(Constants.BROADCAST_ACTION_NOTIFY_MESSAGE);
+        mReceiver = new BroadcastReceiver() {
+			
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				
+				initData();
+				mAdapter.notifyDataSetChanged();
+
+				int unreadMessageCount = (int) IMMyselfRecentContacts
+						.getUnreadChatMessageCount();
+				// 设置未读消息数字红点提醒
+				CustomRadioGroup.sSingleton.setItemNewsCount(0,
+						unreadMessageCount > 0 ? unreadMessageCount : -1);
+
+			}
+		};
+        getActivity().registerReceiver(mReceiver, ift);
 
 		return view;
 	}
@@ -191,51 +242,47 @@ public class MessagesFragment extends Fragment {
 					itemViewHolder.mBadgeView.setVisibility(View.INVISIBLE);
 				}
 			}
-			if(CommonUtil.isNull(userMessage.getNickname())){
-				itemViewHolder.mContactNameTextView.setText(userMessage.getCustomUserID());	
+			
+			//当是服务号时
+			if(userMessage.getCustomUserID().startsWith("kefu_")){
+				if(userMessage.getCustomUserID().equals(Constants.IMDEV_KEFU_SERVICEID)){
+					//爱萌开发者客服
+					itemViewHolder.mContactNameTextView.setText("爱萌客服");
+				}else{
+					//商家客服
+					MerchantInfo minfo = DBHelper.queryMerchantInfoByCid(getActivity(), userMessage.getCustomUserID());
+					if(minfo != null){
+						itemViewHolder.mContactNameTextView.setText(minfo.getShop_name());
+					}else{
+						itemViewHolder.mContactNameTextView.setText(userMessage.getCustomUserID());	
+					}
+				}
+				
+				itemViewHolder.mContactImageView.setRoundness(8);
+				itemViewHolder.mContactImageView.setImageResource(R.drawable.shop_group);
+				
 			}else{
-				itemViewHolder.mContactNameTextView.setText(userMessage.getNickname());
+				
+				//nickname
+				if(CommonUtil.isNull(userMessage.getNickname())){
+					itemViewHolder.mContactNameTextView.setText(userMessage.getCustomUserID());
+				}else{
+					itemViewHolder.mContactNameTextView.setText(userMessage.getNickname());
+				}
+				
+				//head photo
+				itemViewHolder.mContactImageView.setRoundness(8);
+				if (userMessage.getBitmap() != null) {
+					itemViewHolder.mContactImageView.setImageBitmap(userMessage.getBitmap());
+				} else {
+					itemViewHolder.mContactImageView
+							.setImageResource(R.drawable.news_head_man);
+				}
+				
 			}
-
+			
 			itemViewHolder.mContactTimeTextView.setText(userMessage.getLastMessageTime());
 			itemViewHolder.mContactInfoEmotionTextView.setStaticEmotionText(userMessage.getLastMessageContent());
-
-			itemViewHolder.mContactImageView.setRoundness(8);
-			if (userMessage.getBitmap() != null) {
-				itemViewHolder.mContactImageView.setImageBitmap(userMessage.getBitmap());
-			} else {
-				itemViewHolder.mContactImageView
-						.setImageResource(R.drawable.news_head_man);
-			}
-
-			final ImageView contactImageView = itemViewHolder.mContactImageView;
-			final TextView contactNameTextView = itemViewHolder.mContactNameTextView;
-
-			IMSDKMainPhoto.request(userMessage.getCustomUserID(), 20,
-					new OnBitmapRequestProgressListener() {
-						@Override
-						public void onSuccess(Bitmap bitmap, byte[] buffer) {
-							if (bitmap != null) {
-								contactImageView.setImageBitmap(bitmap);
-							} else {
-								contactImageView
-										.setImageResource(R.drawable.news_head_man);
-							}
-							//头像更新后，昵称也会同步更新
-							String nickname_new =  IMSDKNickname.get(userMessage.getCustomUserID());
-							if(!CommonUtil.isNull(nickname_new)){
-								contactNameTextView.setText(nickname_new);
-							}
-						}
-
-						@Override
-						public void onProgress(double arg0) {
-						}
-
-						@Override
-						public void onFailure(String arg0) {
-						}
-					});
 
 			return convertView;
 		}
@@ -247,5 +294,11 @@ public class MessagesFragment extends Fragment {
 			TextView mContactTimeTextView;
 			BadgeView mBadgeView;
 		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		getActivity().unregisterReceiver(mReceiver);
 	}
 }

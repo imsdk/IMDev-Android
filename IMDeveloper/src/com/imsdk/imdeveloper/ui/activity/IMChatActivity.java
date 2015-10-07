@@ -1,5 +1,6 @@
 package com.imsdk.imdeveloper.ui.activity;
 
+import imsdk.data.recentcontacts.IMMyselfRecentContacts;
 import imsdk.views.IMChatView;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.Window;
 
 import com.imsdk.imdeveloper.app.IMApplication;
+import com.imsdk.imdeveloper.constants.Constants;
+import com.imsdk.imdeveloper.ui.view.CustomRadioGroup;
 
 public class IMChatActivity extends Activity {
 	private String mCustomUserID;
@@ -33,7 +36,7 @@ public class IMChatActivity extends Activity {
 		mChatView.setTitleBarVisible(true);
 
 		IMApplication.sCustomUserID = mCustomUserID;
-		
+
 		//点击头像事件
 		mChatView.setOnHeadPhotoClickListener(new IMChatView.OnHeadPhotoClickListener() {
 			
@@ -61,12 +64,13 @@ public class IMChatActivity extends Activity {
 
 		return super.onKeyDown(keyCode, event);
 	}
-	
-	
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		IMApplication.sCustomUserID = null;
+		//返回时，未读消息清0
+		IMMyselfRecentContacts.clearUnreadChatMessage(mCustomUserID);
+		sendBroadcast(new Intent(Constants.BROADCAST_ACTION_NOTIFY_MESSAGE));
 	}
 }

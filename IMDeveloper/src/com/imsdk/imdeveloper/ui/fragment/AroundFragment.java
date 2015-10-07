@@ -174,7 +174,7 @@ public class AroundFragment extends Fragment {
 				viewHolder.mUserMainPhotoImageView.setImageBitmap(bitmap);
 			} else {
 				viewHolder.mUserMainPhotoImageView
-						.setImageResource(R.drawable.icon);
+						.setImageResource(R.drawable.news_head_man);
 			}
 
 			//有昵称则设置昵称
@@ -208,7 +208,7 @@ public class AroundFragment extends Fragment {
 				if (uri != null) {
 					mUserMainPhotoImageView.setImageURI(uri);
 				} else {
-					mUserMainPhotoImageView.setImageResource(R.drawable.icon);
+					mUserMainPhotoImageView.setImageResource(R.drawable.news_head_man);
 				}
 			}
 		}

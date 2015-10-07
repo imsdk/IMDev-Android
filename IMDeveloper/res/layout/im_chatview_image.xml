@@ -17,5 +17,16 @@
         android:layout_height="36dp"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+    
+    <TextView 
+        android:id="@+id/imimg_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/str_back"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
 
 </RelativeLayout>

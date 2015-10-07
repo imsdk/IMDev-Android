@@ -198,23 +198,25 @@ public class MainActivity extends FragmentActivity {
 				}
 
 				switch (arg0) {
-				case 0:
-					addRightViewListenerForFragment1();
-					break;
-				case 1:
-					mTitleBarRightView.setVisibility(View.VISIBLE);
-					mTitleBarRightView.setText("添加");
-					mTitleBarRightView.setOnClickListener(new OnClickListener() {
-						@Override
-						public void onClick(View v) {
-							startActivity(new Intent(MainActivity.this,
-									AddContactActivity.class));
-						}
-					});
-					break;
-				default:
-					mTitleBarRightView.setVisibility(View.GONE);
-					break;
+					case 0:
+					{
+						addRightViewListenerForFragment1();
+					}
+						break;
+					case 1:
+						mTitleBarRightView.setVisibility(View.VISIBLE);
+						mTitleBarRightView.setText("添加");
+						mTitleBarRightView.setOnClickListener(new OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								startActivity(new Intent(MainActivity.this,
+										AddContactActivity.class));
+							}
+						});
+						break;
+					default:
+						mTitleBarRightView.setVisibility(View.GONE);
+						break;
 				}
 			}
 
@@ -317,7 +319,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onReconnected() {
 				// 掉线后自动重连
-				Toast.makeText(MainActivity.this, "重连成功", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(MainActivity.this, "重连成功", Toast.LENGTH_SHORT).show();
 			}
 		});
 

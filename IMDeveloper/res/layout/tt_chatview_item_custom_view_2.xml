@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/tt_chatsystem_bg"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/tt_cv_1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/tt_picture" />
+
+    <TextView
+        android:id="@+id/tt_cv_2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/tt_cv_1"
+        android:singleLine="true"
+        android:text="快捷付款的说法交罚款的手机发反反复复"
+        android:textColor="#8D8D8D"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tt_cv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tt_cv_2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tt_cv_1"
+        android:text="微逛价："
+        android:textColor="#8D8D8D"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tt_cv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tt_cv_2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tt_cv_3"
+        android:text="￥100"
+        android:textColor="#CC5336"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/tt_cv_5"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tt_cv_2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tt_cv_4"
+        android:background="#CA3517"
+        android:text="发送链接"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+</RelativeLayout>

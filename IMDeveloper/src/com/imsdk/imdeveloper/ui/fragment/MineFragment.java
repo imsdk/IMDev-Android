@@ -25,8 +25,11 @@ import android.widget.Toast;
 
 import com.imsdk.imdeveloper.R;
 import com.imsdk.imdeveloper.app.IMConfiguration;
+import com.imsdk.imdeveloper.constants.Constants;
 import com.imsdk.imdeveloper.ui.activity.LoginActivity;
 import com.imsdk.imdeveloper.ui.activity.MyProfileActivity;
+import com.imsdk.imdeveloper.ui.activity.shop.IMMerchantChatActivity;
+import com.imsdk.imdeveloper.ui.activity.shop.MyMerchantActivity;
 import com.imsdk.imdeveloper.ui.view.RoundedCornerImageView;
 import com.imsdk.imdeveloper.ui.view.SettingSwitchButton;
 import com.imsdk.imdeveloper.util.CommonUtil;
@@ -51,6 +54,7 @@ public class MineFragment extends Fragment implements OnClickListener,
 
 	private SettingSwitchButton mSoundSwitchBtn;
 	private SettingSwitchButton mVibrateSwitchBtn;
+	private RelativeLayout mKefuBtn;
 
 	private void updateUserNameRegion() {
 		
@@ -92,6 +96,8 @@ public class MineFragment extends Fragment implements OnClickListener,
 		mSoundSwitchBtn = (SettingSwitchButton) view.findViewById(R.id.checkbox_sound);
 		mVibrateSwitchBtn = (SettingSwitchButton) view
 				.findViewById(R.id.checkbox_vibration);
+		mKefuBtn = (RelativeLayout) view.findViewById(R.id.mine_kf);
+		mKefuBtn.setOnClickListener(this);
 		mSoundSwitchBtn.setOnCheckedChangeListener(this);
 		mVibrateSwitchBtn.setOnCheckedChangeListener(this);
 
@@ -170,6 +176,14 @@ public class MineFragment extends Fragment implements OnClickListener,
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			getActivity().finish();
+			break;
+		case R.id.mine_kf:
+		{
+			Intent intent2 = new Intent(getActivity(), IMMerchantChatActivity.class);
+			intent2.putExtra("CustomUserID", Constants.IMDEV_KEFU_SERVICEID);
+			intent2.putExtra("mName", "爱萌客服");
+			startActivity(intent2);
+		}
 			break;
 		default:
 			break;

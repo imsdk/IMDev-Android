@@ -6,4 +6,7 @@
     <color name="black_light">#CCCCCC</color>
     <color name="mm_list_focus">#06bf04</color>
     <color name="mm_list_red">#ee524d</color>
+    <color name="titile_red">#CB3315</color>
+    <color name="view_bg">#F3F3F3</color>
+    <color name="plus_menu">#666565</color>
 </resources>
